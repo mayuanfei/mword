@@ -1,0 +1,18 @@
+# 只由spring-boot:test-run加载；H2是test scope依赖，不进入生产JAR。
+server:
+  address: 127.0.0.1
+spring:
+  datasource:
+    url: ${MW_LOCAL_DB_URL:jdbc:h2:file:./.local/mword;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ${MW_LOCAL_DB_PASSWORD}
+  flyway:
+    enabled: true
+mword:
+  ai-worker-enabled: ${MW_AI_WORKER_ENABLED:false}
+  secure-cookie: false
+  # 必须由本机launcher或环境提供随机32字节Base64密钥，不能复用test零密钥。
+  encryption-secret: ${MW_KEY_ENCRYPTION_SECRET}
+  admin-username: ${MW_ADMIN_USERNAME:}
+  admin-password: ${MW_ADMIN_PASSWORD:}

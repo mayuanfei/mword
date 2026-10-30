@@ -1,0 +1,48 @@
+server:
+  port: ${MW_PORT:18081}
+  servlet:
+    context-path: /mword-api
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: mword-server
+  datasource:
+    url: ${MW_DB_URL:jdbc:mysql://localhost:3306/mword?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC}
+    username: ${MW_DB_USERNAME:mword}
+    password: ${MW_DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 10
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-request-size: 1MB
+  threads:
+    virtual:
+      enabled: true
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+mword:
+  secure-cookie: ${MW_SECURE_COOKIE:true}
+  cost-explain: ${MW_COST_EXPLAIN:1}
+  cost-memory: ${MW_COST_MEMORY:1}
+  cost-context: ${MW_COST_CONTEXT:1}
+  cost-article: ${MW_COST_ARTICLE:3}
+  registration-enabled: ${MW_REGISTRATION_ENABLED:true}
+  initial-quota: ${MW_INITIAL_QUOTA:30}
+  session-days: ${MW_SESSION_DAYS:30}
+  encryption-secret: ${MW_KEY_ENCRYPTION_SECRET:}
+  admin-username: ${MW_ADMIN_USERNAME:}
+  admin-password: ${MW_ADMIN_PASSWORD:}
+  allowed-origins: ${MW_ALLOWED_ORIGINS:https://www.mayuanfei.com,http://localhost:5173,http://localhost:4173,http://127.0.0.1:5173,http://127.0.0.1:4173,capacitor://localhost,https://localhost,http://localhost}
+  provider-hosts: ${MW_PROVIDER_HOSTS:api.deepseek.com,api.siliconflow.cn,open.bigmodel.cn,dashscope.aliyuncs.com,api.moonshot.cn,ark.cn-beijing.volces.com}
+  ai-worker-enabled: ${MW_AI_WORKER_ENABLED:true}
+  ai-request-timeout-seconds: ${MW_AI_REQUEST_TIMEOUT_SECONDS:55}
+logging:
+  level:
+    com.mayuanfei.mword: INFO

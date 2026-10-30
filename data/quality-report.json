@@ -1,0 +1,85 @@
+{
+  "version": "2026-10-09.1",
+  "sourceScope": "ECDICT 的 cet4、cet6、ky 标签全量；非最新官方大纲认证",
+  "uniqueWordsAcrossBooks": 6160,
+  "books": [
+    {
+      "id": "cet4",
+      "wordCount": 3849,
+      "duplicateIds": 0,
+      "missingMeaningCount": 0,
+      "missingPhoneticCount": 2440,
+      "meaningStatuses": {
+        "source-extracted": 1384,
+        "editorial-draft": 370,
+        "reverse-gloss-draft": 2095
+      },
+      "longMeaningCount": 1,
+      "meaningCoverage": 1.0,
+      "phoneticCoverage": 0.366069
+    },
+    {
+      "id": "cet6",
+      "wordCount": 5407,
+      "duplicateIds": 0,
+      "missingMeaningCount": 0,
+      "missingPhoneticCount": 3603,
+      "meaningStatuses": {
+        "source-extracted": 1869,
+        "editorial-draft": 644,
+        "reverse-gloss-draft": 2894
+      },
+      "longMeaningCount": 1,
+      "meaningCoverage": 1.0,
+      "phoneticCoverage": 0.333642
+    },
+    {
+      "id": "postgraduate",
+      "wordCount": 4801,
+      "duplicateIds": 0,
+      "missingMeaningCount": 0,
+      "missingPhoneticCount": 3121,
+      "meaningStatuses": {
+        "source-extracted": 1670,
+        "editorial-draft": 477,
+        "reverse-gloss-draft": 2654
+      },
+      "longMeaningCount": 0,
+      "meaningCoverage": 1.0,
+      "phoneticCoverage": 0.349927
+    }
+  ],
+  "missingMeanings": [],
+  "meaningStatuses": {
+    "source-extracted": 2138,
+    "editorial-draft": 758,
+    "reverse-gloss-draft": 3264
+  },
+  "normalizedDuplicatesRemoved": {},
+  "invalidTaggedRows": [],
+  "spellingCorrections": [
+    {
+      "sourceWord": "reservior",
+      "lemma": "reservoir",
+      "tags": [
+        "cet4"
+      ],
+      "reason": "源词表误拼，统一为可核验的标准词条 reservoir",
+      "sourceUrl": "https://zh.wiktionary.org/wiki/reservoir"
+    }
+  ],
+  "usageNotes": {
+    "negro": {
+      "note": "历史文本中可能出现，现代英语中通常被认为陈旧或具有冒犯性，不宜作为日常中性称呼。",
+      "sourceUrl": "https://en.wiktionary.org/wiki/Negro"
+    },
+    "equipe": {
+      "note": "英语中可作名词，表示团队，是 équipe 的另一种拼写；不要自动当成 equip 的拼写错误。",
+      "sourceUrl": "https://en.wiktionary.org/wiki/equipe"
+    },
+    "protend": {
+      "note": "罕见词：旧义为伸出，另有现象学专业用法；需要具体语境，不应机械替换为 pretend 或 portend。",
+      "sourceUrl": "https://en.wiktionary.org/wiki/protend"
+    }
+  }
+}

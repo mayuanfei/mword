@@ -1,0 +1,36 @@
+[Unit]
+Description=mword learning service
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=2
+
+[Service]
+Type=simple
+User=mword
+Group=mword
+WorkingDirectory=/opt/mword/current/server
+EnvironmentFile=/etc/mword/mword.env
+# 指向实测Dragonwell21的专用软链；不改变系统Java或copilot的运行时。
+Environment=MW_JAVA_HOME=/opt/mword/java
+# 预检最低768MiB可用内存：512MiB服务上限+256MiB现有服务缓冲。
+# 这是保守待实测门槛，资源不足时拒绝启动；不自动停止其他服务或添加swap。
+ExecStartPre=/bin/sh /opt/mword/current/tools/check_server_resources.sh
+ExecStart=/opt/mword/java/bin/java -Xms64m -Xmx256m -XX:MaxMetaspaceSize=128m -XX:MaxDirectMemorySize=32m -XX:ReservedCodeCacheSize=64m -XX:ActiveProcessorCount=1 -XX:+ExitOnOutOfMemoryError -jar /opt/mword/current/server/mword-server-0.1.0.jar --spring.profiles.active=default --server.address=127.0.0.1 --server.port=18081 --mword.secure-cookie=true
+Restart=on-failure
+RestartSec=15
+TimeoutStartSec=90
+TimeoutStopSec=30
+MemoryAccounting=true
+MemoryHigh=448M
+MemoryMax=512M
+CPUQuota=100%
+TasksMax=256
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

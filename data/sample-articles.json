@@ -1,0 +1,112 @@
+[
+  {
+    "id": "builtin-reading-ai-feedback",
+    "title": "A Better Way to Learn with AI",
+    "subtitle": "更聪明地使用 AI 学习",
+    "topic": "AI 与学习",
+    "level": "intermediate",
+    "paragraphs": [
+      "An AI assistant can explain a difficult idea in several ways. But a reliable answer should still agree with the evidence. A confident voice alone does not prove that an answer is correct.",
+      "When I study a new word, I ask the assistant for a short example first. Then I close the explanation and try to retain the meaning. If I cannot remember it, I ask for a different example instead of reading the same answer again.",
+      "This habit helps me adapt my practice to the problem. Sometimes I need a clearer sentence. Sometimes I need to compare two similar words. The capacity to learn grows through small steps, rather than one long lesson.",
+      "The content we enjoy can influence our attention. I like technology, so examples about useful tools keep me interested. Yet the final test is simple: can I understand the word in a new sentence?"
+    ],
+    "paragraphTranslations": [
+      "AI 助手能用不同方式解释一个难懂的概念。不过，可靠的回答仍应与证据一致。仅仅语气自信，不能证明回答正确。",
+      "学习新词时，我先请助手给出一个简短例句。然后关闭解释，尝试记住它的意思。如果想不起来，我会要一个不同的例句，而不是反复读同一个答案。",
+      "这个习惯帮助我根据问题调整练习。有时需要更清楚的句子，有时需要比较两个相似的词。学习能力通过小步骤提高，而不是靠一次很长的学习。",
+      "我们喜欢的内容会影响注意力。我喜欢技术，所以与实用工具有关的例子能让我保持兴趣。不过，最终的检验很简单：换一个句子，我还能理解这个词吗？"
+    ],
+    "questions": [
+      {
+        "question": "What does the writer do after reading an explanation?",
+        "choices": [
+          "Tries to recall the meaning without looking.",
+          "Reads the answer until the lesson ends.",
+          "Accepts every confident answer."
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "作者关闭解释后尝试回忆，而不是只反复阅读。"
+      }
+    ],
+    "content": "An AI assistant can explain a difficult idea in several ways. But a reliable answer should still agree with the evidence. A confident voice alone does not prove that an answer is correct.\n\nWhen I study a new word, I ask the assistant for a short example first. Then I close the explanation and try to retain the meaning. If I cannot remember it, I ask for a different example instead of reading the same answer again.\n\nThis habit helps me adapt my practice to the problem. Sometimes I need a clearer sentence. Sometimes I need to compare two similar words. The capacity to learn grows through small steps, rather than one long lesson.\n\nThe content we enjoy can influence our attention. I like technology, so examples about useful tools keep me interested. Yet the final test is simple: can I understand the word in a new sentence?",
+    "translation": "AI 助手能用不同方式解释一个难懂的概念。不过，可靠的回答仍应与证据一致。仅仅语气自信，不能证明回答正确。\n\n学习新词时，我先请助手给出一个简短例句。然后关闭解释，尝试记住它的意思。如果想不起来，我会要一个不同的例句，而不是反复读同一个答案。\n\n这个习惯帮助我根据问题调整练习。有时需要更清楚的句子，有时需要比较两个相似的词。学习能力通过小步骤提高，而不是靠一次很长的学习。\n\n我们喜欢的内容会影响注意力。我喜欢技术，所以与实用工具有关的例子能让我保持兴趣。不过，最终的检验很简单：换一个句子，我还能理解这个词吗？",
+    "targetWordIds": [
+      "lemma:retain",
+      "lemma:evidence",
+      "lemma:capacity",
+      "lemma:adapt",
+      "lemma:reliable",
+      "lemma:influence"
+    ],
+    "targetWords": [
+      "retain",
+      "evidence",
+      "capacity",
+      "adapt",
+      "reliable",
+      "influence"
+    ],
+    "source": "mword 预置学习短文",
+    "sourceKind": "built-in",
+    "license": "CC-BY-SA-4.0",
+    "contentStatus": "editorial-draft",
+    "version": "2026-10-09.1",
+    "aiQuotaCost": 0
+  },
+  {
+    "id": "builtin-reading-bird-photography",
+    "title": "One Bird, One Small Experiment",
+    "subtitle": "一次观鸟摄影的小实验",
+    "topic": "旅行与摄影",
+    "level": "intermediate",
+    "paragraphs": [
+      "On a weekend trip, I tried to photograph a small bird near a river. The memory card had enough capacity for hundreds of pictures, but most of my first photos were not clear.",
+      "I needed a reliable way to improve. Instead of changing every camera setting at once, I changed only one setting and kept notes. The pictures became evidence of what worked and what did not.",
+      "Light and movement both influence a photograph. When the bird moved into the shade, I had to adapt my settings. I began to retain more of what I learned because each idea was connected to a real picture.",
+      "At the end of the trip, my best photo was not perfect. Still, I understood why it was better. A small experiment had taught me more than taking many pictures without thinking."
+    ],
+    "paragraphTranslations": [
+      "周末旅行时，我试着拍摄河边的一只小鸟。存储卡的容量足够存下数百张照片，但最初的大多数照片都不清楚。",
+      "我需要一种可靠的改进方法。我没有一次改变所有相机设置，而是只改一项并做记录。照片成为了证据，告诉我什么方法有效、什么无效。",
+      "光线和运动都会影响照片。小鸟进入阴影时，我不得不调整设置。我开始记住更多学到的知识，因为每个想法都与一张真实照片联系在一起。",
+      "旅行结束时，最好的一张照片仍不完美。但我明白它为什么更好。一次小实验，比不加思考地拍很多照片让我学到更多。"
+    ],
+    "questions": [
+      {
+        "question": "Why did the writer change only one camera setting at a time?",
+        "choices": [
+          "To use less memory.",
+          "To identify what helped the photo improve.",
+          "To avoid taking notes."
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "每次只调整一个变量，更容易从照片中判断哪项调整有效。"
+      }
+    ],
+    "content": "On a weekend trip, I tried to photograph a small bird near a river. The memory card had enough capacity for hundreds of pictures, but most of my first photos were not clear.\n\nI needed a reliable way to improve. Instead of changing every camera setting at once, I changed only one setting and kept notes. The pictures became evidence of what worked and what did not.\n\nLight and movement both influence a photograph. When the bird moved into the shade, I had to adapt my settings. I began to retain more of what I learned because each idea was connected to a real picture.\n\nAt the end of the trip, my best photo was not perfect. Still, I understood why it was better. A small experiment had taught me more than taking many pictures without thinking.",
+    "translation": "周末旅行时，我试着拍摄河边的一只小鸟。存储卡的容量足够存下数百张照片，但最初的大多数照片都不清楚。\n\n我需要一种可靠的改进方法。我没有一次改变所有相机设置，而是只改一项并做记录。照片成为了证据，告诉我什么方法有效、什么无效。\n\n光线和运动都会影响照片。小鸟进入阴影时，我不得不调整设置。我开始记住更多学到的知识，因为每个想法都与一张真实照片联系在一起。\n\n旅行结束时，最好的一张照片仍不完美。但我明白它为什么更好。一次小实验，比不加思考地拍很多照片让我学到更多。",
+    "targetWordIds": [
+      "lemma:retain",
+      "lemma:evidence",
+      "lemma:capacity",
+      "lemma:adapt",
+      "lemma:reliable",
+      "lemma:influence"
+    ],
+    "targetWords": [
+      "retain",
+      "evidence",
+      "capacity",
+      "adapt",
+      "reliable",
+      "influence"
+    ],
+    "source": "mword 预置学习短文",
+    "sourceKind": "built-in",
+    "license": "CC-BY-SA-4.0",
+    "contentStatus": "editorial-draft",
+    "version": "2026-10-09.1",
+    "aiQuotaCost": 0
+  }
+]
