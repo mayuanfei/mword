@@ -4,10 +4,11 @@ import java.util.List;
 
 public final class CatalogDtos {
     private CatalogDtos() {}
+    public record MemoryAssets(String roots, String etymology, String mnemonics, String story, List<String> collocations) {}
     public record Word(String id, String lemma, String meaning, String phonetic, String partOfSpeech,
                        String example, String exampleTranslation, String senseId,
                        String sourceUrl,String license,String definitionStatus,String definitionSource,
-                       String definitionSourceUrl,String definitionLicense) {}
+                       String definitionSourceUrl,String definitionLicense,MemoryAssets memoryAssets) {}
     public record Book(String id, String name, String description, String version,
                        String sourceUrl, String license, int wordCount,List<String> attribution,String licenseUrl) {}
     public record BookFile(String id, String name, String description, String version,

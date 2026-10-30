@@ -63,11 +63,20 @@ def read_jsonl(path: Path):
                     raise ValueError(f"Incomplete/invalid JSONL: {path}:{line_number}") from error
 
 
+try:
+    from opencc import OpenCC
+    _T2S = OpenCC("t2s")
+except ImportError:
+    _T2S = None
+
+
 def clean_gloss(gloss: str) -> str:
     text = re.sub(r"\s+", " ", gloss).strip()
     # Empty template/error entries are not turned into apparent definitions.
     if not re.search(r"[\u3400-\u9fff]", text) or "Lua" in text or "模板:" in text:
         return ""
+    if _T2S is not None:
+        text = _T2S.convert(text)
     return text
 
 

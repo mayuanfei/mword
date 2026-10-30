@@ -13,6 +13,7 @@ __pycache__/
 !.env.local.example
 *.log
 .DS_Store
+.idea/
 **/build/
 **/.gradle/
 **/local.properties

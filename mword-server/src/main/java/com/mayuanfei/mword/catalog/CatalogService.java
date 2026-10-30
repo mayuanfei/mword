@@ -24,7 +24,7 @@ public class CatalogService {
             }
             if (book.id() == null || book.words() == null || book.words().isEmpty()) throw new IllegalStateException("词库缺少有效词条");
             var normalized = book.words().stream().map(word -> new CatalogDtos.Word(word.id(),word.lemma(),word.meaning(),word.phonetic(),word.partOfSpeech(),word.example(),word.exampleTranslation(),
-                    word.senseId() == null ? word.id()+":core" : word.senseId(),word.sourceUrl()==null?book.sourceUrl():word.sourceUrl(),word.license()==null?book.license():word.license(),word.definitionStatus(),word.definitionSource(),word.definitionSourceUrl(),word.definitionLicense())).toList();
+                    word.senseId() == null ? word.id()+":core" : word.senseId(),word.sourceUrl()==null?book.sourceUrl():word.sourceUrl(),word.license()==null?book.license():word.license(),word.definitionStatus(),word.definitionSource(),word.definitionSourceUrl(),word.definitionLicense(),word.memoryAssets())).toList();
             books.put(book.id(), new CatalogDtos.BookFile(book.id(),book.name(),book.description(),book.version(),book.sourceUrl(),book.license(), normalized,book.attribution(),book.licenseUrl()));
             for (var word : normalized) {
                 var previous = words.putIfAbsent(word.id(),word);
@@ -39,14 +39,17 @@ public class CatalogService {
                 "When you visit a new city, a famous building is only one part of the story. Walk through a quiet street, notice the small shops, and ask a local person about a favorite place. A simple conversation can reveal something that no guidebook explains.\n\nMia likes to take photographs when she travels. Before she raises her camera, she observes the light and the people around her. She hopes to capture a moment, rather than collect a perfect image of every building.\n\nAt the end of the day, she writes a few sentences about what surprised her. The words help her retain the experience. Months later, the notes bring back the sound of the market and the warmth of an unexpected conversation.", List.of("observe","experience","retain","conversation"))
         );
     }
-    private CatalogDtos.Article sample(String id,String title,String body,List<String> lemmas) {
-        var ids = words.values().stream().filter(word -> lemmas.contains(word.lemma().toLowerCase(Locale.ROOT))).map(CatalogDtos.Word::id).sorted().toList();
-        return new CatalogDtos.Article(id,title,body,"SAMPLE",ids,"2026-10-09T00:00:00.000Z");
-    }
     public List<CatalogDtos.Book> books() { return books.values().stream().map(book -> new CatalogDtos.Book(book.id(),book.name(),book.description(),book.version(),book.sourceUrl(),book.license(),book.words().size(),book.attribution(),book.licenseUrl())).toList(); }
     public CatalogDtos.BookFile book(String id) { var book = books.get(id); if(book == null) throw ApiException.notFound(); return book; }
     public List<CatalogDtos.Word> words(String bookId) { return book(bookId).words(); }
     public CatalogDtos.Word word(String id) { var word = words.get(id); if(word == null) throw ApiException.notFound(); return word; }
     public void validateSense(String wordId,String senseId) { if(!word(wordId).senseId().equals(senseId)) throw ApiException.badRequest("单词义项不匹配"); }
     public List<CatalogDtos.Article> samples() { return samples; }
+
+    //////////////////////////////////////公私有方法分割线//////////////////////////////////
+
+    private CatalogDtos.Article sample(String id,String title,String body,List<String> lemmas) {
+        var ids = words.values().stream().filter(word -> lemmas.contains(word.lemma().toLowerCase(Locale.ROOT))).map(CatalogDtos.Word::id).sorted().toList();
+        return new CatalogDtos.Article(id,title,body,"SAMPLE",ids,"2026-10-09T00:00:00.000Z");
+    }
 }

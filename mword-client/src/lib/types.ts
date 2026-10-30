@@ -4,7 +4,8 @@ export interface Profile { bookId: string; goal: string; interests: string[]; da
 export interface User { id: string; username: string; role: 'USER' | 'ADMIN'; profile: Profile }
 export interface AuthResponse { token: string; user: User; expiresAt: string }
 export interface Book { id: string; name: string; description: string; version: string; sourceUrl: string; license: string; wordCount: number; attribution?: string[]; licenseUrl?: string }
-export interface Word { id: string; lemma: string; meaning: string; phonetic?: string; partOfSpeech?: string; example?: string; exampleTranslation?: string; senseId?: string; sourceUrl?: string; license?: string; definitionStatus?: string; definitionSource?: string; definitionSourceUrl?: string; definitionLicense?: string }
+export interface MemoryAssets { roots?: string; etymology?: string; mnemonics?: string; story?: string; collocations?: string[] }
+export interface Word { id: string; lemma: string; meaning: string; phonetic?: string; partOfSpeech?: string; example?: string; exampleTranslation?: string; senseId?: string; sourceUrl?: string; license?: string; definitionStatus?: string; definitionSource?: string; definitionSourceUrl?: string; definitionLicense?: string; memoryAssets?: MemoryAssets }
 export interface Article { id: string; title: string; body: string; source: 'SAMPLE' | 'USER' | 'AI'; targetWordIds: string[]; createdAt: string }
 export interface ReviewEvent { eventId: string; deviceId: string; wordId: string; senseId: string; occurredAt: string; kind: 'RECALL' | 'CONTEXT' | 'EXPOSURE'; rating: Rating; usedHint: boolean }
 export type StudyEvent = ReviewEvent;
