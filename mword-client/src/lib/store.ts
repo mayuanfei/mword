@@ -180,6 +180,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     set({ loading: true, error: null });
     try {
       const result = await api<AuthResponse>(`/auth/${mode}`, 'POST', credentials);
+      if (!result.token) return;
       await setSession(result.token); await activate(result.user);
       const books = await api<Book[]>('/books'); set({ books }); await writeLocal('books', books);
       await get().synchronize(); await get().refreshAccount();

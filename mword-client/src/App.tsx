@@ -32,11 +32,13 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [localError, setLocalError] = useState('');
+  const [infoMessage, setInfoMessage] = useState('');
   const [busy, setBusy] = useState(false);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLocalError('');
+    setInfoMessage('');
     clearError();
     if (mode === 'register') {
       if (password.length < 6) {
@@ -53,6 +55,10 @@ function LoginPage() {
       await authenticate(mode, { username: username.trim(), password });
       setPassword('');
       setConfirm('');
+      if (mode === 'register' && !useLearningStore.getState().user) {
+        setMode('login');
+        setInfoMessage('注册申请已提交！请等待管理员审核通过后再登录。');
+      }
     } catch (e) {
       setLocalError(e instanceof Error ? e.message : '连接服务失败，请确认后台已启动后重试。');
     } finally {
@@ -92,19 +98,20 @@ function LoginPage() {
             <button
               type="button"
               className={mode === 'login' ? 'active' : ''}
-              onClick={() => { setMode('login'); setLocalError(''); clearError(); }}
+              onClick={() => { setMode('login'); setLocalError(''); setInfoMessage(''); clearError(); }}
             >
               登录账号
             </button>
             <button
               type="button"
               className={mode === 'register' ? 'active' : ''}
-              onClick={() => { setMode('register'); setLocalError(''); clearError(); }}
+              onClick={() => { setMode('register'); setLocalError(''); setInfoMessage(''); clearError(); }}
             >
               注册账号
             </button>
           </div>
 
+          {infoMessage && <Notice onDismiss={() => setInfoMessage('')}>{infoMessage}</Notice>}
           {(error || localError) && <Notice kind="error">{localError || error}</Notice>}
 
           <label className="field">

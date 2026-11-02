@@ -9,7 +9,7 @@ export function localDayBounds(now: number) {
 }
 
 export function dailyNewWordGoal(dailyMinutes: number) {
-  return Math.max(1, Math.round(dailyMinutes * 1.2));
+  return Math.max(1, Math.round(dailyMinutes));
 }
 
 export function selectDailyPlan(words: Word[], events: ReviewEvent[], dailyMinutes: number, now: number) {

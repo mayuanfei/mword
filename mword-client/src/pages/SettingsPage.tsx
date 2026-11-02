@@ -1,21 +1,39 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Cloud, LogOut, RefreshCw, ShieldCheck, Sparkles, Wallet } from 'lucide-react';
 import { useLearningStore } from '../lib/store';
-import { dailyNewWordGoal } from '../lib/dailyPlan';
 import { enableReviewReminder } from '../lib/native';
 import type { AiTask, Profile } from '../lib/types';
-import { Heading, Notice, TaskCard, formatTime } from '../components/ui';
+import { Heading, Notice, Select, TaskCard, formatTime } from '../components/ui';
 import { SCENE_NAMES } from '../lib/types';
+
+const DAILY_WORD_COUNTS = [10, 15, 20, 30, 50, 100];
+const LEVEL_OPTIONS = ['基础起步', '高中水平 / 四级基础', '六级水平 / 具备常用词汇量', '考研或挑战专业高级词汇'];
+
+function normalizeFormProfile(profile: Profile): Profile {
+  const isLegacyDefault =
+    !profile.onboardingCompleted &&
+    (profile.goal === '读懂英文文章' || profile.goal === '读懂感兴趣的英文文章');
+  const cleanedInterests = !profile.onboardingCompleted
+    ? profile.interests.filter(item => item !== '科技' && item !== '旅行')
+    : profile.interests;
+  return {
+    ...profile,
+    goal: isLegacyDefault ? '' : profile.goal,
+    interests: cleanedInterests,
+    dailyMinutes: DAILY_WORD_COUNTS.includes(profile.dailyMinutes) ? profile.dailyMinutes : 20,
+    level: LEVEL_OPTIONS.includes(profile.level) ? profile.level : '基础起步'
+  };
+}
 
 export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAdmin: () => void; onArticle: (id: string) => void; onQuestion?: (task: AiTask) => void; onSaved: (message: string) => void }) {
   const { user, profile, books, saveProfile, synchronize, refreshAccount, logout, quota, aiTasks, sync, online, reviewStates } = useLearningStore();
-  const [form, setForm] = useState<Profile>(profile);
+  const [form, setForm] = useState<Profile>(() => normalizeFormProfile(profile));
   const [extra, setExtra] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const interests = ['四级通关', '六级拔高', '考研冲刺', '雅思托福', '职场进阶', '科技前沿', '日常交流', '影视美剧'];
 
-  useEffect(() => setForm(profile), [profile]);
+  useEffect(() => setForm(normalizeFormProfile(profile)), [profile]);
   const selectedBook = books.find(book => book.id === form.bookId);
 
   async function save() {
@@ -141,35 +159,30 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
             )}
           </div>
 
-          <label className="field">
-            每天计划背词时间
-            <select
+          <div className="field">
+            <span>每天背词数量</span>
+            <Select
+              ariaLabel="每天背词数量"
               value={form.dailyMinutes}
-              onChange={event => setForm({ ...form, dailyMinutes: Number(event.target.value) })}
-            >
-              {[10, 15, 20, 30, 45].map(minutes => (
-                <option value={minutes} key={minutes}>{minutes} 分钟 (每日 {dailyNewWordGoal(minutes)} 个新词)</option>
-              ))}
-            </select>
-          </label>
+              options={DAILY_WORD_COUNTS.map(count => ({ value: count, label: `${count} 个新词` }))}
+              onChange={value => setForm({ ...form, dailyMinutes: value })}
+            />
+          </div>
 
-          <label className="field">
-            基础起点自评
-            <select
+          <div className="field">
+            <span>基础起点自评</span>
+            <Select
+              ariaLabel="基础起点自评"
               value={form.level}
-              onChange={event => setForm({ ...form, level: event.target.value })}
-            >
-              <option>基础起步</option>
-              <option>高中水平 / 四级基础</option>
-              <option>六级水平 / 具备常用词汇量</option>
-              <option>考研或挑战专业高级词汇</option>
-            </select>
+              options={LEVEL_OPTIONS.map(level => ({ value: level, label: level }))}
+              onChange={value => setForm({ ...form, level: value })}
+            />
             <small>用于辅助 AI 难词释义与例句难度参考。</small>
-          </label>
+          </div>
         </div>
 
         <div className="form-actions">
-          <button className="button" disabled={busy || !form.goal.trim()} onClick={() => void save()}>
+          <button className="button" disabled={busy} onClick={() => void save()}>
             {busy ? '正在保存' : profile.onboardingCompleted ? '保存学习偏好' : '保存，开始背词'}
             <ArrowRight size={14} />
           </button>

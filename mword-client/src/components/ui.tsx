@@ -1,7 +1,90 @@
-import { AlertCircle, ArrowRight, BookOpen, Check, Clock3, LoaderCircle, Sparkles } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { AlertCircle, ArrowRight, BookOpen, Check, ChevronDown, Clock3, LoaderCircle, Sparkles } from 'lucide-react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { AiTask, Explanation, ContextQuestion } from '../lib/types';
 import { SCENE_NAMES } from '../lib/types';
+
+export interface SelectOption<T extends string | number = string> {
+  value: T;
+  label: string;
+}
+
+export function Select<T extends string | number = string>({
+  value,
+  options,
+  onChange,
+  size = 'default',
+  ariaLabel
+}: {
+  value: T;
+  options: SelectOption<T>[];
+  onChange: (value: T) => void;
+  size?: 'default' | 'compact';
+  ariaLabel?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const selected = options.find(item => item.value === value) ?? options[0];
+
+  useEffect(() => {
+    if (!open) return;
+    function onPointerDown(event: MouseEvent) {
+      if (wrapRef.current && !wrapRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onPointerDown);
+    window.addEventListener('keydown', onKeyDown, true);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      window.removeEventListener('keydown', onKeyDown, true);
+    };
+  }, [open]);
+
+  return (
+    <div className={`ui-select ${size === 'compact' ? 'compact' : ''} ${open ? 'open' : ''}`} ref={wrapRef}>
+      <button
+        type="button"
+        className="ui-select-trigger"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={ariaLabel}
+        onClick={() => setOpen(prev => !prev)}
+      >
+        <span className="ui-select-label">{selected?.label ?? String(value)}</span>
+        <ChevronDown size={15} className="ui-select-chevron" />
+      </button>
+      {open && (
+        <div className="ui-select-menu" role="listbox">
+          {options.map(option => {
+            const isSelected = option.value === value;
+            return (
+              <button
+                key={String(option.value)}
+                type="button"
+                role="option"
+                aria-selected={isSelected}
+                className={`ui-select-option ${isSelected ? 'selected' : ''}`}
+                onClick={() => {
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+              >
+                <span>{option.label}</span>
+                {isSelected && <Check size={14} className="ui-select-check" />}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Brand() { return <div className="brand"><span className="brand-mark"><BookOpen size={21}/></span><div>mword<small>把词读懂，把词记住</small></div></div>; }
 export function Heading({ eyebrow, title, description, action }: { eyebrow?: string; title: string; description: string; action?: ReactNode }) { return <header className="page-heading"><div><div className="eyebrow">{eyebrow || 'YOUR LEARNING JOURNEY'}</div><h1>{title}</h1><p>{description}</p></div>{action || <span className="date-pill">{new Date().toLocaleDateString('zh-CN', {month:'long',day:'numeric',weekday:'long'})}</span>}</header>; }

@@ -64,8 +64,21 @@ public class AuthService implements ApplicationRunner {
         if (!registrationEnabled) throw new ApiException(403, "REGISTRATION_DISABLED", "当前未开放注册");
         checkPasswordLength(credentials.password());
         if (findByUsername(credentials.username()) != null) throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在");
-        try { return issue(createUser(credentials.username(), credentials.password(), "USER")); }
+        try { return issue(createUser(credentials.username(), credentials.password(), "USER", "ACTIVE")); }
         catch (DuplicateKeyException ex) { throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在"); }
+    }
+
+    @Transactional
+    public AuthDtos.AuthResponse submitRegistration(AuthDtos.Credentials credentials) {
+        if (!registrationEnabled) throw new ApiException(403, "REGISTRATION_DISABLED", "当前未开放注册");
+        checkPasswordLength(credentials.password());
+        if (findByUsername(credentials.username()) != null) throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在");
+        try {
+            UserEntity created = createUser(credentials.username(), credentials.password(), "USER", "PENDING");
+            return new AuthDtos.AuthResponse(null, view(created), null);
+        } catch (DuplicateKeyException ex) {
+            throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在");
+        }
     }
 
     public AuthDtos.AuthResponse login(AuthDtos.Credentials credentials) {
@@ -154,6 +167,7 @@ public class AuthService implements ApplicationRunner {
     //////////////////////////////////////公私有方法分割线//////////////////////////////////
 
     private void checkActive(UserEntity user) {
+        if ("PENDING".equals(user.status)) throw new ApiException(403, "ACCOUNT_PENDING", "账号正在等待管理员审核，审核通过后即可登录");
         if ("DISABLED".equals(user.status)) throw new ApiException(403, "ACCOUNT_DISABLED", "账号已被禁用，请联系管理员");
     }
 
@@ -162,12 +176,16 @@ public class AuthService implements ApplicationRunner {
     }
 
     private UserEntity createUser(String username, String password, String role) {
+        return createUser(username, password, role, "ACTIVE");
+    }
+
+    private UserEntity createUser(String username, String password, String role, String status) {
         UserEntity user = new UserEntity();
         user.id = UUID.randomUUID().toString(); user.username = username.toLowerCase(Locale.ROOT);
         user.passwordHash = passwords.encode(password); user.role = role;
         user.profileJson = Json.write(AuthDtos.defaultProfile()); user.quotaAvailable = initialQuota;
         user.quotaReserved = 0L; user.syncCursor = 0L; user.createdAt = System.currentTimeMillis();
-        user.status = "ACTIVE";
+        user.status = status;
         users.insert(user);
         jdbc.update("INSERT INTO mw_quota_ledger(id,user_id,reference_id,kind,amount,reason,created_at) VALUES(?,?,?,?,?,?,?)",
                 UUID.randomUUID().toString(), user.id, "initial", "GRANT", initialQuota, "注册初始学习额度", user.createdAt);

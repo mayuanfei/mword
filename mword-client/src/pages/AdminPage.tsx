@@ -22,7 +22,7 @@ import {
 import { useLearningStore } from '../lib/store';
 import type { AdminData, AdminLedgerEntry, AdminUser, AiScene, ProviderInput } from '../lib/types';
 import { SCENE_NAMES } from '../lib/types';
-import { Heading, Metric, Notice, formatTime } from '../components/ui';
+import { Heading, Metric, Notice, Select, formatTime } from '../components/ui';
 
 const emptyProvider: ProviderInput = {
   name: '',
@@ -258,16 +258,18 @@ export function AdminAiPage() {
                 />
                 <small>密钥仅在服务端使用 AES-GCM 强加密存储，前端不缓存且不回显明文。</small>
               </label>
-              <label className="field">
-                启用状态
-                <select
+              <div className="field">
+                <span>启用状态</span>
+                <Select
+                  ariaLabel="启用状态"
                   value={form.enabled ? 'on' : 'off'}
-                  onChange={event => setForm({ ...form, enabled: event.target.value === 'on' })}
-                >
-                  <option value="on">立即启用</option>
-                  <option value="off">暂不启用</option>
-                </select>
-              </label>
+                  options={[
+                    { value: 'on', label: '立即启用' },
+                    { value: 'off', label: '暂不启用' }
+                  ]}
+                  onChange={value => setForm({ ...form, enabled: value === 'on' })}
+                />
+              </div>
               <label className="field">
                 调度优先级（数值越大越优先）
                 <input
@@ -541,7 +543,7 @@ export function AdminUsersPage() {
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState<'ALL' | 'ADMIN' | 'USER'>('ALL');
-  const [statusFilter, setStatusFilter] = useState<'ALL' | 'ACTIVE' | 'DISABLED'>('ALL');
+  const [statusFilter, setStatusFilter] = useState<'ALL' | 'PENDING' | 'ACTIVE' | 'DISABLED'>('ALL');
 
   const [modalMode, setModalMode] = useState<UserModalMode>(null);
   const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
@@ -615,7 +617,8 @@ export function AdminUsersPage() {
   }
 
   const activeCount = users.filter(u => (u.status || 'ACTIVE') === 'ACTIVE').length;
-  const disabledCount = users.length - activeCount;
+  const pendingCount = users.filter(u => u.status === 'PENDING').length;
+  const disabledCount = users.filter(u => u.status === 'DISABLED').length;
   const adminCount = users.filter(u => u.role === 'ADMIN').length;
   const totalAvailableQuota = users.reduce((sum, u) => sum + (u.available || 0), 0);
   const totalActiveSessions = users.reduce((sum, u) => sum + (u.activeSessions || 0), 0);
@@ -706,11 +709,29 @@ export function AdminUsersPage() {
     }
   }
 
+  async function handleApproveUser(target: AdminUser) {
+    if (!window.confirm(`确认审核通过账号“${target.username}”吗？审核通过后该用户即可正常登录使用。`)) {
+      return;
+    }
+    setBusy(true);
+    setError('');
+    setMessage('');
+    try {
+      await updateUserStatus(target.id, 'ACTIVE');
+      setMessage(`已审核通过账号“${target.username}”，该用户现在可以登录。`);
+      await refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '审核操作失败');
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function handleToggleStatus(target: AdminUser) {
     const currentStatus = target.status || 'ACTIVE';
-    const nextStatus = currentStatus === 'ACTIVE' ? 'DISABLED' : 'ACTIVE';
-    const actionLabel = nextStatus === 'DISABLED' ? '禁用' : '恢复启用';
-    if (!window.confirm(`确认要${actionLabel}账号“${target.username}”吗？${nextStatus === 'DISABLED' ? '禁用后该用户将立即下线且无法登录。' : ''}`)) {
+    const nextStatus = currentStatus === 'ACTIVE' ? 'DISABLED' : currentStatus === 'PENDING' ? 'DISABLED' : 'ACTIVE';
+    const actionLabel = currentStatus === 'PENDING' ? '拒绝并禁用' : nextStatus === 'DISABLED' ? '禁用' : '恢复启用';
+    if (!window.confirm(`确认要${actionLabel}账号“${target.username}”吗？${nextStatus === 'DISABLED' ? '禁用后该用户将无法登录。' : ''}`)) {
       return;
     }
     setBusy(true);
@@ -817,13 +838,28 @@ export function AdminUsersPage() {
         </Notice>
       )}
       {message && <Notice onDismiss={() => setMessage('')}>{message}</Notice>}
+      {pendingCount > 0 && (
+        <Notice kind="warning">
+          当前有 <b>{pendingCount}</b> 个新注册账号等待管理员审核，审核通过后用户方可登录。
+          {statusFilter !== 'PENDING' && (
+            <button
+              type="button"
+              className="text-button"
+              style={{ marginLeft: 10 }}
+              onClick={() => setStatusFilter('PENDING')}
+            >
+              仅看待审核账号
+            </button>
+          )}
+        </Notice>
+      )}
 
       <section className="admin-metrics">
         <Metric
           label="注册用户总数"
           value={users.length}
           unit="人"
-          detail={`正常 ${activeCount} 人 · 已禁用 ${disabledCount} 人`}
+          detail={`正常 ${activeCount} 人 · 待审核 ${pendingCount} 人 · 已禁用 ${disabledCount} 人`}
           icon={<Users size={14} />}
         />
         <Metric
@@ -879,13 +915,18 @@ export function AdminUsersPage() {
                   placeholder="至少 6 位字符"
                 />
               </label>
-              <label className="field">
-                账号角色
-                <select value={newRole} onChange={e => setNewRole(e.target.value as 'USER' | 'ADMIN')}>
-                  <option value="USER">普通用户 (USER)</option>
-                  <option value="ADMIN">管理员 (ADMIN)</option>
-                </select>
-              </label>
+              <div className="field">
+                <span>账号角色</span>
+                <Select
+                  ariaLabel="账号角色"
+                  value={newRole}
+                  options={[
+                    { value: 'USER', label: '普通用户 (USER)' },
+                    { value: 'ADMIN', label: '管理员 (ADMIN)' }
+                  ]}
+                  onChange={value => setNewRole(value)}
+                />
+              </div>
               <label className="field">
                 管理员备注（选填）
                 <input
@@ -1136,38 +1177,29 @@ export function AdminUsersPage() {
                 }}
               />
             </div>
-            <select
+            <Select
+              size="compact"
+              ariaLabel="按角色筛选"
               value={roleFilter}
-              onChange={e => setRoleFilter(e.target.value as 'ALL' | 'ADMIN' | 'USER')}
-              style={{
-                border: '1px solid #e2e8da',
-                borderRadius: 8,
-                padding: '7px 10px',
-                fontSize: 12,
-                background: '#fcfdf9',
-                color: '#536548'
-              }}
-            >
-              <option value="ALL">全部角色</option>
-              <option value="ADMIN">仅管理员 (ADMIN)</option>
-              <option value="USER">仅普通用户 (USER)</option>
-            </select>
-            <select
+              options={[
+                { value: 'ALL', label: '全部角色' },
+                { value: 'ADMIN', label: '仅管理员 (ADMIN)' },
+                { value: 'USER', label: '仅普通用户 (USER)' }
+              ]}
+              onChange={value => setRoleFilter(value)}
+            />
+            <Select
+              size="compact"
+              ariaLabel="按状态筛选"
               value={statusFilter}
-              onChange={e => setStatusFilter(e.target.value as 'ALL' | 'ACTIVE' | 'DISABLED')}
-              style={{
-                border: '1px solid #e2e8da',
-                borderRadius: 8,
-                padding: '7px 10px',
-                fontSize: 12,
-                background: '#fcfdf9',
-                color: '#536548'
-              }}
-            >
-              <option value="ALL">全部状态</option>
-              <option value="ACTIVE">正常启用</option>
-              <option value="DISABLED">已禁用</option>
-            </select>
+              options={[
+                { value: 'ALL', label: '全部状态' },
+                { value: 'PENDING', label: `待审核 (${pendingCount})` },
+                { value: 'ACTIVE', label: '正常启用' },
+                { value: 'DISABLED', label: '已禁用' }
+              ]}
+              onChange={value => setStatusFilter(value)}
+            />
           </div>
         </div>
 
@@ -1189,6 +1221,7 @@ export function AdminUsersPage() {
                 {filteredUsers.map(item => {
                   const isSelf = item.id === currentUser.id;
                   const isDisabled = item.status === 'DISABLED';
+                  const isPending = item.status === 'PENDING';
                   return (
                     <tr key={item.id} style={isDisabled ? { opacity: 0.65 } : undefined}>
                       <td>
@@ -1219,11 +1252,12 @@ export function AdminUsersPage() {
                           <span
                             className="pill"
                             style={{
-                              background: isDisabled ? '#fceae3' : '#e7f2dc',
-                              color: isDisabled ? '#b95c40' : '#4d6b31'
+                              background: isPending ? '#fbf0e7' : isDisabled ? '#fceae3' : '#e7f2dc',
+                              color: isPending ? '#b86e39' : isDisabled ? '#b95c40' : '#4d6b31',
+                              fontWeight: isPending ? 600 : 500
                             }}
                           >
-                            {isDisabled ? '已禁用' : '正常'}
+                            {isPending ? '待审核' : isDisabled ? '已禁用' : '正常'}
                           </span>
                         </div>
                       </td>
@@ -1280,6 +1314,16 @@ export function AdminUsersPage() {
                           </button>
                           {!isSelf && (
                             <>
+                              {isPending && (
+                                <button
+                                  className="text-button"
+                                  style={{ color: '#3b6e28', fontWeight: 600 }}
+                                  disabled={busy}
+                                  onClick={() => void handleApproveUser(item)}
+                                >
+                                  <UserCheck size={12} /> 审核通过
+                                </button>
+                              )}
                               <button
                                 className="text-button"
                                 disabled={busy}
@@ -1293,7 +1337,7 @@ export function AdminUsersPage() {
                                 disabled={busy}
                                 onClick={() => void handleToggleStatus(item)}
                               >
-                                <Ban size={12} /> {isDisabled ? '启用' : '禁用'}
+                                <Ban size={12} /> {isPending ? '拒绝' : isDisabled ? '启用' : '禁用'}
                               </button>
                             </>
                           )}
