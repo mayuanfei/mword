@@ -1,0 +1,570 @@
+{
+  "changes": "冻结已选定的基础义项，防止离线重建时同形专名或不同读音替换当前学习义项。",
+  "entries": {
+    "angle": {
+      "meaning": "角度",
+      "phonetic": "/ˈæŋɡəl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/angle",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-angle-en-noun-jYVXkOh6"
+    },
+    "ant": {
+      "meaning": "蚂蚁",
+      "phonetic": "/ænt/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/ant",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-ant-en-noun-K~IMfyTT"
+    },
+    "art": {
+      "meaning": "美术, 艺术",
+      "phonetic": "/ɑːt/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/art",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-art-en-noun-0ZrrpZ5U"
+    },
+    "burn": {
+      "meaning": "烧",
+      "phonetic": "/bɝn/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/burn",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-burn-en-verb-QCZx~XrX"
+    },
+    "cannon": {
+      "meaning": "坎农（姓氏）。",
+      "phonetic": "/ˈkænən/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Cannon",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Cannon-en-name-HrznD7XH"
+    },
+    "chancellor": {
+      "meaning": "总理",
+      "phonetic": "/ˈtʃɑːnsələ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/chancellor",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-chancellor-en-noun-DvC7KlPV"
+    },
+    "depression": {
+      "meaning": "消沉",
+      "phonetic": "/dɪˈpɹɛʃən/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/depression",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-depression-en-noun-gBA5JJIM"
+    },
+    "devil": {
+      "meaning": "恶魔，魔鬼，撒但",
+      "phonetic": "/ˈdɛvəl/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Devil",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Devil-en-name-mrFRUdaQ",
+      "pronunciationSourceUrl": "https://zh.wiktionary.org/wiki/devil"
+    },
+    "fear": {
+      "meaning": "恐、怕",
+      "phonetic": "/fɪə/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/fear",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-fear-en-verb-AW49qcbu"
+    },
+    "file": {
+      "meaning": "︁文件",
+      "phonetic": "/faɪl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/file",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-file-en-noun-rFOe62tQ"
+    },
+    "forest": {
+      "meaning": "森林",
+      "phonetic": "/ˈfɒɹɪst/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/forest",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-forest-en-noun-O~vyHi8A"
+    },
+    "frank": {
+      "meaning": "弗兰克，姓氏",
+      "phonetic": "/fɹæŋk/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Frank",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Frank-en-name-vX3yXImr"
+    },
+    "frog": {
+      "meaning": "青蛙",
+      "phonetic": "/fɹɒɡ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/frog",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-frog-en-noun-HXD-HEL9"
+    },
+    "gay": {
+      "meaning": "欢乐的",
+      "phonetic": "/ɡeɪ/",
+      "partOfSpeech": "adj.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/gay",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-gay-en-adj-2G5PDBNb"
+    },
+    "hunt": {
+      "meaning": "猎捕",
+      "phonetic": "/hʌnt/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/hunt",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-hunt-en-verb-YX80MpcH"
+    },
+    "jupiter": {
+      "meaning": "木星",
+      "phonetic": "/ˈdʒupɪtɚ/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Jupiter",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Jupiter-en-name-wNIAyjYR"
+    },
+    "kill": {
+      "meaning": "杀死",
+      "phonetic": "/kɪl/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/kill",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-kill-en-verb-p4G3atlV"
+    },
+    "kingdom": {
+      "meaning": "王国",
+      "phonetic": "/ˈkɪŋdəm/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Kingdom",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Kingdom-en-noun-ltoRJYu-",
+      "pronunciationSourceUrl": "https://zh.wiktionary.org/wiki/kingdom"
+    },
+    "kit": {
+      "meaning": "一整套的工具。",
+      "phonetic": "/kɪt/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/kit",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-kit-en-noun-7-Z-K5RG"
+    },
+    "lever": {
+      "meaning": "对……施加压力",
+      "phonetic": "/ˈliː.vɚ/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/lever",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-lever-en-verb-DSNAiEGd"
+    },
+    "loud": {
+      "meaning": "响亮的。",
+      "phonetic": "/laʊd/",
+      "partOfSpeech": "adj.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/loud",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-loud-en-adj-85ea7cu8"
+    },
+    "mobile": {
+      "meaning": "手机（英式）",
+      "phonetic": "/ˈməʊbaɪl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/mobile",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-mobile-en-noun-V63y94ab"
+    },
+    "monkey": {
+      "meaning": "猴子",
+      "phonetic": "/ˈmʌŋki/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/monkey",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-monkey-en-noun-0NXPn5L1"
+    },
+    "moor": {
+      "meaning": "一支源自努米迪亚的柏柏尔人。",
+      "phonetic": "/mʊ(ə)ɹ/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Moor",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Moor-en-name-tr63Gnkt"
+    },
+    "ocean": {
+      "meaning": "海洋，大洋",
+      "phonetic": "/ˈəʊ.ʃən/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/ocean",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-ocean-en-noun-DD6XeaMW"
+    },
+    "pacific": {
+      "meaning": "太平洋",
+      "phonetic": "/pəˈsɪfɪk/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Pacific",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Pacific-en-name-qPdgGh3O",
+      "pronunciationSourceUrl": "https://zh.wiktionary.org/wiki/pacific"
+    },
+    "pig": {
+      "meaning": "猪，尤指家猪（Sus domesticus）",
+      "phonetic": "/ˈpɪɡ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/pig",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-pig-en-noun-RJAm2kMW"
+    },
+    "pile": {
+      "meaning": "堆",
+      "phonetic": "/paɪl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/pile",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-pile-en-noun-sh55AHRZ"
+    },
+    "pole": {
+      "meaning": "波兰人",
+      "phonetic": "/pəʊl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Pole",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Pole-en-noun-wTq7BvBS"
+    },
+    "rabbit": {
+      "meaning": "兔子",
+      "phonetic": "/ˈɹæbɪt/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/rabbit",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-rabbit-en-noun-AupuGwHp"
+    },
+    "record": {
+      "meaning": "记录",
+      "phonetic": "/ˈɹɛkɔːd/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/record",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-record-en-noun-rmKMVNuD"
+    },
+    "register": {
+      "meaning": "莱吉斯特（姓氏）。",
+      "phonetic": "/ˈɹɛd͡ʒ.ɪs.tə/",
+      "partOfSpeech": "专有名词",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Register",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Register-en-name-AAhHdu65",
+      "pronunciationSourceUrl": "https://zh.wiktionary.org/wiki/register"
+    },
+    "revolution": {
+      "meaning": "革命",
+      "phonetic": "/ˌɹɛvəˈl(j)uːʃən/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/revolution",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-revolution-en-noun-GWW0JdlC"
+    },
+    "rock": {
+      "meaning": "岩石。所有组成部分地壳的矿物聚集体。它可以是组织松散的砂、黏土或泥，也可以是实体坚固的花岗岩、石灰岩或煤。 (来源：CED)",
+      "phonetic": "/ɹɒk/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/rock",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-rock-en-noun-MNPfdCYq"
+    },
+    "row": {
+      "meaning": "列",
+      "phonetic": "/ˈɹəʊ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/row",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-row-en-noun-wG0hQE7u"
+    },
+    "screen": {
+      "meaning": "屏幕",
+      "phonetic": "/skɹiːn/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/screen",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-screen-en-noun-BNSroKtf"
+    },
+    "seed": {
+      "meaning": "子、种子",
+      "phonetic": "/siːd/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/seed",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-seed-en-noun-x5PAWmqr"
+    },
+    "senator": {
+      "meaning": "参议员，元老。",
+      "phonetic": "/ˈsɛn.ə.tə/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/senator",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-senator-en-noun-YFRCITTH"
+    },
+    "serpent": {
+      "meaning": "蛇（尤指毒蛇或大蛇）",
+      "phonetic": "/ˈsɜːpənt/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/serpent",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-serpent-en-noun-Fts11pVV"
+    },
+    "shy": {
+      "meaning": "害羞的。",
+      "phonetic": "/ʃaɪ/",
+      "partOfSpeech": "adj.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/shy",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-shy-en-adj-lc0kYOwW"
+    },
+    "sink": {
+      "meaning": "下沉。",
+      "phonetic": "/sɪŋk/",
+      "partOfSpeech": "v.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/sink",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-sink-en-verb-LNM8mdv3"
+    },
+    "soap": {
+      "meaning": "肥皂",
+      "phonetic": "/soʊp/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/soap",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-soap-en-noun-JH1x4Yym"
+    },
+    "sparrow": {
+      "meaning": "麻雀",
+      "phonetic": "/ˈspæɹəʊ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/sparrow",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-sparrow-en-noun-ZhDcRvSN"
+    },
+    "speed": {
+      "meaning": "速度。",
+      "phonetic": "/spiːd/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/speed",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-speed-en-noun-qvzjKGeP"
+    },
+    "split": {
+      "meaning": "分开的",
+      "phonetic": "/splɪt/",
+      "partOfSpeech": "adj.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/split",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-split-en-adj-wUU7V9bH"
+    },
+    "spur": {
+      "meaning": "（托特纳姆热刺足球俱乐部的）粉丝，球员，教练等",
+      "phonetic": "/spɝ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/Spur",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-Spur-en-noun-ZRZdZSXA",
+      "pronunciationSourceUrl": "https://zh.wiktionary.org/wiki/spur"
+    },
+    "steel": {
+      "meaning": "钢",
+      "phonetic": "/stiːl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/steel",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-steel-en-noun--9kCYmqw"
+    },
+    "stone": {
+      "meaning": "小石头",
+      "phonetic": "/stəʊn/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/stone",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-stone-en-noun-l-eyddP3"
+    },
+    "tan": {
+      "meaning": "棕黄色，棕褐色",
+      "phonetic": "/tæn/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/tan",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-tan-en-noun-BxUDywFH"
+    },
+    "tiger": {
+      "meaning": "虎",
+      "phonetic": "/ˈtaɪɡɚ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/tiger",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-tiger-en-noun-Q4NBvUQF"
+    },
+    "toe": {
+      "meaning": "脚趾",
+      "phonetic": "/təʊ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/toe",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-toe-en-noun-NbVznVAM"
+    },
+    "tongue": {
+      "meaning": "舌头、舌",
+      "phonetic": "/tʌŋ/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/tongue",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-tongue-en-noun-KX0mXl2-"
+    },
+    "trace": {
+      "meaning": "迹数",
+      "phonetic": "/tɹeɪs/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/trace",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-trace-en-noun-Don6LP6E"
+    },
+    "turkey": {
+      "meaning": "火鸡",
+      "phonetic": "/ˈtɜːki/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/turkey",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-turkey-en-noun-PrWLo3D7"
+    },
+    "whale": {
+      "meaning": "鲸鱼。属于鲸目的大型海生哺乳动物；其身体为流线型，宽阔而扁平的尾部用于推进，前肢则属于平衡组织。 (来源： MGH)",
+      "phonetic": "/weɪl/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/whale",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-whale-en-noun-u5bIVWll"
+    },
+    "worm": {
+      "meaning": "蚯蚓",
+      "phonetic": "/wɜːm/",
+      "partOfSpeech": "n.",
+      "definitionStatus": "source-extracted",
+      "definitionSource": "中文维基词典",
+      "definitionSourceUrl": "https://zh.wiktionary.org/wiki/worm",
+      "definitionLicense": "CC-BY-SA-4.0",
+      "sourceSenseId": "zh-worm-en-noun-0Ac3J8wO"
+    }
+  }
+}

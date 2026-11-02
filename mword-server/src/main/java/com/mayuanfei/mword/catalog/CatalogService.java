@@ -24,7 +24,7 @@ public class CatalogService {
             }
             if (book.id() == null || book.words() == null || book.words().isEmpty()) throw new IllegalStateException("词库缺少有效词条");
             var normalized = book.words().stream().map(word -> new CatalogDtos.Word(word.id(),word.lemma(),word.meaning(),word.phonetic(),word.partOfSpeech(),word.example(),word.exampleTranslation(),
-                    word.senseId() == null ? word.id()+":core" : word.senseId(),word.sourceUrl()==null?book.sourceUrl():word.sourceUrl(),word.license()==null?book.license():word.license(),word.definitionStatus(),word.definitionSource(),word.definitionSourceUrl(),word.definitionLicense(),word.memoryAssets())).toList();
+                    word.senseId() == null ? word.id()+":core" : word.senseId(),word.sourceUrl()==null?book.sourceUrl():word.sourceUrl(),word.license()==null?book.license():word.license(),word.definitionStatus(),word.definitionSource(),word.definitionSourceUrl(),word.definitionLicense(),word.memoryAssets(),word.exampleSource(),word.usageNote())).toList();
             books.put(book.id(), new CatalogDtos.BookFile(book.id(),book.name(),book.description(),book.version(),book.sourceUrl(),book.license(), normalized,book.attribution(),book.licenseUrl()));
             for (var word : normalized) {
                 var previous = words.putIfAbsent(word.id(),word);

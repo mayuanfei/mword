@@ -250,6 +250,11 @@ def build() -> None:
     cedict = json.loads(cedict_path.read_text()) if cedict_path.exists() else {"entries": {}}
     notes_path = ROOT / "sources" / "usage-notes.json"
     notes = json.loads(notes_path.read_text()) if notes_path.exists() else {}
+    examples_path = ROOT / "sources" / "tatoeba-examples.json"
+    examples = json.loads(examples_path.read_text(encoding="utf-8"))["entries"] if examples_path.exists() else {}
+    assets_path = ROOT / "sources" / "memory-assets.json"
+    assets = json.loads(assets_path.read_text(encoding="utf-8"))["entries"] if assets_path.exists() else {}
+    selections = json.loads((ROOT / "sources" / "definition-selections.json").read_text(encoding="utf-8"))["entries"]
     shared = {}
     for entry in membership["words"]:
         lemma = entry["lemma"]
@@ -279,18 +284,30 @@ def build() -> None:
             selected = min(pronunciation, key=lambda value: value.get("heading") != "英语")
             definition["phonetic"] = selected["phonetic"]
             definition["pronunciationSourceUrl"] = selected["sourceUrl"]
+        if lemma in selections and (lemma not in additions or additions[lemma]["meaning"] == selections[lemma]["meaning"]):
+            definition = dict(selections[lemma])
         if lemma in notes:
             definition["usageNote"] = notes[lemma]["note"]
             definition["usageNoteSourceUrl"] = notes[lemma].get("sourceUrl", "")
             if notes[lemma].get("learningStatus"):
                 definition["learningStatus"] = notes[lemma]["learningStatus"]
+        if lemma in examples:
+            definition.update(examples[lemma])
+        if lemma in assets:
+            definition["memoryAssets"] = assets[lemma]
         shared[lemma] = {"id": word_id, "senseId": word_id + ":core", "lemma": lemma, **definition}
 
+    fingerprint = hashlib.sha256()
+    for path in sorted((ROOT / "sources").glob("*.json")):
+        fingerprint.update(path.name.encode("utf-8"))
+        fingerprint.update(path.read_bytes())
     report = {
-        "version": "2026-10-09.1",
+        "version": "2026-11-02." + fingerprint.hexdigest()[:12],
         "sourceScope": "ECDICT 的 cet4、cet6、ky 标签全量；非最新官方大纲认证",
         "uniqueWordsAcrossBooks": len(shared),
         "books": [],
+        "exampleCount": sum(bool(word.get("example")) for word in shared.values()),
+        "memoryAssetCount": sum(bool(word.get("memoryAssets")) for word in shared.values()),
         "missingMeanings": sorted(word for word, value in shared.items() if not value["meaning"]),
         "meaningStatuses": dict(Counter(word["definitionStatus"] for word in shared.values())),
         "normalizedDuplicatesRemoved": membership["normalizedDuplicatesRemoved"],
@@ -307,10 +324,11 @@ def build() -> None:
             "description": "开放词表初版：按考试标签整理，提供基础释义；非最新官方大纲认证，义项仍需校对。",
             "version": report["version"],
             "sourceUrl": "https://github.com/skywind3000/ECDICT",
-            "license": "CC-BY-SA-4.0 (glosses); MIT (word membership)",
+            "license": "CC-BY-SA-4.0 (glosses); MIT (word membership); CC-BY-2.0-FR (examples)",
             "wordCount": len(words),
             "attribution": ["ECDICT / skywind3000（仅单词与考试标签，MIT）", source["attribution"],
-                            "CC-CEDICT 贡献者；MDBG 分发（少量精确释义反查，CC BY-SA 4.0）"],
+                            "CC-CEDICT 贡献者；MDBG 分发（少量精确释义反查，CC BY-SA 4.0）",
+                            "Tatoeba / ManyThings 句子作者（逐句署名，CC-BY-2.0-FR；自动匹配义项待核对）"],
             "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
             "words": words,
         }
@@ -319,6 +337,8 @@ def build() -> None:
             "id": book_id,
             "wordCount": len(words),
             "duplicateIds": 0,
+            "exampleCount": sum(bool(word.get("example")) for word in words),
+            "memoryAssetCount": sum(bool(word.get("memoryAssets")) for word in words),
             "missingMeaningCount": sum(not word["meaning"] for word in words),
             "missingPhoneticCount": sum(not word.get("phonetic") for word in words),
             "meaningStatuses": dict(Counter(word["definitionStatus"] for word in words)),

@@ -425,3 +425,67 @@ svg { flex-shrink: 0; }
   .login-form .eyebrow { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* 极简背单词体验扩展样式 */
+.study-hero { padding: 30px 32px 28px; position: relative; overflow: hidden; background: linear-gradient(135deg, #edf3e6 0%, #f6f9f0 60%, #fff 100%); border: 1px solid #dfe7d5; border-radius: 18px; box-shadow: 0 4px 20px #384f2908; }
+.study-hero-title { font-size: 26px; font-weight: 650; color: #324626; margin: 16px 0 8px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; letter-spacing: -0.5px; }
+.study-hero-desc { color: #6d7f5e; font-size: 13px; line-height: 1.8; margin-bottom: 22px; max-width: 520px; }
+.study-task-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.study-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 500; background: #fff; border: 1px solid #d9e3cf; color: #4b6239; }
+.study-badge.orange { background: #fff8f2; border-color: #f2decb; color: #b86e39; }
+.study-badge b { font-size: 14px; font-weight: 650; }
+.study-hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.study-hero-actions .button.primary-hero { padding: 13px 28px; font-size: 14px; font-weight: 600; min-height: 48px; border-radius: 12px; background: #3f5530; box-shadow: 0 4px 14px #3f553033; }
+.study-hero-actions .button.primary-hero:hover { background: #324426; }
+.study-hero-actions .button.sub-hero { padding: 11px 18px; font-size: 12px; min-height: 44px; border-radius: 10px; }
+.search-bar-wrap { position: relative; margin-bottom: 16px; }
+.search-bar-wrap input { width: 100%; padding: 12px 14px 12px 38px; border: 1px solid #dfe5d6; border-radius: 10px; background: #fff; font-size: 12px; color: #3e5033; }
+.search-bar-wrap input:focus { outline: 2px solid #95b376; border-color: transparent; }
+.search-bar-wrap .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: #9baa8e; }
+.vocab-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.vocab-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid #edf1e6; border-radius: 8px; transition: background .12s; cursor: pointer; }
+.vocab-row:hover { background: #f3f7ed; }
+.vocab-word-info { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.vocab-word-info b { font-family: Georgia, serif; font-size: 16px; color: #384a2d; font-weight: 500; }
+.vocab-word-info .phonetic { font-size: 11px; color: #9aa88f; }
+.vocab-meaning { font-size: 11px; color: #76856b; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+.vocab-status-pill { font-size: 10px; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+.vocab-status-pill.mastered { background: #ebf5e1; color: #4f7331; }
+.vocab-status-pill.learning { background: #fcf1e6; color: #b86e39; }
+.vocab-status-pill.new { background: #f0f3eb; color: #8e9a83; }
+
+.session-note { font-size: 12px; line-height: 1.7; color: #6d7f5e; }
+.vocab-row { width: 100%; background: transparent; text-align: left; gap: 12px; }
+.vocab-row:focus-visible, summary:focus-visible { outline: 2px solid #56743d; outline-offset: 3px; }
+.vocab-pagination { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 20px; }
+.vocab-pagination span { font-size: 12px; color: #617451; text-align: center; }
+.word-provenance { margin: 10px 0; text-align: left; font-size: 12px; }
+.definition-draft, .usage-note { padding: 8px 10px; border-radius: 8px; background: #fff7ed; color: #85603d; }
+.example-attribution { margin-top: 10px; text-align: left; font-size: 11px; color: #6b7a5e; overflow-wrap: anywhere; }
+.example-attribution summary, .recall-memory summary { cursor: pointer; padding: 8px 0; }
+.example-attribution p { margin: 5px 0; }
+.recall-memory { margin-top: 12px; text-align: left; font-size: 12px; }
+.recall-example { margin-top: 12px; text-align: left; font-size: 12px; }
+.recall-example summary { cursor: pointer; padding-block: 8px; }
+.vocab-browser-header { flex-wrap: wrap; }
+.full-word-help { margin-top: 14px; min-height: 44px; }
+.review-back { margin-bottom: 16px; min-height: 36px; }
+.studying .main { padding-bottom: calc(180px + env(safe-area-inset-bottom)); }
+.studying .recall-card { padding: 24px 30px; }
+.studying .recall-card h2 { margin: 16px 0 10px; overflow-wrap: anywhere; }
+.recall-actions { position: fixed; left: 232px; right: 0; bottom: 0; z-index: 45; background: #fffffff5; backdrop-filter: blur(12px); border-top: 1px solid #dfe7d5; padding: 10px 24px calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -5px 22px #25351c0a; }
+.recall-actions .recall-cue { margin: 0 auto 7px; font-size: 12px; }
+.recall-actions .rating-buttons { margin: 0 auto; max-width: 800px; }
+.recall-actions .rating-buttons button { min-height: 48px; color: #4f633e; }
+.recall-actions .review-explanation { margin: 8px 0 0; }
+@media (max-width: 1150px) { .recall-actions { left: 200px; } }
+@media (max-width: 900px) { .recall-actions { left: 0; } .studying .bottom-nav { display: none; } }
+@media (max-width: 560px) {
+  .vocab-word-info { flex-wrap: wrap; gap: 4px 8px; }
+  .vocab-word-info .vocab-meaning { flex-basis: 100%; max-width: min(60vw, 320px); }
+  .vocab-pagination { flex-wrap: wrap; justify-content: center; }
+  .vocab-pagination span { order: -1; flex-basis: 100%; }
+  .recall-actions { padding-inline: 12px; }
+  .recall-actions .rating-buttons { grid-template-columns: repeat(2, 1fr); gap: 7px; }
+  .studying .recall-card { padding: 22px 18px; }
+}

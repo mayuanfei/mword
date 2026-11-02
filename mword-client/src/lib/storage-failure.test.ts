@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { Profile, ReadingEvent, ReviewEvent, User } from './types';
+import type { Profile, ReadingEvent, ReviewEvent, StudySession, User } from './types';
 
 const fixture = vi.hoisted(() => ({
   values: new Map<string, unknown>(),
@@ -38,7 +38,7 @@ vi.mock('./storage', () => ({
 const profile: Profile = { bookId: 'cet4', goal: '阅读英文文章', interests: ['科技'], dailyMinutes: 20, level: '基础', onboardingCompleted: true };
 const makeUser = (username: string): User => ({ id: username, username, role: 'USER', profile: { ...profile, goal: `${username} 的阅读目标` } });
 const json = (value: unknown) => new Response(JSON.stringify(value), { status: 200, headers: { 'Content-Type': 'application/json' } });
-type PersistedAccount = { events: ReviewEvent[]; readingEvents: ReadingEvent[]; pending: string[]; pendingReading: string[] };
+type PersistedAccount = { events: ReviewEvent[]; readingEvents: ReadingEvent[]; pending: string[]; pendingReading: string[]; studySessions: Record<string, StudySession> };
 
 beforeEach(() => {
   vi.resetModules();
@@ -81,6 +81,83 @@ async function login(username = 'reader-a') {
 }
 
 describe('persistence failures preserve truthful learning state', () => {
+  it('adds a lookup word without discarding the unfinished queue or repeating an existing pending word', async () => {
+    const store = await login(); store.setState({ online: false });
+    await store.getState().createStudySession(['lemma:retain', 'lemma:foster']);
+    const session = store.getState().studySessions.cet4;
+    await store.getState().recordEvent({ wordId: 'lemma:retain', kind: 'RECALL', rating: 3, session: { id: session.id, index: 0 } });
+    await store.getState().createStudySession(['lemma:foster'], true);
+    await store.getState().createStudySession(['lemma:retain'], true);
+    expect(store.getState().studySessions.cet4).toMatchObject({ id: session.id, index: 1, completedCount: 1,
+      queue: ['lemma:retain', 'lemma:foster', 'lemma:retain'] });
+  });
+
+  it('uses the versioned offline word cache after recalls and reloads it when the catalog version changes', async () => {
+    const store = await login();
+    const downloads = () => vi.mocked(fetch).mock.calls.filter(([url]) => String(url).endsWith('/books/cet4/words')).length;
+    const before = downloads();
+    await store.getState().recordEvent({ wordId: 'lemma:retain', kind: 'RECALL', rating: 3 });
+    await vi.waitFor(() => expect(store.getState().sync.status).toBe('idle'));
+    expect(downloads()).toBe(before);
+    store.setState({ books: store.getState().books.map(book => ({ ...book, version: 'updated-examples' })) });
+    await store.getState().synchronize();
+    expect(downloads()).toBe(before + 1);
+    expect(fixture.values.get('words-version:cet4')).toBe('updated-examples');
+  });
+
+  it('atomically persists a forgotten word and its repeat queue, then restores it after a fresh store bootstrap', async () => {
+    let store = await login();
+    store.setState({ online: false });
+    await store.getState().createStudySession(['lemma:retain', 'lemma:foster']);
+    const session = store.getState().studySessions.cet4;
+    await store.getState().markStudyHint({ id: session.id, index: 0 });
+    await store.getState().recordEvent({ wordId: 'lemma:retain', kind: 'RECALL', rating: 1, session: { id: session.id, index: 0 } });
+    const cached = fixture.values.get('account:reader-a') as PersistedAccount;
+    expect(cached.events[0].usedHint).toBe(true);
+    expect(cached.studySessions.cet4).toMatchObject({ index: 1, repeatedCount: 1, hintUsed: false,
+      queue: ['lemma:retain', 'lemma:foster', 'lemma:retain'] });
+    vi.resetModules();
+    store = (await import('./store')).useLearningStore;
+    await store.getState().bootstrap();
+    expect(store.getState().studySessions.cet4).toEqual(cached.studySessions.cet4);
+    expect(store.getState().events).toHaveLength(1);
+  });
+
+  it('does not advance the saved queue on disk failure or accept a duplicate saved position', async () => {
+    const store = await login(); store.setState({ online: false });
+    await store.getState().createStudySession(['lemma:retain', 'lemma:foster']);
+    const position = { id: store.getState().studySessions.cet4.id, index: 0 };
+    fixture.failNextKey = 'account:reader-a';
+    const input = { wordId: 'lemma:retain', kind: 'RECALL' as const, rating: 3 as const, session: position };
+    await expect(store.getState().recordEvent(input)).rejects.toThrow('disk full');
+    expect(store.getState().studySessions.cet4.index).toBe(0);
+    expect((fixture.values.get('account:reader-a') as PersistedAccount).events).toHaveLength(0);
+    await store.getState().recordEvent(input);
+    await expect(store.getState().recordEvent(input)).rejects.toThrow('背词进度已变化');
+    expect(store.getState().events).toHaveLength(1);
+    expect(store.getState().studySessions.cet4.index).toBe(1);
+  });
+
+  it('keeps unfinished queues separate for accounts and books, including current-word hint use', async () => {
+    const store = await login(); store.setState({ online: false });
+    await store.getState().createStudySession(['lemma:retain']);
+    const first = store.getState().studySessions.cet4;
+    await store.getState().markStudyHint({ id: first.id, index: 0 });
+    await store.getState().saveProfile({ bookId: 'cet6' });
+    store.setState({ words: [{ id: 'lemma:foster', lemma: 'foster', meaning: '培养' }] });
+    await store.getState().createStudySession(['lemma:foster']);
+    await store.getState().saveProfile({ bookId: 'cet4' });
+    expect(store.getState().studySessions.cet4).toMatchObject({ id: first.id, hintUsed: true });
+    expect(store.getState().studySessions.cet6.queue).toEqual(['lemma:foster']);
+    store.setState({ online: true }); await store.getState().logout();
+    await store.getState().authenticate('login', { username: 'reader-b', password: 'password123' });
+    expect(store.getState().studySessions).toEqual({});
+    await store.getState().logout();
+    await store.getState().authenticate('login', { username: 'reader-a', password: 'password123' });
+    expect(store.getState().studySessions.cet4.id).toBe(first.id);
+    expect(store.getState().studySessions.cet4.hintUsed).toBe(true);
+  });
+
   it('does not count or upload a failed recall when a later draft save succeeds', async () => {
     const store = await login();
     store.setState({ online: false });

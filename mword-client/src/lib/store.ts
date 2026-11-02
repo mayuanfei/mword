@@ -5,6 +5,8 @@ import { Network } from '@capacitor/network';
 import { api, ApiError, restoreSession, setSession } from './api';
 import { readLocal, writeLocal, deviceId } from './storage';
 import { calculateStates, mergeEvents, SCHEDULER_VERSION } from './scheduler';
+import { advanceStudySession, assertSessionPosition, SessionPositionError } from './studySession';
+import type { SessionPosition, StudySession } from './types';
 import { DEFAULT_PROFILE, type AdminData, type AiRequest, type AiTask, type Article, type AuthResponse, type Book, type Profile, type ProviderInput, type Quota, type Rating, type ReadingEvent, type ReviewEvent, type ReviewState, type SyncResponse, type SyncStatus, type Usage, type User, type Word } from './types';
 
 interface AccountCache {
@@ -15,16 +17,21 @@ interface AccountCache {
   pendingAi?: Record<string, string>;
   pendingQuota?: Record<string, string>;
   serverArticleIds?: string[];
+  studySessions?: Record<string, StudySession>;
 }
 interface LearningStore {
   initialized: boolean; loading: boolean; user: User | null; profile: Profile; books: Book[]; words: Word[];
   articles: Article[]; reviewStates: ReviewState[]; events: ReviewEvent[]; readingEvents: ReadingEvent[];
   quota: Quota | null; usage: Usage[]; aiTasks: AiTask[]; sync: SyncStatus; online: boolean; error: string | null;
   draft: { title: string; body: string }; saveDraft(value: { title: string; body: string }): Promise<void>;
+  studySessions: Record<string, StudySession>;
+  createStudySession(wordIds: string[], append?: boolean): Promise<void>;
+  skipStudyWord(position: SessionPosition): Promise<void>;
+  markStudyHint(position: SessionPosition): Promise<void>;
   bootstrap(): Promise<void>;
   authenticate(mode: 'login' | 'register', credentials: { username: string; password: string }): Promise<void>;
   logout(): Promise<void>; saveProfile(profile: Partial<Profile>): Promise<void>; synchronize(): Promise<void>;
-  recordEvent(input: { wordId: string; senseId?: string; kind: ReviewEvent['kind']; rating: Rating; usedHint?: boolean }): Promise<void>;
+  recordEvent(input: { wordId: string; senseId?: string; kind: ReviewEvent['kind']; rating: Rating; usedHint?: boolean; session?: SessionPosition }): Promise<void>;
   recordReading(articleId: string, position: number, completed: boolean): Promise<void>;
   requestAi(input: AiRequest): Promise<AiTask>; refreshAccount(): Promise<void>;
   createArticle(input: { title: string; body: string; targetWordIds: string[] }): Promise<Article>;
@@ -77,7 +84,7 @@ const missingArticleMessage = '部分阅读记录等待服务器恢复文章，�
 async function expireSession(stamp: number) {
   if (!current(stamp)) return;
   generation++; active = null;
-  useLearningStore.setState({ user: null, words: [], events: [], readingEvents: [], articles: [], reviewStates: [], aiTasks: [], quota: null, usage: [], draft: { title: '', body: '' }, error: '登录已过期，请重新登录。本机尚未同步的学习记录已保留。', sync: { pending: 0, status: 'idle', lastSyncAt: null, error: null } });
+  useLearningStore.setState({ user: null, studySessions: {}, words: [], events: [], readingEvents: [], articles: [], reviewStates: [], aiTasks: [], quota: null, usage: [], draft: { title: '', body: '' }, error: '登录已过期，请重新登录。本机尚未同步的学习记录已保留。', sync: { pending: 0, status: 'idle', lastSyncAt: null, error: null } });
   await setSession(null); await writeLocal('activeUser', null);
 }
 async function loadWords(bookId: string) {
@@ -85,8 +92,11 @@ async function loadWords(bookId: string) {
   const cached = await readLocal<Word[]>(`words:${bookId}`);
   if (current(stamp) && cached && useLearningStore.getState().profile.bookId === bookId) useLearningStore.setState({ words: cached });
   if (!useLearningStore.getState().online) return;
+  const version = useLearningStore.getState().books.find(book => book.id === bookId)?.version;
+  if (cached && version && await readLocal<string>(`words-version:${bookId}`) === version) return;
   const words = await api<Word[]>(`/books/${encodeURIComponent(bookId)}/words`);
   await writeLocal(`words:${bookId}`, words);
+  await writeLocal(`words-version:${bookId}`, version || null);
   if (current(stamp) && useLearningStore.getState().profile.bookId === bookId) useLearningStore.setState({ words });
 }
 async function activate(user: User, preferCachedProfile = false) {
@@ -96,7 +106,7 @@ async function activate(user: User, preferCachedProfile = false) {
   active = cached || { user, profile: user.profile, events: [], readingEvents: [], articles: [], pending: [], pendingReading: [], cursor: 0, lastSyncAt: null, profileVersion: 0, profileDirty: false };
   active.user = user;
   if (!active.profileDirty && !preferCachedProfile) active.profile = user.profile;
-  useLearningStore.setState({ user, profile: active.profile, events: active.events, readingEvents: active.readingEvents, articles: active.articles, reviewStates: calculateStates(active.events), words: [], quota: active.quota || null, usage: active.quota?.usage || [], aiTasks: active.aiTasks || [], draft: active.draft || { title: '', body: '' }, error: null, sync: { pending: 0, lastSyncAt: active.lastSyncAt, status: 'idle', error: null } });
+  useLearningStore.setState({ user, studySessions: active.studySessions || {}, profile: active.profile, events: active.events, readingEvents: active.readingEvents, articles: active.articles, reviewStates: calculateStates(active.events), words: [], quota: active.quota || null, usage: active.quota?.usage || [], aiTasks: active.aiTasks || [], draft: active.draft || { title: '', body: '' }, error: null, sync: { pending: 0, lastSyncAt: active.lastSyncAt, status: 'idle', error: null } });
   await writeLocal('activeUser', user); await persist(); await loadWords(active.profile.bookId);
 }
 async function pollTask(id: string, stamp: number) {
@@ -116,6 +126,7 @@ async function pollTask(id: string, stamp: number) {
 
 export const useLearningStore = create<LearningStore>((set, get) => ({
   initialized: false, loading: false, user: null, profile: { ...DEFAULT_PROFILE }, books: [], words: [], articles: [], reviewStates: [], events: [], readingEvents: [], quota: null, usage: [], aiTasks: [], sync: { pending: 0, lastSyncAt: null, status: 'idle', error: null }, online: typeof navigator === 'undefined' ? true : navigator.onLine, error: null,
+  studySessions: {},
   draft: { title: '', body: '' },
   async saveDraft(value) { const stamp = generation; assertAccount(); set({ draft: value }); await commitAccount(stamp, account => { account.draft = value; }); },
   bootstrap() {
@@ -168,7 +179,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     }
     else throw new Error('请联网后退出，以安全注销当前设备会话。');
     generation++; active = null;
-    set({ user: null, profile: { ...DEFAULT_PROFILE }, words: [], events: [], readingEvents: [], reviewStates: [], articles: [], quota: null, usage: [], aiTasks: [], draft: { title: '', body: '' }, sync: { pending: 0, lastSyncAt: null, status: 'idle', error: null } });
+    set({ user: null, studySessions: {}, profile: { ...DEFAULT_PROFILE }, words: [], events: [], readingEvents: [], reviewStates: [], articles: [], quota: null, usage: [], aiTasks: [], draft: { title: '', body: '' }, sync: { pending: 0, lastSyncAt: null, status: 'idle', error: null } });
     try { await setSession(null); await writeLocal('activeUser', null); }
     catch { set({ error: '服务器会话已注销，但本机凭证清理失败。请联网重新打开应用后确认。' }); }
   },
@@ -249,15 +260,61 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     })();
     return syncPromise;
   },
+  async createStudySession(wordIds, append = false) {
+    const stamp = generation; const bookId = assertAccount().profile.bookId;
+    const available = new Set(get().words.map(word => word.id));
+    const queue = [...new Set(wordIds)].filter(id => available.has(id));
+    if (!queue.length) throw new Error('没有可学习的单词，请等待词库加载或选择其他词书。');
+    const session: StudySession = { id: crypto.randomUUID(), bookId, queue, index: 0,
+      completedCount: 0, repeatedCount: 0, skippedCount: 0, hintUsed: false, updatedAt: new Date().toISOString() };
+    const account = await commitAccount(stamp, next => {
+      if (next.profile.bookId !== bookId) throw new Error('词书已切换，请重新开始。');
+      next.studySessions ||= {};
+      const previous = next.studySessions[bookId];
+      next.studySessions[bookId] = append && previous && previous.index < previous.queue.length
+        ? { ...previous, queue: [...previous.queue, ...queue.filter(id => !previous.queue.slice(previous.index).includes(id))], updatedAt: session.updatedAt }
+        : session;
+    });
+    if (current(stamp)) set({ studySessions: account.studySessions || {} });
+  },
+  async skipStudyWord(position) {
+    const stamp = generation;
+    const account = await commitAccount(stamp, next => {
+      const session = next.studySessions?.[next.profile.bookId];
+      assertSessionPosition(session, position);
+      next.studySessions![next.profile.bookId] = advanceStudySession(session);
+    });
+    if (current(stamp)) set({ studySessions: account.studySessions || {} });
+  },
+  async markStudyHint(position) {
+    const stamp = generation;
+    const account = await commitAccount(stamp, next => {
+      const session = next.studySessions?.[next.profile.bookId];
+      assertSessionPosition(session, position);
+      session.hintUsed = true;
+    });
+    if (current(stamp)) set({ studySessions: account.studySessions || {} });
+  },
   async recordEvent(input) {
     const stamp = generation; const id = await deviceId();
     if (!current(stamp)) throw new Error('账号已切换，请重新操作');
     assertAccount();
     const event: ReviewEvent = { eventId: crypto.randomUUID(), deviceId: id, wordId: input.wordId, senseId: input.senseId || `${input.wordId}:core`, occurredAt: new Date().toISOString(), kind: input.kind, rating: input.rating, usedHint: input.usedHint || false };
     try {
-      const account = await commitAccount(stamp, next => { next.events.push(event); next.pending.push(event.eventId); });
-      if (current(stamp)) set({ events: account.events, reviewStates: calculateStates(account.events) });
+      const account = await commitAccount(stamp, next => {
+        if (input.session) {
+          const session = next.studySessions?.[next.profile.bookId];
+          assertSessionPosition(session, input.session, input.wordId);
+          if (input.kind === 'RECALL') {
+            event.usedHint ||= session.hintUsed;
+            next.studySessions![next.profile.bookId] = advanceStudySession(session, input.rating);
+          }
+        }
+        next.events.push(event); next.pending.push(event.eventId);
+      });
+      if (current(stamp)) set({ events: account.events, reviewStates: calculateStates(account.events), studySessions: account.studySessions || {} });
     } catch (error) {
+      if (error instanceof SessionPositionError) throw error;
       if (current(stamp)) set({ error: '本机存储失败，学习记录尚未保存。请检查设备存储空间后重试。' });
       throw error;
     }

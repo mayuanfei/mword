@@ -34,3 +34,6 @@
 分发 app / Web 时应同时提供本署名、来源链接、许可链接和许可正文，允许获得这些语言数据及其修改版的透明副本。mword 对上述开放语言数据的筛选、整理和补充按 CC BY-SA 4.0 分发。应用功能、账户系统和 AI 调用代码与词库数据独立管理。
 
 AI 费用是生成/讲解服务的额度消耗；阅读缓存或下载这份开放基础词库不应被说明为购买数据版权。
+## 离线例句补充
+
+Tatoeba / ManyThings，2026-02-13 中英句对。逐句作者、句子编号和链接随 `exampleSource` 及 `data/sources/tatoeba-examples.json` 分发；中文经 OpenCC 转为简体。许可与完整说明见 [TATOEBA-CC-BY-2.0-FR.md](TATOEBA-CC-BY-2.0-FR.md)。来源：https://www.manythings.org/anki/ ，https://tatoeba.org/ 。

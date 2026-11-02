@@ -6,7 +6,7 @@ import java.util.List;
 public final class AuthDtos {
     private AuthDtos() {}
     public record Credentials(@NotBlank @Pattern(regexp="[a-zA-Z0-9_]{3,40}") String username,
-                              @NotBlank @Size(min=10,max=72) String password) {}
+                              @NotBlank @Size(min=6,max=72) String password) {}
     public record Profile(@NotBlank String bookId, @NotBlank @Size(max=200) String goal,
                           @NotNull @Size(max=15) List<@NotBlank @Size(max=100) String> interests,
                           @Min(5) @Max(120) int dailyMinutes,

@@ -24,6 +24,7 @@ public class AiContentValidator {
             }
             case CONTEXT -> {
                 text(node,"sentence",1500);text(node,"explanation",4000);
+                if(node.has("sentenceTranslation")) text(node,"sentenceTranslation",2000);
                 var options=node.path("options");
                 if(!options.isArray()||options.size()!=4||!node.path("answer").isIntegralNumber()||node.path("answer").asInt()<0||node.path("answer").asInt()>3)throw new IllegalArgumentException("Invalid context answer");
                 var distinct=new HashSet<String>();for(var item:options){if(!item.isTextual()||item.asText().isBlank()||item.asText().length()>1000)throw new IllegalArgumentException("Invalid option");distinct.add(item.asText());}
@@ -41,6 +42,9 @@ public class AiContentValidator {
         // Structural and lexical checks are deterministic; semantic correctness still needs user review.
         return Json.write(node);
     }
+
+    //////////////////////////////////////公私有方法分割线//////////////////////////////////
+
     private void text(JsonNode node,String field,int max){if(!node.path(field).isTextual()||node.path(field).asText().isBlank()||node.path(field).asText().length()>max)throw new IllegalArgumentException("Invalid AI field");}
     private void requireWord(String text,String id){String lemma=catalog.word(id).lemma();if(!Pattern.compile("(?i)(?<![a-z])"+Pattern.quote(lemma)+"(?![a-z])").matcher(text).find())throw new IllegalArgumentException("Target word missing");}
 }

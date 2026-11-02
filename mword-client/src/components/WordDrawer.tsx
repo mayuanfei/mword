@@ -4,10 +4,11 @@ import { useLearningStore } from '../lib/store';
 import { speakWord } from '../lib/native';
 import type { AiScene, Article, Explanation, Word } from '../lib/types';
 import { Notice, parseResult } from './ui';
+import { WordProvenance, ExampleAttribution } from './WordProvenance';
 
 type MemoryTab = 'mnemonics' | 'roots' | 'etymology' | 'story' | 'collocations';
 
-export function WordDrawer({word,article,onClose,onReview}:{word:Word;article?:Article;onClose:()=>void;onReview:()=>void}) {
+export function WordDrawer({word,article,onClose,onReview,reviewLabel = '隐藏解释，试着回忆'}:{word:Word;article?:Article;onClose:()=>void;onReview:()=>void;reviewLabel?:string}) {
   const {requestAi,aiTasks,quota,online} = useLearningStore();
   const [scene,setScene] = useState<AiScene>('EXPLAIN');
   const [taskId,setTaskId] = useState<string | null>(null);
@@ -55,14 +56,15 @@ export function WordDrawer({word,article,onClose,onReview}:{word:Word;article?:A
     <div className="word-heading"><h2 id="word-title">{word.lemma}</h2><button className="icon-button" aria-label={`朗读 ${word.lemma}`} onClick={()=>void speakWord(word.lemma).catch(e=>setError(e instanceof Error?e.message:'当前设备没有可用英语朗读'))}><Volume2 size={19}/></button></div>
     <div className="drawer-phonetic">{word.phonetic || '点击扬声器听发音'}</div>
     <p className="definition"><small>{word.partOfSpeech}</small>{word.meaning || explanation?.meaning || '本地词库暂未收录释义，可请求 AI 结合原句讲解。'}</p>
-    {(word.definitionStatus==='reverse-gloss-draft'||word.definitionStatus==='editorial-draft')&&<p className="source-note" style={{marginTop:-15,marginBottom:19}}>基础释义待校对，结合原句确认。{word.definitionSource&&`资料依据：${word.definitionSource}。`}</p>}
-    <section className="drawer-section"><h3><BookOpen size={14}/>在语境中理解</h3>{context?<div className="example">{context}<small>{context===word.example?word.exampleTranslation:'来自当前文章，解释时优先结合这句话。'}</small></div>:<p className="muted-copy">这个词暂未收录例句，可通过 AI 补充。</p>}</section>
+    <WordProvenance word={word} />
+    <section className="drawer-section"><h3><BookOpen size={14}/>在语境中理解</h3>{context?<div className="example">{context}<small>{context===word.example?word.exampleTranslation:'来自上下文语境，帮助结合句子加深记忆。'}</small>{context===word.example&&<ExampleAttribution word={word}/>}</div>:<p className="muted-copy">本词暂无内置例句，可按需请求 AI 补充。</p>}</section>
 
     {availableTabs.length>0&&<section className="memory-section">
       <div className="memory-header">
         <h3>多维助记卡片</h3>
-        <span className="pill green" style={{fontSize:10}}>离线内置 · 秒开</span>
+        <span className="pill green" style={{fontSize:10}}>离线内置 · 草稿</span>
       </div>
+      <p className="source-note">助记联想不作为真实词源依据；词根与历史说明仍需核对。</p>
       <div className="memory-tabs">
         {availableTabs.map(tab=><button key={tab.key} type="button" className={`memory-tab-btn ${activeTab===tab.key?'active':''}`} onClick={()=>setActiveTab(tab.key)}>{tab.icon} {tab.label}</button>)}
       </div>
@@ -89,7 +91,6 @@ export function WordDrawer({word,article,onClose,onReview}:{word:Word;article?:A
     {task&&(task.status==='RUNNING'||task.status==='QUEUED')&&<div className="ai-output"><LoaderCircle size={14} className="spin"/> 正在为这个词准备讲解。可以关闭页面，结果将保存在 AI 记录中。</div>}
     {task?.status==='FAILED'&&<div style={{marginTop:16}}><Notice kind="error">{task.error || '生成未成功，预占额度将释放。'}</Notice></div>}
     {explanation&&<section className="drawer-section"><h3><Lightbulb size={14}/>AI 辅导结果{!taskId&&<span className="pill grey">已保存 · 本次不扣额度</span>}</h3><div className="ai-output"><strong>{explanation.meaning}</strong><p>{explanation.explanation}</p>{explanation.collocations?.length>0&&<div className="collocations">{explanation.collocations.map((item,index)=><span key={index}>{item}</span>)}</div>}{explanation.memoryTip&&<p><b>记忆联想：</b>{explanation.memoryTip}</p>}{explanation.example&&<div className="example">{explanation.example}<small>{explanation.exampleTranslation}</small></div>}<small>{explanation.sourceNote || 'AI 生成内容，可与原文和词典交叉核对；记忆联想不是历史词源。'}</small></div></section>}
-    {(word.definitionSourceUrl||word.sourceUrl)&&<p className="source-note">释义来源：<a href={word.definitionSourceUrl||word.sourceUrl} target="_blank" rel="noreferrer">查看出处</a>{(word.definitionLicense||word.license)&&` · ${word.definitionLicense||word.license}`}</p>}
-    <button className="button drawer-action" onClick={onReview}><Check size={15}/>隐藏解释，试着回忆</button>
+    <button className="button drawer-action" onClick={onReview}><Check size={15}/>{reviewLabel}</button>
   </aside></>;
 }

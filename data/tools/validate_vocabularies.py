@@ -2,6 +2,7 @@
 """Validate shipped wordbooks against the frozen source subsets."""
 
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -22,6 +23,8 @@ def main():
     editorial = load(editorial_file) if editorial_file.exists() else {}
     reverse_file = ROOT / "sources" / "cedict-reverse-glosses.json"
     reverse = load(reverse_file)["entries"] if reverse_file.exists() else {}
+    examples = load(ROOT / "sources" / "tatoeba-examples.json")["entries"]
+    assets = load(ROOT / "sources" / "memory-assets.json")["entries"]
     shared = {}
     for book_id, tag in (("cet4", "cet4"), ("cet6", "cet6"), ("postgraduate", "ky")):
         book = load(ROOT / "books" / (book_id + ".json"))
@@ -37,7 +40,18 @@ def main():
             assert word["lemma"] == word["lemma"].lower().strip()
             assert word["senseId"] == word["id"] + ":core"
             assert word["meaning"] or word["definitionStatus"] == "missing"
-            assert not word.get("example"), "Example sentence has not undergone source rights review"
+            if word["lemma"] in examples:
+                assert word["lemma"] in examples, "Example has no frozen source"
+                for field in ("example", "exampleTranslation", "exampleSource"):
+                    assert word[field] == examples[word["lemma"]][field], "Example provenance broken"
+                source = word["exampleSource"]
+                assert source["license"] == "CC-BY-2.0-FR" and source["status"] == "corpus-draft"
+                assert len(re.findall(r"#\d+ \([^)]+\)", source["attribution"])) == 2
+                assert word["lemma"] in re.findall(r"[A-Za-z]+(?:['-][A-Za-z]+)*", word["example"].lower())
+            else:
+                assert not word.get("example"), "Example has no frozen source"
+            if word.get("memoryAssets"):
+                assert word["memoryAssets"] == assets[word["lemma"]], "Memory asset source broken"
             assert not word.get("audio"), "Audio has a separate license"
             if word["id"] in shared:
                 assert word == shared[word["id"]], "Cross-book word content/identity differs"
@@ -59,6 +73,9 @@ def main():
         print(f"{book_id}: {len(words)} words, {sum(not word['meaning'] for word in words)} missing meanings, source membership verified")
     report = load(ROOT / "quality-report.json")
     assert report["uniqueWordsAcrossBooks"] == len(shared)
+    assert report["exampleCount"] == sum(bool(word.get("example")) for word in shared.values())
+    assert report["memoryAssetCount"] == sum(bool(word.get("memoryAssets")) for word in shared.values())
+    assert (ROOT / "licenses" / "TATOEBA-CC-BY-2.0-FR.md").exists()
     assert report["meaningStatuses"] == dict(Counter(word["definitionStatus"] for word in shared.values()))
     assert report["missingMeanings"] == sorted(word["lemma"] for word in shared.values() if not word["meaning"])
     for name in ("ECDICT-MIT.txt", "CC-BY-SA-4.0.txt", "ATTRIBUTION.md"):
