@@ -3,11 +3,11 @@ import { ArrowRight, Check, Cloud, LogOut, RefreshCw, ShieldCheck, Sparkles, Wal
 import { useLearningStore } from '../lib/store';
 import { dailyNewWordGoal } from '../lib/dailyPlan';
 import { enableReviewReminder } from '../lib/native';
-import type { Profile } from '../lib/types';
+import type { AiTask, Profile } from '../lib/types';
 import { Heading, Notice, TaskCard, formatTime } from '../components/ui';
 import { SCENE_NAMES } from '../lib/types';
 
-export function SettingsPage({ onAdmin, onArticle, onSaved }: { onAdmin: () => void; onArticle: (id: string) => void; onSaved: (message: string) => void }) {
+export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAdmin: () => void; onArticle: (id: string) => void; onQuestion?: (task: AiTask) => void; onSaved: (message: string) => void }) {
   const { user, profile, books, saveProfile, synchronize, refreshAccount, logout, quota, aiTasks, sync, online, reviewStates } = useLearningStore();
   const [form, setForm] = useState<Profile>(profile);
   const [extra, setExtra] = useState('');
@@ -238,7 +238,7 @@ export function SettingsPage({ onAdmin, onArticle, onSaved }: { onAdmin: () => v
         {aiTasks.length ? (
           <div className="task-list">
             {[...aiTasks].sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(task => (
-              <TaskCard key={task.id} task={task} onOpenArticle={onArticle} />
+              <TaskCard key={task.id} task={task} onOpenArticle={onArticle} onOpenQuestion={onQuestion} />
             ))}
           </div>
         ) : (

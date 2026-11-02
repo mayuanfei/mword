@@ -1,6 +1,7 @@
 import { Capacitor } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { readLocal, writeLocal } from './storage';
 
 export async function speakWord(text: string) {
   if (Capacitor.isNativePlatform()) {
@@ -15,13 +16,23 @@ export async function stopSpeaking() {
   if (Capacitor.isNativePlatform()) await TextToSpeech.stop();
   else if ('speechSynthesis' in window) speechSynthesis.cancel();
 }
-export async function enableReviewReminder(dueAt?: string) {
-  if (!Capacitor.isNativePlatform()) throw new Error('复习通知请在 Android 或 iOS 应用中开启。');
-  const permission = await LocalNotifications.requestPermissions();
-  if (permission.display !== 'granted') throw new Error('通知权限尚未开启，可在手机系统设置中允许。');
+async function scheduleReminder(dueAt?: string) {
   const at = dueAt ? new Date(dueAt) : new Date();
   if (!dueAt) { at.setDate(at.getDate() + 1); at.setHours(20, 0, 0, 0); }
   if (at.getTime() < Date.now() + 60_000) at.setTime(Date.now() + 60_000);
   await LocalNotifications.cancel({ notifications: [{ id: 1 }] });
   await LocalNotifications.schedule({ notifications: [{ id: 1, title: 'mword · 该复习了', body: '关掉解释，试着把学过的词想起来。', schedule: { at } }] });
+}
+export async function enableReviewReminder(dueAt?: string) {
+  if (!Capacitor.isNativePlatform()) throw new Error('复习通知请在 Android 或 iOS 应用中开启。');
+  const permission = await LocalNotifications.requestPermissions();
+  if (permission.display !== 'granted') throw new Error('通知权限尚未开启，可在手机系统设置中允许。');
+  await writeLocal('reviewReminderEnabled', true);
+  await scheduleReminder(dueAt);
+}
+export async function syncReviewReminder(dueAt?: string) {
+  if (!Capacitor.isNativePlatform() || !(await readLocal<boolean>('reviewReminderEnabled'))) return;
+  const permission = await LocalNotifications.checkPermissions();
+  if (permission.display !== 'granted') return;
+  await scheduleReminder(dueAt);
 }

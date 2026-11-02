@@ -20,7 +20,7 @@ export function parseResult<T>(task?: AiTask): T | null {
     return value as T;
   } catch { return null; }
 }
-export function TaskCard({ task, onOpenArticle }: { task: AiTask; onOpenArticle?: (id:string)=>void }) {
+export function TaskCard({ task, onOpenArticle, onOpenQuestion }: { task: AiTask; onOpenArticle?: (id:string)=>void; onOpenQuestion?: (task:AiTask)=>void }) {
   const result = parseResult<Explanation | ContextQuestion | {title:string;body:string}>(task);
   const completed = task.status === 'SUCCEEDED';
   return <div className="task-card"><header><span className="pill"><Sparkles size={11}/>{SCENE_NAMES[task.scene]}</span><span className={`task-state ${task.status.toLowerCase()}`}>{task.status==='QUEUED'?'等待生成':task.status==='RUNNING'?'正在生成':completed?'已保存':'生成失败'}</span></header>
@@ -33,6 +33,7 @@ export function TaskCard({ task, onOpenArticle }: { task: AiTask; onOpenArticle?
     {completed && !result && task.result && <p>{task.result}</p>}
     {completed && result && 'explanation' in result && 'meaning' in result && <details className="task-result"><summary>查看完整讲解</summary><p><b>{result.meaning}</b></p>{result.collocations?.length>0&&<div className="collocations">{result.collocations.map((item,index)=><span key={index}>{item}</span>)}</div>}{result.memoryTip&&<p>记忆联想：{result.memoryTip}</p>}{result.example&&<p>{result.example}<br/>{result.exampleTranslation}</p>}<p>{result.sourceNote||'AI 辅助内容，记忆联想不是历史词源。'}</p></details>}
     {completed && result && 'sentence' in result && <details className="task-result"><summary>查看已保存的练习内容</summary><p>{result.sentence}</p>{'sentenceTranslation' in result && result.sentenceTranslation && <p style={{color:'#526645'}}><b>整句释义：</b>{result.sentenceTranslation}</p>}{result.options.map((option,index)=><p key={index}>{String.fromCharCode(65+index)}. {option}</p>)}<details><summary>查看答案与解释</summary><p>答案：{result.options[result.answer]}</p><p>{result.explanation}</p></details><p>这里查看答案不会计入成功练习。请在复习页作答，留下真实记录。</p></details>}
+    {completed && result && 'sentence' in result && task.wordId && onOpenQuestion && <button className="text-button" onClick={()=>onOpenQuestion(task)}>去复习页作答<ArrowRight size={12}/></button>}
     {task.articleId && onOpenArticle && <button className="text-button" onClick={()=>onOpenArticle(task.articleId!)}>打开文章<ArrowRight size={12}/></button>}
   </div>;
 }

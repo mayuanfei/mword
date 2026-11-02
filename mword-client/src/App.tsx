@@ -163,7 +163,7 @@ function LoginPage() {
 
 export default function App() {
   const state = useLearningStore();
-  const { initialized, bootstrap, user, profile, books, words, events, reviewStates, sync, online, error, clearError, synchronize, recordEvent, studySessions, createStudySession } = state;
+  const { initialized, bootstrap, user, profile, books, words, events, reviewStates, sync, online, error, clearError, synchronize, recordEvent, studySessions, createStudySession, saveStudyQuestion } = state;
   const [page, setPage] = useState<Page>('today');
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const [starting, setStarting] = useState(false);
@@ -186,8 +186,10 @@ export default function App() {
   const dailyPlan = useMemo(() => selectDailyPlan(words, events, profile.dailyMinutes, now), [words, events, profile.dailyMinutes, now]);
   const todayNewWords = dailyPlan.remainingWords;
   const todayStudyWordIds = [...new Set([...due.map(state => state.wordId), ...todayNewWords.map(word => word.id)])];
+  const pendingWordIds = useMemo(() => new Set(hasPendingSession ? currentSession.queue.slice(currentSession.index) : []), [hasPendingSession, currentSession]);
+  const completedNewCount = useMemo(() => dailyPlan.targetWords.filter(word => !dailyPlan.remainingWords.some(rem => rem.id === word.id) && !pendingWordIds.has(word.id)).length, [dailyPlan, pendingWordIds]);
   const dailyTarget = dailyPlan.targetWords.length;
-  const newGoalReached = dailyPlan.completedCount === dailyTarget;
+  const newGoalReached = dailyTarget > 0 && completedNewCount === dailyTarget && !hasPendingSession;
 
   // 今日打卡统计
   const todayEvents = useMemo(() => {
@@ -214,7 +216,7 @@ export default function App() {
   }, [user?.id]);
 
   function navigate(next: Page) {
-    if (next === 'review' && !hasPendingSession && todayStudyWordIds.length > 0) {
+    if (next === 'review' && !hasPendingSession && words.length > 0 && todayStudyWordIds.length > 0) {
       void beginSession(todayStudyWordIds);
       return;
     }
@@ -232,7 +234,7 @@ export default function App() {
   }
 
   async function beginSession(ids: string[], append = false) {
-    if (startingRef.current) return;
+    if (startingRef.current || !words.length) return;
     const accountId = user?.id;
     startingRef.current = true; setStarting(true);
     try {
@@ -246,6 +248,7 @@ export default function App() {
   }
 
   function startStudySession(mode: 'all' | 'due' | 'new' = 'all') {
+    if (!words.length) { setToast('词库正在加载，请稍候再试。'); return; }
     const ids = mode === 'due' ? due.map(state => state.wordId)
       : mode === 'new' ? todayNewWords.map(word => word.id) : todayStudyWordIds;
     if (!ids.length) { setToast('当前没有待学单词，可以主动加学或切换词书。'); return; }
@@ -253,9 +256,10 @@ export default function App() {
   }
 
   function learnMoreBatch() {
+    if (!words.length) { setToast('词库正在加载，请稍候再试。'); return; }
     const ids = unlearnedWords.slice(0, dailyBatchSize).map(word => word.id);
     if (!ids.length) { setToast('词书中没有更多未学单词啦！'); return; }
-    void beginSession(ids);
+    void beginSession(ids, hasPendingSession);
   }
 
   // 词库过滤与搜索
@@ -286,7 +290,7 @@ export default function App() {
   if (!user) return <LoginPage />;
 
   const currentNav = navigation.find(item => item.id === page);
-  const isGoalReached = newGoalReached && due.length === 0;
+  const isGoalReached = words.length > 0 && newGoalReached && due.length === 0 && !hasPendingSession;
 
   return (
     <div className={`app ${page === 'review' ? 'studying' : ''}`}>
@@ -399,26 +403,26 @@ export default function App() {
 
                     {hasPendingSession && <p className="session-note">本机已保存本轮进度与错词队列。开启新一轮会替换当前会话，学习记录仍保留。</p>}
                     <div className="study-hero-actions">
-                      <button className="button primary-hero" disabled={starting || (!hasPendingSession && todayStudyWordIds.length === 0)} onClick={() => hasPendingSession ? navigate('review') : startStudySession('all')}>
+                      <button className="button primary-hero" disabled={starting || !words.length || (!hasPendingSession && todayStudyWordIds.length === 0)} onClick={() => hasPendingSession ? navigate('review') : startStudySession('all')}>
                         <Zap size={16} /> {hasPendingSession ? `继续本轮背词 (${currentSession.queue.length - currentSession.index} 词)` : `开始今日背词 (${todayStudyWordIds.length} 词)`} <ArrowRight size={15} />
                       </button>
 
-                      {hasPendingSession && todayStudyWordIds.length > 0 && <button className="button secondary" disabled={starting} onClick={() => startStudySession('all')}>开始新一轮</button>}
+                      {hasPendingSession && todayStudyWordIds.length > 0 && <button className="button secondary" disabled={starting || !words.length} onClick={() => startStudySession('all')}>开始新一轮</button>}
 
                       {due.length > 0 && (
-                        <button className="button secondary sub-hero" disabled={starting} onClick={() => startStudySession('due')}>
+                        <button className="button secondary sub-hero" disabled={starting || !words.length} onClick={() => startStudySession('due')}>
                           仅复习到期词 ({due.length})
                         </button>
                       )}
 
                       {todayNewWords.length > 0 && (
-                        <button className="button secondary sub-hero" disabled={starting} onClick={() => startStudySession('new')}>
+                        <button className="button secondary sub-hero" disabled={starting || !words.length} onClick={() => startStudySession('new')}>
                           仅学新词 ({todayNewWords.length})
                         </button>
                       )}
 
-                      {newGoalReached && unlearnedWords.length > 0 && (
-                        <button className="button secondary sub-hero" disabled={starting} onClick={learnMoreBatch}>
+                      {isGoalReached && unlearnedWords.length > 0 && (
+                        <button className="button secondary sub-hero" disabled={starting || !words.length} onClick={learnMoreBatch}>
                           再学一组新词 (+{Math.min(dailyBatchSize, unlearnedWords.length)})
                         </button>
                       )}
@@ -484,10 +488,10 @@ export default function App() {
                     </div>
 
                     <div className="plan-ring">
-                      <ProgressRing value={dailyTarget ? (dailyPlan.completedCount / dailyTarget) * 100 : 100} />
+                      <ProgressRing value={dailyTarget ? (completedNewCount / dailyTarget) * 100 : 100} />
                       <div>
-                        <b>{dailyPlan.completedCount} / {dailyTarget} 词</b>
-                        <p>{newGoalReached ? '今日新词目标已达成！' : '坚持每天背一组新词'}</p>
+                        <b>{completedNewCount} / {dailyTarget} 词</b>
+                        <p>{newGoalReached ? '今日新词目标已达成！' : hasPendingSession ? `当轮还有 ${currentSession.queue.length - currentSession.index} 词待强化` : '坚持每天背一组新词'}</p>
                       </div>
                     </div>
 
@@ -498,7 +502,7 @@ export default function App() {
                       </div>
                       <div className={`plan-line ${newGoalReached ? 'done' : ''}`}>
                         <span className="step-icon"><Check size={12} /></span>
-                        吸收今日新词 <strong>{dailyPlan.completedCount} / {dailyTarget}</strong>
+                        吸收今日新词 <strong>{completedNewCount} / {dailyTarget}</strong>
                       </div>
                       <div className={`plan-line ${todayEvents.some(item => item.kind === 'CONTEXT') ? 'done' : ''}`}>
                         <span className="step-icon"><Check size={12} /></span>
@@ -672,6 +676,21 @@ export default function App() {
             <SettingsPage
               onAdmin={() => setPage('admin')}
               onArticle={() => undefined}
+              onQuestion={task => {
+                const wordId = task.wordId;
+                if (!wordId || !words.length) return;
+                void (async () => {
+                  if (!hasPendingSession || currentSession.queue[currentSession.index] !== wordId) {
+                    await beginSession([wordId]);
+                  } else {
+                    setPage('review');
+                  }
+                  const latest = useLearningStore.getState().studySessions[profile.bookId];
+                  if (latest && latest.queue[latest.index] === wordId) {
+                    await saveStudyQuestion?.({ id: latest.id, index: latest.index }, { questionTaskId: task.id, questionAnswer: null, questionSubmitted: false, translationHintUsed: false });
+                  }
+                })();
+              }}
               onSaved={message => {
                 setToast(message);
                 if (!profile.onboardingCompleted) setPage('today');

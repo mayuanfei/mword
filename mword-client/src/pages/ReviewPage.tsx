@@ -17,7 +17,7 @@ interface ReviewPageProps {
 }
 
 export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }: ReviewPageProps) {
-  const { words, reviewStates, recordEvent, aiTasks, requestAi, quota, online, profile, studySessions, skipStudyWord, markStudyHint } = useLearningStore();
+  const { words, reviewStates, recordEvent, aiTasks, requestAi, quota, online, profile, studySessions, skipStudyWord, markStudyHint, saveStudyQuestion } = useLearningStore();
   const session = studySessions[profile.bookId];
   const queue = session?.queue || [];
   const index = session?.index || 0;
@@ -27,16 +27,16 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
   const [hint, setHint] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [taskId, setTaskId] = useState<string | null>(null);
-  const [answer, setAnswer] = useState<number | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [taskId, setTaskId] = useState<string | null>(() => session?.questionTaskId ?? null);
+  const [answer, setAnswer] = useState<number | null>(() => session?.questionAnswer ?? null);
+  const [submitted, setSubmitted] = useState(() => !!session?.questionSubmitted);
   const [showHintTranslation, setShowHintTranslation] = useState(false);
-  const [translationHintUsed, setTranslationHintUsed] = useState(false);
-  const translationHintUsedRef = useRef(false);
+  const [translationHintUsed, setTranslationHintUsed] = useState(() => !!session?.translationHintUsed);
+  const translationHintUsedRef = useRef(!!session?.translationHintUsed);
   const actionInFlight = useRef(false);
   const recallReady = useRef(false);
   const sessionVersion = useRef(0);
-  const questionSubmitted = useRef(false);
+  const questionSubmitted = useRef(!!session?.questionSubmitted);
 
   const due = useMemo(() => reviewStates.filter(state => Date.parse(state.dueAt) <= now), [reviewStates, now]);
   const currentWordIds = useMemo(() => new Set(words.map(word => word.id)), [words]);
@@ -65,7 +65,13 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
     recallReady.current = false;
     setHint(false);
     setError('');
-    resetQuestion();
+    setTaskId(session?.questionTaskId ?? null);
+    setSubmitted(!!session?.questionSubmitted);
+    questionSubmitted.current = !!session?.questionSubmitted;
+    setAnswer(session?.questionAnswer ?? null);
+    setShowHintTranslation(false);
+    setTranslationHintUsed(!!session?.translationHintUsed);
+    translationHintUsedRef.current = !!session?.translationHintUsed;
     window.scrollTo({ top: 0, behavior: 'instant' });
     return () => { sessionVersion.current++; };
   }, [session?.id, index]);
@@ -73,7 +79,9 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
   const word = words.find(item => item.id === queue[index]);
   const savedExplanation = parseResult<Explanation>([...aiTasks].filter(item => item.wordId === word?.id && item.status === 'SUCCEEDED' && (item.scene === 'EXPLAIN' || item.scene === 'MEMORY')).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())[0]);
   const meaning = word?.meaning || savedExplanation?.meaning;
-  const task = aiTasks.find(item => item.id === taskId);
+  const activeTaskId = taskId ?? session?.questionTaskId ?? null;
+  const task = aiTasks.find(item => item.id === activeTaskId);
+  const savedContextTask = [...aiTasks].filter(item => item.wordId === word?.id && item.scene === 'CONTEXT' && (item.status === 'SUCCEEDED' || item.status === 'RUNNING' || item.status === 'QUEUED')).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())[0];
   const question = parseResult<ContextQuestion>(task);
 
   // 快捷键支持：空格翻开答案，1/2/3/4 自评
@@ -140,10 +148,12 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
     if (!word || busy || actionInFlight.current) return;
     actionInFlight.current = true;
     const version = sessionVersion.current;
+    const position = session ? { id: session.id, index } : undefined;
     setError('');
     setBusy(true);
     try {
-      const newTask = await requestAi({ scene: 'CONTEXT', wordId: word.id, senseId: word.senseId, context: word.example });
+      const newTask = await requestAi({ scene: 'CONTEXT', wordId: word.id, senseId: word.senseId, context: word.example, session: position });
+      if (position) await saveStudyQuestion?.(position, { questionTaskId: newTask.id, questionAnswer: null, questionSubmitted: false, translationHintUsed: false });
       if (version !== sessionVersion.current) return;
       resetQuestion();
       setTaskId(newTask.id);
@@ -350,14 +360,29 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
             <p className="muted-copy">为这个单词生成一个全新语境的理解选择题。</p>
 
             {!task ? (
-              <button
-                className="button secondary"
-                style={{ marginTop: 19 }}
-                disabled={busy || !online}
-                onClick={() => void createQuestion()}
-              >
-                生成新句练习 · {quota?.sceneCosts.CONTEXT ?? '—'} 额度
-              </button>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 19 }}>
+                <button
+                  className="button secondary"
+                  disabled={busy || !online}
+                  onClick={() => void createQuestion()}
+                >
+                  生成新句练习 · {quota?.sceneCosts.CONTEXT ?? '—'} 额度
+                </button>
+                {savedContextTask && (
+                  <button
+                    type="button"
+                    className="button secondary"
+                    disabled={busy}
+                    onClick={() => {
+                      resetQuestion();
+                      setTaskId(savedContextTask.id);
+                      if (session) void saveStudyQuestion?.({ id: session.id, index }, { questionTaskId: savedContextTask.id, questionAnswer: null, questionSubmitted: false, translationHintUsed: false });
+                    }}
+                  >
+                    继续已保存练习
+                  </button>
+                )}
+              </div>
             ) : task.status === 'QUEUED' || task.status === 'RUNNING' ? (
               <Notice>练习正在生成，结果将自动保存，可稍后在“我的”中查看。</Notice>
             ) : task.status === 'FAILED' ? (
@@ -385,6 +410,7 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
                         translationHintUsedRef.current = true;
                         setTranslationHintUsed(true);
                         setShowHintTranslation(val => !val);
+                        if (session) void saveStudyQuestion?.({ id: session.id, index }, { questionTaskId: activeTaskId, translationHintUsed: true });
                       }}
                     >
                       <Languages size={12} /> {showHintTranslation ? '收起整句中文释义' : '看不懂句子？查看整句翻译'}
@@ -402,7 +428,10 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
                       key={optionIndex}
                       className={answer === optionIndex ? 'selected' : ''}
                       disabled={submitted || busy}
-                      onClick={() => setAnswer(optionIndex)}
+                      onClick={() => {
+                        setAnswer(optionIndex);
+                        if (session) void saveStudyQuestion?.({ id: session.id, index }, { questionTaskId: activeTaskId, questionAnswer: optionIndex });
+                      }}
                     >
                       {String.fromCharCode(65 + optionIndex)}. {option}
                     </button>

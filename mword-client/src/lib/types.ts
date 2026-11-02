@@ -7,7 +7,7 @@ export interface Book { id: string; name: string; description: string; version: 
 export interface MemoryAssets { roots?: string; etymology?: string; mnemonics?: string; story?: string; collocations?: string[] }
 export interface ExampleSource { name: string; url: string; translationUrl: string; attribution: string; license: string; licenseUrl: string; changes: string; status: string }
 export interface Word { id: string; lemma: string; meaning: string; phonetic?: string; partOfSpeech?: string; example?: string; exampleTranslation?: string; exampleSource?: ExampleSource; usageNote?: string; senseId?: string; sourceUrl?: string; license?: string; definitionStatus?: string; definitionSource?: string; definitionSourceUrl?: string; definitionLicense?: string; memoryAssets?: MemoryAssets }
-export interface StudySession { id: string; bookId: string; queue: string[]; index: number; completedCount: number; repeatedCount: number; skippedCount: number; hintUsed: boolean; updatedAt: string }
+export interface StudySession { id: string; bookId: string; queue: string[]; index: number; completedCount: number; repeatedCount: number; skippedCount: number; hintUsed: boolean; questionTaskId?: string | null; questionAnswer?: number | null; questionSubmitted?: boolean; translationHintUsed?: boolean; updatedAt: string }
 export interface SessionPosition { id: string; index: number }
 export interface Article { id: string; title: string; body: string; source: 'SAMPLE' | 'USER' | 'AI'; targetWordIds: string[]; createdAt: string }
 export interface ReviewEvent { eventId: string; deviceId: string; wordId: string; senseId: string; occurredAt: string; kind: 'RECALL' | 'CONTEXT' | 'EXPOSURE'; rating: Rating; usedHint: boolean }
@@ -17,7 +17,7 @@ export interface ReviewState { wordId: string; senseId: string; repetitions: num
 export interface Usage { id: string; scene: AiScene; cost: number; status: string; createdAt: string }
 export interface Quota { available: number; reserved: number; sceneCosts: Record<AiScene, number>; usage: Usage[] }
 export interface AiTask { id: string; requestId: string; scene: AiScene; status: 'QUEUED' | 'RUNNING' | 'SUCCEEDED' | 'FAILED'; cost: number; result: string | null; error: string | null; createdAt: string; updatedAt: string; articleId?: string | null; wordId?: string | null; senseId?: string | null }
-export interface AiRequest { scene: AiScene; wordId?: string; senseId?: string; context?: string; difficulty?: string; targetWordIds?: string[] }
+export interface AiRequest { scene: AiScene; wordId?: string; senseId?: string; context?: string; difficulty?: string; targetWordIds?: string[]; session?: SessionPosition }
 export interface Explanation { meaning: string; explanation: string; collocations: string[]; memoryTip: string; example: string; exampleTranslation: string; sourceNote?: string }
 export interface ContextQuestion { sentence: string; sentenceTranslation?: string; options: string[]; answer: number; explanation: string }
 export interface SyncResponse { cursor: number; acceptedEventIds: string[]; acceptedReadingEventIds?: string[]; events: ReviewEvent[]; readingEvents: ReadingEvent[]; states: ReviewState[]; profile: Profile; articles: Article[]; serverTime: string; schedulerVersion: string }
