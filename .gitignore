@@ -24,3 +24,4 @@ __pycache__/
 *.keystore
 *.p12
 *.mobileprovision
+*.apk

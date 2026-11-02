@@ -1,0 +1,80 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'mword-client/**'
+      - '.github/workflows/android-apk.yml'
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: '后端 API 地址 (VITE_API_URL)'
+        required: false
+        default: 'https://www.mayuanfei.com/mword-api'
+
+permissions:
+  contents: write
+
+jobs:
+  build-apk:
+    name: Build Debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: mword-client/package-lock.json
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
+      - name: Install frontend dependencies & sync Capacitor
+        working-directory: mword-client
+        env:
+          VITE_API_URL: ${{ github.event.inputs.api_url || 'https://www.mayuanfei.com/mword-api' }}
+        run: |
+          npm ci
+          npm run cap:sync
+
+      - name: Build Android Debug APK
+        working-directory: mword-client/android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Prepare APK artifact
+        run: |
+          cp mword-client/android/app/build/outputs/apk/debug/app-debug.apk mword-debug.apk
+
+      - name: Upload APK to Actions Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mword-android-apk
+          path: mword-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create GitHub Release (on tag push)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: mword-debug.apk
+          generate_release_notes: true
