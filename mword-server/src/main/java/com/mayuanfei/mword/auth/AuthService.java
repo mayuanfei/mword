@@ -5,13 +5,11 @@ import com.mayuanfei.mword.catalog.CatalogService;
 import com.mayuanfei.mword.common.ApiException;
 import com.mayuanfei.mword.common.Json;
 import com.mayuanfei.mword.common.Time;
+import jakarta.servlet.http.Cookie;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.*;
-import jakarta.servlet.http.Cookie;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,6 +18,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class AuthService implements ApplicationRunner {
@@ -48,7 +48,8 @@ public class AuthService implements ApplicationRunner {
         dummyHash = passwords.encode(UUID.randomUUID().toString());
     }
 
-    @Override public void run(ApplicationArguments args) {
+    @Override
+    public void run(ApplicationArguments args) {
         if (adminUsername.isBlank() && adminPassword.isBlank()) return;
         if (!adminUsername.matches("[a-zA-Z0-9_]{3,40}") || adminPassword.length() < 12 || adminPassword.getBytes(StandardCharsets.UTF_8).length > 72)
             throw new IllegalStateException("管理员初始化需要有效用户名和12至72字节密码");
@@ -72,35 +73,22 @@ public class AuthService implements ApplicationRunner {
         UserEntity user = findByUsername(credentials.username());
         boolean matches = passwords.matches(credentials.password(), user == null ? dummyHash : user.passwordHash);
         if (!matches || user == null) throw new ApiException(401, "INVALID_CREDENTIALS", "用户名或密码错误");
+        checkActive(user);
+        jdbc.update("UPDATE mw_user SET last_login_at=? WHERE id=?", System.currentTimeMillis(), user.id);
         return issue(user);
     }
 
-    private void checkPasswordLength(String value) {
-        if (value.getBytes(StandardCharsets.UTF_8).length > 72) throw ApiException.badRequest("密码最多72个UTF-8字节");
+    @Transactional
+    public AuthDtos.User createAccount(String username, String password, String role) {
+        checkPasswordLength(password);
+        if (findByUsername(username) != null) throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在");
+        try { return view(createUser(username, password, role)); }
+        catch (DuplicateKeyException ex) { throw new ApiException(409, "USERNAME_EXISTS", "用户名已存在"); }
     }
 
-    private UserEntity createUser(String username, String password, String role) {
-        UserEntity user = new UserEntity();
-        user.id = UUID.randomUUID().toString(); user.username = username.toLowerCase(Locale.ROOT);
-        user.passwordHash = passwords.encode(password); user.role = role;
-        user.profileJson = Json.write(AuthDtos.defaultProfile()); user.quotaAvailable = initialQuota;
-        user.quotaReserved = 0L; user.syncCursor = 0L; user.createdAt = System.currentTimeMillis();
-        users.insert(user);
-        jdbc.update("INSERT INTO mw_quota_ledger(id,user_id,reference_id,kind,amount,reason,created_at) VALUES(?,?,?,?,?,?,?)",
-                UUID.randomUUID().toString(), user.id, "initial", "GRANT", initialQuota, "注册初始学习额度", user.createdAt);
-        return user;
-    }
-
-    private UserEntity findByUsername(String username) {
-        return users.selectOne(new QueryWrapper<UserEntity>().eq("username", username.toLowerCase(Locale.ROOT)));
-    }
-
-    private AuthDtos.AuthResponse issue(UserEntity user) {
-        byte[] bytes = new byte[32]; random.nextBytes(bytes);
-        String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
-        long now = System.currentTimeMillis(), expiresAt = now + sessionDays * 86_400_000L;
-        jdbc.update("INSERT INTO mw_session(token_hash,user_id,expires_at,created_at) VALUES(?,?,?,?)", hash(token), user.id, expiresAt, now);
-        return new AuthDtos.AuthResponse(token, view(user), Time.iso(expiresAt));
+    public String encodePassword(String password) {
+        checkPasswordLength(password);
+        return passwords.encode(password);
     }
 
     public AuthDtos.User requireUser(String authorization) {
@@ -111,7 +99,9 @@ public class AuthService implements ApplicationRunner {
         List<String> ids = jdbc.query("SELECT user_id FROM mw_session WHERE token_hash=? AND expires_at>?",
                 (rs, n) -> rs.getString(1), tokenHash, System.currentTimeMillis());
         if (ids.isEmpty()) throw new ApiException(401, "SESSION_EXPIRED", "登录已过期，请重新登录");
-        return view(users.selectById(ids.getFirst()));
+        UserEntity user = users.selectById(ids.getFirst());
+        checkActive(user);
+        return view(user);
     }
 
     public AuthDtos.User requireAdmin(String authorization) {
@@ -147,10 +137,6 @@ public class AuthService implements ApplicationRunner {
         return rows.getFirst();
     }
 
-    private AuthDtos.User view(UserEntity entity) {
-        return new AuthDtos.User(entity.id, entity.username, entity.role, Json.read(entity.profileJson, AuthDtos.Profile.class));
-    }
-
     public static String hash(String text) {
         try { return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(text.getBytes(StandardCharsets.UTF_8))); }
         catch (Exception e) { throw new IllegalStateException(e); }
@@ -163,5 +149,44 @@ public class AuthService implements ApplicationRunner {
             if(cookies != null) for(Cookie cookie:cookies) if("mw_session".equals(cookie.getName())) return "Bearer "+cookie.getValue();
         }
         return null;
+    }
+
+    //////////////////////////////////////公私有方法分割线//////////////////////////////////
+
+    private void checkActive(UserEntity user) {
+        if ("DISABLED".equals(user.status)) throw new ApiException(403, "ACCOUNT_DISABLED", "账号已被禁用，请联系管理员");
+    }
+
+    private void checkPasswordLength(String value) {
+        if (value.getBytes(StandardCharsets.UTF_8).length > 72) throw ApiException.badRequest("密码最多72个UTF-8字节");
+    }
+
+    private UserEntity createUser(String username, String password, String role) {
+        UserEntity user = new UserEntity();
+        user.id = UUID.randomUUID().toString(); user.username = username.toLowerCase(Locale.ROOT);
+        user.passwordHash = passwords.encode(password); user.role = role;
+        user.profileJson = Json.write(AuthDtos.defaultProfile()); user.quotaAvailable = initialQuota;
+        user.quotaReserved = 0L; user.syncCursor = 0L; user.createdAt = System.currentTimeMillis();
+        user.status = "ACTIVE";
+        users.insert(user);
+        jdbc.update("INSERT INTO mw_quota_ledger(id,user_id,reference_id,kind,amount,reason,created_at) VALUES(?,?,?,?,?,?,?)",
+                UUID.randomUUID().toString(), user.id, "initial", "GRANT", initialQuota, "注册初始学习额度", user.createdAt);
+        return user;
+    }
+
+    private UserEntity findByUsername(String username) {
+        return users.selectOne(new QueryWrapper<UserEntity>().eq("username", username.toLowerCase(Locale.ROOT)));
+    }
+
+    private AuthDtos.AuthResponse issue(UserEntity user) {
+        byte[] bytes = new byte[32]; random.nextBytes(bytes);
+        String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
+        long now = System.currentTimeMillis(), expiresAt = now + sessionDays * 86_400_000L;
+        jdbc.update("INSERT INTO mw_session(token_hash,user_id,expires_at,created_at) VALUES(?,?,?,?)", hash(token), user.id, expiresAt, now);
+        return new AuthDtos.AuthResponse(token, view(user), Time.iso(expiresAt));
+    }
+
+    private AuthDtos.User view(UserEntity entity) {
+        return new AuthDtos.User(entity.id, entity.username, entity.role, Json.read(entity.profileJson, AuthDtos.Profile.class));
     }
 }

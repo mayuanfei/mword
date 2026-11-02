@@ -23,7 +23,35 @@ export interface ContextQuestion { sentence: string; sentenceTranslation?: strin
 export interface SyncResponse { cursor: number; acceptedEventIds: string[]; acceptedReadingEventIds?: string[]; events: ReviewEvent[]; readingEvents: ReadingEvent[]; states: ReviewState[]; profile: Profile; articles: Article[]; serverTime: string; schedulerVersion: string }
 export interface Provider { id: string; name: string; baseUrl: string; model: string; enabled: boolean; hasKey: boolean; updatedAt: string; scenes: AiScene[]; priority: number }
 export interface ProviderInput { name: string; baseUrl: string; model: string; apiKey?: string; enabled: boolean; scenes?: AiScene[]; priority?: number }
-export interface AdminUser { id: string; username: string; role: string; available: number; reserved: number; createdAt: string }
+export interface AdminUser {
+  id: string;
+  username: string;
+  role: string;
+  status?: string;
+  remark?: string | null;
+  available: number;
+  reserved: number;
+  wordCount?: number;
+  reviewCount?: number;
+  activeSessions?: number;
+  totalTokens?: number;
+  createdAt: string;
+  lastLoginAt?: string | null;
+}
+export interface AdminLedgerEntry {
+  id: string;
+  referenceId: string;
+  kind: string;
+  amount: number;
+  reason: string;
+  createdAt: string;
+}
+export interface CreateAdminUserInput {
+  username: string;
+  password: string;
+  role: 'USER' | 'ADMIN';
+  remark?: string;
+}
 export interface AdminUsage { id: string; userId: string; username: string; scene: AiScene; cost: number; status: string; inputTokens: number | null; outputTokens: number | null; durationMs: number | null; createdAt: string }
 export interface AdminTask { id: string; userId: string; requestId: string; scene: AiScene; status: string; cost: number; error: string | null; createdAt: string; updatedAt: string }
 export interface AdminData { providers: Provider[]; users: AdminUser[]; usage?: AdminUsage[]; tasks?: AdminTask[] }

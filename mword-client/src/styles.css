@@ -489,3 +489,11 @@ svg { flex-shrink: 0; }
   .recall-actions .rating-buttons { grid-template-columns: repeat(2, 1fr); gap: 7px; }
   .studying .recall-card { padding: 22px 18px; }
 }
+
+/* 后台管理 4列概览指标与居中模态弹窗样式 */
+.admin-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+.admin-modal-overlay { position: fixed; inset: 0; background: #21331c5c; backdrop-filter: blur(4px); z-index: 85; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fade-in .15s ease-out; }
+.admin-modal { width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto; background: #fff; border: 1px solid #dce5d1; border-radius: 18px; padding: 26px 28px; box-shadow: 0 22px 54px #1c2d162e; }
+.admin-modal.wide { max-width: 760px; }
+@media (max-width: 960px) { .admin-metrics { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .admin-modal { padding: 20px 18px; border-radius: 14px; } }

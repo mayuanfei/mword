@@ -8,7 +8,7 @@ import { syncReviewReminder } from './native';
 import { calculateStates, mergeEvents, SCHEDULER_VERSION } from './scheduler';
 import { advanceStudySession, assertSessionPosition, SessionPositionError } from './studySession';
 import type { SessionPosition, StudySession } from './types';
-import { DEFAULT_PROFILE, type AdminData, type AiRequest, type AiTask, type Article, type AuthResponse, type Book, type Profile, type ProviderInput, type Quota, type Rating, type ReadingEvent, type ReviewEvent, type ReviewState, type SyncResponse, type SyncStatus, type Usage, type User, type Word } from './types';
+import { DEFAULT_PROFILE, type AdminData, type AdminLedgerEntry, type AiRequest, type AiTask, type Article, type AuthResponse, type Book, type CreateAdminUserInput, type Profile, type ProviderInput, type Quota, type Rating, type ReadingEvent, type ReviewEvent, type ReviewState, type SyncResponse, type SyncStatus, type Usage, type User, type Word } from './types';
 
 interface AccountCache {
   user: User; profile: Profile; events: ReviewEvent[]; readingEvents: ReadingEvent[]; articles: Article[];
@@ -39,6 +39,13 @@ interface LearningStore {
   createArticle(input: { title: string; body: string; targetWordIds: string[] }): Promise<Article>;
   clearError(): void; loadAdmin(): Promise<AdminData>; saveProvider(input: ProviderInput, id?: string): Promise<void>;
   deleteProvider(id: string): Promise<void>; adjustQuota(userId: string, amount: number, reason: string): Promise<void>;
+  createAdminUser(input: CreateAdminUserInput): Promise<void>;
+  updateUserStatus(userId: string, status: 'ACTIVE' | 'DISABLED'): Promise<void>;
+  updateUserRole(userId: string, role: 'USER' | 'ADMIN'): Promise<void>;
+  resetUserPassword(userId: string, password: string): Promise<void>;
+  updateUserRemark(userId: string, remark: string): Promise<void>;
+  revokeUserSessions(userId: string): Promise<void>;
+  loadUserLedger(userId: string): Promise<AdminLedgerEntry[]>;
 }
 let active: AccountCache | null = null;
 let generation = 0;
@@ -427,6 +434,27 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       throw error;
     }
     if (current(stamp)) { await commitAccount(stamp, next => { delete next.pendingQuota?.[key]; }); await get().refreshAccount(); }
+  },
+  async createAdminUser(input) {
+    await api('/admin/users', 'POST', input);
+  },
+  async updateUserStatus(userId, status) {
+    await api(`/admin/users/${userId}/status`, 'PUT', { status });
+  },
+  async updateUserRole(userId, role) {
+    await api(`/admin/users/${userId}/role`, 'PUT', { role });
+  },
+  async resetUserPassword(userId, password) {
+    await api(`/admin/users/${userId}/password`, 'PUT', { password });
+  },
+  async updateUserRemark(userId, remark) {
+    await api(`/admin/users/${userId}/remark`, 'PUT', { remark });
+  },
+  async revokeUserSessions(userId) {
+    await api(`/admin/users/${userId}/sessions`, 'DELETE');
+  },
+  async loadUserLedger(userId) {
+    return api<AdminLedgerEntry[]>(`/admin/users/${userId}/ledger`);
   },
 }));
 const polling = new Set<string>();

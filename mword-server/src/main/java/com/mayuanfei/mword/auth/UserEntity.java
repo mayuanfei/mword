@@ -15,4 +15,10 @@ public class UserEntity {
     public Long quotaReserved;
     public Long syncCursor;
     public Long createdAt;
+    /** 账号状态：ACTIVE 正常，DISABLED 已禁用 */
+    public String status;
+    /** 最近一次登录时间（毫秒） */
+    public Long lastLoginAt;
+    /** 管理员备注 */
+    public String remark;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowRight, BookOpen, Brain, ChartNoAxesCombined, Check, ChevronRight, CircleUserRound, Cloud, CloudOff, Compass, Flame, Leaf, LoaderCircle, LogIn, RefreshCw, Search, Sparkles, Sprout, Target, Volume2, Zap } from 'lucide-react';
+import { ArrowRight, BookOpen, Brain, ChartNoAxesCombined, Check, ChevronRight, CircleUserRound, Cloud, CloudOff, Compass, Flame, Leaf, LoaderCircle, LogIn, RefreshCw, Search, Sparkles, Sprout, Target, Users, Volume2, Zap } from 'lucide-react';
 import { useLearningStore } from './lib/store';
 import { dailyNewWordGoal, localDayBounds, selectDailyPlan } from './lib/dailyPlan';
 import { useLearningClock } from './lib/useLearningClock';
@@ -9,15 +9,20 @@ import { Brand, Heading, Metric, Notice, ProgressRing, formatTime } from './comp
 import { WordDrawer } from './components/WordDrawer';
 import { ReviewPage } from './pages/ReviewPage';
 import { SettingsPage } from './pages/SettingsPage';
-import { AdminPage } from './pages/AdminPage';
+import { AdminAiPage, AdminPage, AdminUsersPage } from './pages/AdminPage';
 
-type Page = 'today' | 'review' | 'progress' | 'settings' | 'admin';
+type Page = 'today' | 'review' | 'progress' | 'settings' | 'admin' | 'admin-ai' | 'admin-users';
 
 const navigation = [
   { id: 'today' as Page, name: '今日背词', mobile: '今日', icon: Compass },
   { id: 'review' as Page, name: '背词会话', mobile: '背词', icon: Brain },
   { id: 'progress' as Page, name: '词书进度', mobile: '词库', icon: ChartNoAxesCombined },
   { id: 'settings' as Page, name: '我的设置', mobile: '设置', icon: CircleUserRound }
+];
+
+const adminNavigation = [
+  { id: 'admin-ai' as Page, name: 'AI 管理', mobile: 'AI', icon: Sparkles },
+  { id: 'admin-users' as Page, name: '用户管理', mobile: '用户', icon: Users }
 ];
 
 function LoginPage() {
@@ -289,7 +294,7 @@ export default function App() {
   if (!initialized) return <div className="loading-screen"><div><Sprout size={36} /><p>正在加载你的单词空间…</p></div></div>;
   if (!user) return <LoginPage />;
 
-  const currentNav = navigation.find(item => item.id === page);
+  const currentNav = [...navigation, ...adminNavigation].find(item => item.id === page);
   const isGoalReached = words.length > 0 && newGoalReached && due.length === 0 && !hasPendingSession;
 
   return (
@@ -311,6 +316,24 @@ export default function App() {
             </button>
           ))}
         </nav>
+
+        {user.role === 'ADMIN' && (
+          <>
+            <p className="nav-caption" style={{ marginTop: 28 }}>ADMINISTRATION</p>
+            <nav className="side-nav" aria-label="后台管理导航">
+              {adminNavigation.map(item => (
+                <button
+                  key={item.id}
+                  className={`nav-button ${page === item.id ? 'active' : ''}`}
+                  onClick={() => navigate(item.id)}
+                >
+                  <item.icon size={18} />
+                  {item.name}
+                </button>
+              ))}
+            </nav>
+          </>
+        )}
 
         <div className="side-note">
           <Leaf size={19} />
@@ -699,6 +722,8 @@ export default function App() {
           )}
 
           {/* 管理页面 */}
+          {page === 'admin-ai' && <AdminAiPage />}
+          {page === 'admin-users' && <AdminUsersPage />}
           {page === 'admin' && <AdminPage onBack={() => navigate('settings')} />}
         </main>
       </div>
