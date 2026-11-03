@@ -48,7 +48,7 @@ mword:
     latest-version-name: ${MW_APP_LATEST_VERSION_NAME:1.0.1}
     min-supported-version-code: ${MW_APP_MIN_SUPPORTED_VERSION_CODE:1}
     changelog: ${MW_APP_LATEST_CHANGELOG:}
-    download-url: ${MW_APP_DOWNLOAD_URL:https://www.mayuanfei.com/mword-downloads/mword.apk}
+    download-url: ${MW_APP_DOWNLOAD_URL:https://www.mayuanfei.com/mword/mword-debug.apk}
 logging:
   level:
     com.mayuanfei.mword: INFO
