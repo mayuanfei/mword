@@ -22,6 +22,7 @@ __pycache__/
 **/xcuserdata/
 *.jks
 *.keystore
+!mword-client/android/app/mword.keystore
 *.p12
 *.mobileprovision
 *.apk
