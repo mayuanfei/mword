@@ -43,6 +43,12 @@ mword:
   provider-hosts: ${MW_PROVIDER_HOSTS:api.deepseek.com,api.siliconflow.cn,open.bigmodel.cn,dashscope.aliyuncs.com,api.moonshot.cn,ark.cn-beijing.volces.com}
   ai-worker-enabled: ${MW_AI_WORKER_ENABLED:true}
   ai-request-timeout-seconds: ${MW_AI_REQUEST_TIMEOUT_SECONDS:55}
+  app:
+    latest-version-code: ${MW_APP_LATEST_VERSION_CODE:2}
+    latest-version-name: ${MW_APP_LATEST_VERSION_NAME:1.0.1}
+    min-supported-version-code: ${MW_APP_MIN_SUPPORTED_VERSION_CODE:1}
+    changelog: ${MW_APP_LATEST_CHANGELOG:}
+    download-url: ${MW_APP_DOWNLOAD_URL:https://www.mayuanfei.com/mword-downloads/mword.apk}
 logging:
   level:
     com.mayuanfei.mword: INFO

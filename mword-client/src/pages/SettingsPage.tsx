@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Check, Cloud, LogOut, RefreshCw, ShieldCheck, Sparkles, Wallet } from 'lucide-react';
+import { ArrowRight, Check, Cloud, Download, LogOut, RefreshCw, ShieldCheck, Smartphone, Sparkles, Wallet } from 'lucide-react';
 import { useLearningStore } from '../lib/store';
 import { enableReviewReminder } from '../lib/native';
-import type { AiTask, Profile } from '../lib/types';
+import type { AiTask, AppVersionResponse, Profile } from '../lib/types';
 import { Heading, Notice, Select, TaskCard, formatTime } from '../components/ui';
 import { SCENE_NAMES } from '../lib/types';
+import { UpdateModal } from '../components/UpdateModal';
+import { checkAppUpdate, getLocalAppInfo, type LocalAppInfo } from '../lib/version';
 
 const DAILY_WORD_COUNTS = [10, 15, 20, 30, 50, 100];
 const LEVEL_OPTIONS = ['基础起步', '高中水平 / 四级基础', '六级水平 / 具备常用词汇量', '考研或挑战专业高级词汇'];
@@ -31,10 +33,38 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
   const [extra, setExtra] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [appInfo, setAppInfo] = useState<LocalAppInfo | null>(null);
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const [updateResult, setUpdateResult] = useState<AppVersionResponse | null>(null);
+  const [hasUpdate, setHasUpdate] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const interests = ['四级通关', '六级拔高', '考研冲刺', '雅思托福', '职场进阶', '科技前沿', '日常交流', '影视美剧'];
 
   useEffect(() => setForm(normalizeFormProfile(profile)), [profile]);
+  useEffect(() => {
+    void getLocalAppInfo().then(setAppInfo);
+  }, []);
   const selectedBook = books.find(book => book.id === form.bookId);
+
+  async function handleCheckUpdate() {
+    setError('');
+    setCheckingUpdate(true);
+    try {
+      const result = await checkAppUpdate();
+      setAppInfo(result.local);
+      setUpdateResult(result.remote);
+      setHasUpdate(result.hasUpdate);
+      if (result.hasUpdate) {
+        setShowUpdateModal(true);
+      } else {
+        onSaved(`当前已是最新版本 (v${result.local.version})`);
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '检查更新失败，请稍后重试');
+    } finally {
+      setCheckingUpdate(false);
+    }
+  }
 
   async function save() {
     setError('');
@@ -301,6 +331,66 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
         )}
       </section>
 
+      <section className="card settings-card">
+        <div className="card-title">
+          <h2>应用版本与更新检测</h2>
+          <span className="pill">
+            <Smartphone size={11} style={{ display: 'inline', verticalAlign: '-1px', marginRight: 3 }} />
+            {appInfo?.isNative ? (appInfo.platform === 'ios' ? 'iOS 客户端' : 'Android 客户端') : 'Web 在线端'}
+          </span>
+        </div>
+
+        <div className="stat-line">
+          <span>当前安装版本</span>
+          <strong>v{appInfo?.version || '1.0.0'} {appInfo?.isNative ? `(Build ${appInfo.build})` : ''}</strong>
+        </div>
+
+        {hasUpdate && updateResult && (
+          <div style={{ marginTop: 14, padding: 12, backgroundColor: '#ecfdf5', borderRadius: 12, border: '1px solid #a7f3d0' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+              <div>
+                <strong style={{ color: '#065f46', fontSize: 13, display: 'block' }}>
+                  ✨ 发现新版本 v{updateResult.latestVersionName}
+                </strong>
+                <span style={{ color: '#047857', fontSize: 12 }}>
+                  包含多项体验优化与功能更新，点击可查看更新日志
+                </span>
+              </div>
+              <button
+                type="button"
+                className="button primary small"
+                style={{ padding: '6px 12px', fontSize: 12 }}
+                onClick={() => setShowUpdateModal(true)}
+              >
+                查看更新
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="form-actions" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="button secondary small"
+            disabled={checkingUpdate || !online}
+            onClick={() => void handleCheckUpdate()}
+          >
+            <RefreshCw size={13} className={checkingUpdate ? 'animate-spin' : ''} />
+            {checkingUpdate ? '正在检查...' : '检查新版本'}
+          </button>
+          {updateResult && (
+            <button
+              type="button"
+              className="text-button"
+              style={{ fontSize: 13 }}
+              onClick={() => setShowUpdateModal(true)}
+            >
+              查看更新日志
+            </button>
+          )}
+        </div>
+      </section>
+
       <div className="form-actions" style={{ justifyContent: 'space-between' }}>
         {user?.role === 'ADMIN' ? (
           <button className="button secondary" onClick={onAdmin}><ShieldCheck size={15} /> 后台管理</button>
@@ -309,6 +399,13 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
           <LogOut size={14} /> 退出账号
         </button>
       </div>
+
+      <UpdateModal
+        open={showUpdateModal}
+        versionInfo={updateResult}
+        currentVersion={appInfo?.version}
+        onClose={() => setShowUpdateModal(false)}
+      />
     </>
   );
 }

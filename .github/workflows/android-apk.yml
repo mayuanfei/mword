@@ -7,6 +7,7 @@ on:
     paths:
       - 'mword-client/**'
       - '.github/workflows/android-apk.yml'
+      - 'CHANGELOG.md'
   workflow_dispatch:
     inputs:
       version:
@@ -98,10 +99,27 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Extract Changelog for Release Notes
+        run: |
+          node -e '
+            const fs = require("fs");
+            try {
+              const text = fs.readFileSync("CHANGELOG.md", "utf8");
+              const ver = process.env.VERSION;
+              const re = new RegExp("## \\[" + ver + "\\][^\\n]*\\n([\\s\\S]*?)(?=\\n## |$)");
+              const m = text.match(re);
+              const notes = m ? m[1].trim() : "";
+              fs.writeFileSync("RELEASE_NOTES.md", notes);
+            } catch (e) {
+              fs.writeFileSync("RELEASE_NOTES.md", "");
+            }
+          '
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG }}
           name: mword ${{ env.TAG }}
+          body_path: RELEASE_NOTES.md
           files: mword-${{ env.VERSION }}.apk
           generate_release_notes: true

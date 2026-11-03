@@ -56,5 +56,14 @@ export interface AdminUsage { id: string; userId: string; username: string; scen
 export interface AdminTask { id: string; userId: string; requestId: string; scene: AiScene; status: string; cost: number; error: string | null; createdAt: string; updatedAt: string }
 export interface AdminData { providers: Provider[]; users: AdminUser[]; usage?: AdminUsage[]; tasks?: AdminTask[] }
 export interface SyncStatus { pending: number; lastSyncAt: string | null; status: 'idle' | 'syncing' | 'error'; error: string | null }
+export interface AppVersionResponse {
+  latestVersionCode: number;
+  latestVersionName: string;
+  minSupportedVersionCode: number;
+  changelog: string;
+  downloadUrl: string;
+  hasUpdate: boolean;
+  forceUpdate: boolean;
+}
 export const DEFAULT_PROFILE: Profile = { bookId: 'cet4', goal: '', interests: [], dailyMinutes: 20, level: '基础起步', onboardingCompleted: false };
 export const SCENE_NAMES: Record<AiScene, string> = { EXPLAIN: '难词讲解', MEMORY: '记忆辅助', CONTEXT: '新句练习', ARTICLE: '兴趣文章' };

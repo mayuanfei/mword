@@ -4,9 +4,11 @@ import { useLearningStore } from './lib/store';
 import { dailyNewWordGoal, localDayBounds, selectDailyPlan } from './lib/dailyPlan';
 import { useLearningClock } from './lib/useLearningClock';
 import { speakWord } from './lib/native';
-import type { Word } from './lib/types';
+import type { AppVersionResponse, Word } from './lib/types';
 import { Brand, Heading, Metric, Notice, ProgressRing, formatTime } from './components/ui';
 import { WordDrawer } from './components/WordDrawer';
+import { UpdateModal } from './components/UpdateModal';
+import { checkAppUpdate, isVersionSkipped } from './lib/version';
 import { ReviewPage } from './pages/ReviewPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { AdminAiPage, AdminPage, AdminUsersPage } from './pages/AdminPage';
@@ -184,6 +186,9 @@ export default function App() {
   const [toast, setToast] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | 'due' | 'learning' | 'new'>('all');
+  const [autoUpdateInfo, setAutoUpdateInfo] = useState<AppVersionResponse | null>(null);
+  const [currentAppVersion, setCurrentAppVersion] = useState<string>('');
+  const [showAutoUpdate, setShowAutoUpdate] = useState(false);
 
   const currentSession = studySessions[profile.bookId];
   const hasPendingSession = !!currentSession && currentSession.index < currentSession.queue.length;
@@ -226,6 +231,23 @@ export default function App() {
   useEffect(() => {
     setSelectedWord(null);
   }, [user?.id]);
+  useEffect(() => {
+    if (!initialized) return;
+    void (async () => {
+      try {
+        const { local, remote, hasUpdate } = await checkAppUpdate();
+        setCurrentAppVersion(local.version);
+        if (hasUpdate) {
+          if (remote.forceUpdate || !isVersionSkipped(remote.latestVersionName)) {
+            setAutoUpdateInfo(remote);
+            setShowAutoUpdate(true);
+          }
+        }
+      } catch {
+        // 静默处理检测异常
+      }
+    })();
+  }, [initialized]);
 
   function navigate(next: Page) {
     if (next === 'review' && !hasPendingSession && words.length > 0 && todayStudyWordIds.length > 0) {
@@ -762,6 +784,13 @@ export default function App() {
       )}
 
       {toast && <div className="toast" role="status">{toast}</div>}
+
+      <UpdateModal
+        open={showAutoUpdate}
+        versionInfo={autoUpdateInfo}
+        currentVersion={currentAppVersion}
+        onClose={() => setShowAutoUpdate(false)}
+      />
     </div>
   );
 }
