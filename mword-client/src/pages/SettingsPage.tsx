@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Check, Cloud, Download, LogOut, RefreshCw, ShieldCheck, Smartphone, Sparkles, Wallet } from 'lucide-react';
+import { ArrowRight, BookOpen, Check, Cloud, Download, LogOut, RefreshCw, ShieldCheck, Smartphone, Sparkles, Wallet } from 'lucide-react';
 import { useLearningStore } from '../lib/store';
 import { enableReviewReminder } from '../lib/native';
 import type { AiTask, AppVersionResponse, Profile } from '../lib/types';
 import { Heading, Notice, Select, TaskCard, formatTime } from '../components/ui';
 import { SCENE_NAMES } from '../lib/types';
 import { UpdateModal } from '../components/UpdateModal';
+import { BookSelectionModal } from '../components/BookSelectionModal';
+import { AiTasksModal } from '../components/AiTasksModal';
 import { checkAppUpdate, getLocalAppInfo, type LocalAppInfo } from '../lib/version';
 
 const DAILY_WORD_COUNTS = [10, 15, 20, 30, 50, 100];
@@ -38,6 +40,8 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
   const [updateResult, setUpdateResult] = useState<AppVersionResponse | null>(null);
   const [hasUpdate, setHasUpdate] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showBookModal, setShowBookModal] = useState(false);
+  const [showAiTasksModal, setShowAiTasksModal] = useState(false);
   const interests = ['四级通关', '六级拔高', '考研冲刺', '雅思托福', '职场进阶', '科技前沿', '日常交流', '影视美剧'];
 
   useEffect(() => setForm(normalizeFormProfile(profile)), [profile]);
@@ -115,47 +119,89 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
 
       {error && <Notice kind="error" onDismiss={() => setError('')}>{error}</Notice>}
 
-      <div className="card-title">
-        <h2>选择你的词书</h2>
-        <small>切换词书会保留重叠词的学习记录</small>
-      </div>
+      <section className="card settings-card" style={{ marginBottom: 20 }}>
+        <div className="card-title">
+          <h2>当前学习词书</h2>
+          <span className="pill">{selectedBook?.name || '未选择'}</span>
+        </div>
 
-      <div className="books">
-        {books.map((book, index) => (
-          <button
-            type="button"
-            key={book.id}
-            className={`book-card ${form.bookId === book.id ? 'selected' : ''}`}
-            onClick={() => setForm({ ...form, bookId: book.id })}
-          >
-            <div className="book-cover">{index === 0 ? '4' : index === 1 ? '6' : '研'}</div>
-            <h3>{book.name}</h3>
-            <p>{book.description}</p>
-            <div className="book-foot">
-              <span>{book.wordCount.toLocaleString()} 词 · {book.version}</span>
-              {form.bookId === book.id && <Check size={14} />}
+        {selectedBook ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 12,
+                    backgroundColor: selectedBook.id === 'cet4' ? '#4a6b57' : selectedBook.id === 'cet6' ? '#3b6e8c' : '#8c5b3b',
+                    color: '#fff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  {selectedBook.id === 'cet4' ? '4' : selectedBook.id === 'cet6' ? '6' : selectedBook.id === 'postgraduate' ? '研' : selectedBook.name.slice(0, 1)}
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: '#1c1917' }}>{selectedBook.name}</h3>
+                  <p style={{ margin: '3px 0 0', fontSize: 12, color: '#78716c' }}>
+                    {selectedBook.wordCount.toLocaleString()} 词 · {selectedBook.version}
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <button
+                  type="button"
+                  className="button primary small"
+                  onClick={() => setShowBookModal(true)}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+                >
+                  <BookOpen size={13} /> 更换词书 / 浏览书库
+                </button>
+                <button
+                  type="button"
+                  className="button secondary small"
+                  disabled={busy}
+                  onClick={() => void syncVocabCache()}
+                  title="重新拉取最新词条并刷新本地离线缓存"
+                >
+                  <RefreshCw size={12} className={busy ? 'animate-spin' : ''} /> 刷新缓存
+                </button>
+              </div>
             </div>
-          </button>
-        ))}
-      </div>
 
-      {selectedBook && (
-        <div className="source-note" style={{ marginBottom: 23 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
-            <span>词表来源：<a href={selectedBook.sourceUrl} target="_blank" rel="noreferrer">查看原始词表</a> · {selectedBook.licenseUrl ? <a href={selectedBook.licenseUrl} target="_blank" rel="noreferrer">{selectedBook.license}</a> : selectedBook.license}</span>
-            <button type="button" className="text-button" disabled={busy} onClick={() => void syncVocabCache()} style={{ fontSize: 12 }}>
-              🔄 同步/更新最新词库缓存
+            <p style={{ margin: 0, fontSize: 13, color: '#57534e', lineHeight: 1.5 }}>
+              {selectedBook.description}
+            </p>
+
+            <div className="source-note" style={{ margin: 0, padding: '10px 12px', background: '#f5f5f4', borderRadius: 8 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 4 }}>
+                <span style={{ fontSize: 11 }}>词表来源：<a href={selectedBook.sourceUrl} target="_blank" rel="noreferrer">查看原始词表</a> · {selectedBook.licenseUrl ? <a href={selectedBook.licenseUrl} target="_blank" rel="noreferrer">{selectedBook.license}</a> : selectedBook.license}</span>
+                <span style={{ fontSize: 11, color: '#78716c' }}>切换词书将自动保留已背词汇学习记录</span>
+              </div>
+              <p style={{ margin: 0, fontSize: 11, color: '#a8a29e' }}>{selectedBook.attribution?.join("；")}</p>
+              <div className="license-links" style={{ marginTop: 6 }}>
+                <a href={`${import.meta.env.BASE_URL}licenses/ATTRIBUTION.md`} download>下载来源说明</a>
+                <a href={`${import.meta.env.BASE_URL}licenses/CC-BY-SA-4.0.txt`} download>CC-BY-SA-4.0 许可</a>
+                <a href={`${import.meta.env.BASE_URL}licenses/ECDICT-MIT.txt`} download>ECDICT MIT 许可</a>
+                <a href={`${import.meta.env.BASE_URL}licenses/TATOEBA-CC-BY-2.0-FR.md`} download>例句许可与署名</a>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div style={{ padding: '24px 16px', textAlign: 'center' }}>
+            <p style={{ fontSize: 14, color: '#78716c', marginBottom: 12 }}>尚未选择学习词书，请从词书库中挑选一本开启背词</p>
+            <button type="button" className="button primary" onClick={() => setShowBookModal(true)}>
+              <BookOpen size={14} style={{ marginRight: 6 }} /> 浏览词书库并选择
             </button>
           </div>
-          <p>{selectedBook.attribution?.join("；")}</p>
-          <div className="license-links">
-            <a href={`${import.meta.env.BASE_URL}licenses/ATTRIBUTION.md`} download>下载来源说明</a>
-            <a href={`${import.meta.env.BASE_URL}licenses/CC-BY-SA-4.0.txt`} download>CC-BY-SA-4.0 许可</a>
-            <a href={`${import.meta.env.BASE_URL}licenses/ECDICT-MIT.txt`} download>ECDICT MIT 许可</a>
-            <a href={`${import.meta.env.BASE_URL}licenses/TATOEBA-CC-BY-2.0-FR.md`} download>例句许可与署名</a>
-          </div>
-        </div>
-      )}
+        )}
+      </section>
 
       <section className="card settings-card">
         <div className="card-title">
@@ -297,10 +343,28 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
           <span className="pill"><Sparkles size={11} />{aiTasks.length} 个任务</span>
         </div>
         {aiTasks.length ? (
-          <div className="task-list">
-            {[...aiTasks].sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map(task => (
-              <TaskCard key={task.id} task={task} onOpenArticle={onArticle} onOpenQuestion={onQuestion} />
-            ))}
+          <div>
+            <div className="task-list" style={{ marginBottom: aiTasks.length > 2 ? 14 : 0 }}>
+              {/* 仅展示最新 2 条快速回顾，避免无限拉长页面 */}
+              {[...aiTasks]
+                .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+                .slice(0, 2)
+                .map(task => (
+                  <TaskCard key={task.id} task={task} onOpenArticle={onArticle} onOpenQuestion={onQuestion} />
+                ))}
+            </div>
+
+            {aiTasks.length > 2 && (
+              <button
+                type="button"
+                className="button secondary"
+                style={{ width: '100%', justifyContent: 'center', display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, padding: '10px 16px' }}
+                onClick={() => setShowAiTasksModal(true)}
+              >
+                <Sparkles size={14} color="#4a6b57" />
+                查看全部已沉淀助记 ({aiTasks.length} 条) 与分类检索 &gt;
+              </button>
+            )}
           </div>
         ) : (
           <p className="muted-copy">还没有使用 AI。背单词遇到难记生词时，可点击“需要针对性辅导”唤起 AI 精讲。</p>
@@ -405,6 +469,28 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
         versionInfo={updateResult}
         currentVersion={appInfo?.version}
         onClose={() => setShowUpdateModal(false)}
+      />
+
+      <BookSelectionModal
+        open={showBookModal}
+        currentBookId={form.bookId}
+        books={books}
+        onSelect={bookId => {
+          setForm(prev => ({ ...prev, bookId }));
+          if (profile.onboardingCompleted) {
+            void saveProfile({ bookId });
+            onSaved(`已切换词书为：${books.find(b => b.id === bookId)?.name || bookId}`);
+          }
+        }}
+        onClose={() => setShowBookModal(false)}
+      />
+
+      <AiTasksModal
+        open={showAiTasksModal}
+        tasks={aiTasks}
+        onClose={() => setShowAiTasksModal(false)}
+        onOpenArticle={onArticle}
+        onOpenQuestion={onQuestion}
       />
     </>
   );
