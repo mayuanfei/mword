@@ -5,7 +5,7 @@ import { dailyNewWordGoal } from '../lib/dailyPlan';
 import { speakWord } from '../lib/native';
 import type { ContextQuestion, Rating, Word } from '../lib/types';
 import { Heading, Notice, parseResult } from '../components/ui';
-import { WordProvenance, ExampleAttribution } from '../components/WordProvenance';
+import { WordProvenance } from '../components/WordProvenance';
 import type { Explanation } from '../lib/types';
 
 interface ReviewPageProps {
@@ -238,117 +238,153 @@ export function ReviewPage({ now, onOpenWord, onSettings, onHome, onLearnMore }:
             <div className="bar-fill" style={{ width: `${Math.min(100, (index / queue.length) * 100)}%` }} />
           </div>
 
-          <section className="card recall-card">
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
-              <span className="pill"><Brain size={12} /> 单词卡片</span>
-              {index >= queue.length - repeatedCount && (
-                <span className="pill orange"><Flame size={12} /> 当轮错词强化</span>
-              )}
-            </div>
+          <div key={word.id} className={`flip-card-wrapper ${revealed ? 'is-flipped' : ''}`}>
+            <div className="flip-card-inner">
+              {/* 正面：主动回忆面 */}
+              <section className="card recall-card flip-card-face flip-card-front" onClick={() => !revealed && revealAnswer()}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
+                  <span className="pill"><Brain size={12} /> 单词卡片 · 正面</span>
+                  {index >= queue.length - repeatedCount && (
+                    <span className="pill orange"><Flame size={12} /> 当轮错词强化</span>
+                  )}
+                </div>
 
-            <h2>{word.lemma}</h2>
+                <h2>{word.lemma}</h2>
 
-            <div className="phonetic">
-              {word.phonetic}
-              <button
-                className="icon-button"
-                aria-label={`朗读 ${word.lemma}`}
-                onClick={() => void speakWord(word.lemma).catch(e => setError(e instanceof Error ? e.message : '朗读暂不可用'))}
-              >
-                <Volume2 size={16} />
-              </button>
-            </div>
+                <div className="phonetic">
+                  {word.phonetic}
+                  <button
+                    className="icon-button"
+                    aria-label={`朗读 ${word.lemma}`}
+                    onClick={(e) => { e.stopPropagation(); void speakWord(word.lemma).catch(err => setError(err instanceof Error ? err.message : '朗读暂不可用')); }}
+                  >
+                    <Volume2 size={16} />
+                  </button>
+                </div>
 
-            {!revealed ? (
-              <>
                 <p className="recall-cue">
                   这个词是什么意思？<br />
                   在大脑中快速提取记忆，再点击下方看释义。
                 </p>
-                <button className="button" style={{ marginTop: 25, minWidth: 160 }} disabled={busy} onClick={revealAnswer}>
-                  看释义 / 揭示答案 <ArrowRight size={14} />
+                <button
+                  className="button flip-trigger-btn"
+                  style={{ marginTop: 25, minWidth: 160 }}
+                  disabled={busy}
+                  onClick={(e) => { e.stopPropagation(); revealAnswer(); }}
+                >
+                  看释义 / 翻转卡片 <RotateCcw size={14} style={{ marginLeft: 4 }} />
                 </button>
                 {word.example && (
-                  <div style={{ marginTop: 18 }}>
+                  <div style={{ marginTop: 18 }} onClick={e => e.stopPropagation()}>
                     <button className="text-button" disabled={busy} onClick={() => void showHint()}>
-                      <Lightbulb size={12} /> {word.exampleSource ? '查看语料例句提示' : '查看例句提示'}
+                      <Lightbulb size={12} /> 查看例句提示
                     </button>
                     {hint && (
                       <div className="answer-panel">
                         <p>{word.example}</p>
-                        <small>{word.exampleSource ? '语料例句可能采用其他义项。' : ''}本次已使用提示，记录中会保留。</small>
+                        <small>本次已使用例句提示，记录中会保留。</small>
                       </div>
                     )}
                   </div>
                 )}
-              </>
-            ) : (
-              <>
+              </section>
+
+              {/* 背面：完整解析面 */}
+              <section className="card recall-card flip-card-face flip-card-back">
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
+                  <span className="pill green"><Check size={12} /> 释义与助记 · 背面</span>
+                  {index >= queue.length - repeatedCount && (
+                    <span className="pill orange"><Flame size={12} /> 当轮错词强化</span>
+                  )}
+                </div>
+
+                <h2>{word.lemma}</h2>
+
+                <div className="phonetic">
+                  {word.phonetic}
+                  <button
+                    className="icon-button"
+                    aria-label={`朗读 ${word.lemma}`}
+                    onClick={() => void speakWord(word.lemma).catch(err => setError(err instanceof Error ? err.message : '朗读暂不可用'))}
+                  >
+                    <Volume2 size={16} />
+                  </button>
+                </div>
+
                 <div className="answer-panel">
-                  <h3>
-                    {word.partOfSpeech && `${word.partOfSpeech} `}
+                  <h3 className="definition-heading">
+                    {word.partOfSpeech && !meaning?.trim().startsWith(word.partOfSpeech.trim()) && (
+                      <span className="pos-badge">{word.partOfSpeech}</span>
+                    )}
                     {meaning || '本地词库暂未收录释义。建议先获取可靠讲解，再进行自评。'}
                   </h3>
 
                   <WordProvenance word={word} />
+
                   {word.example && (
-                    <details className="recall-example">
-                      <summary>{word.exampleSource ? '查看语料例句（义项待核对）' : '查看例句'}</summary>
-                      <p style={{ margin: 0 }}>{word.example}</p>
-                      <small style={{ marginTop: 4 }}>{word.exampleTranslation}</small>
-                      <ExampleAttribution word={word} />
-                    </details>
+                    <div className="clean-example-section">
+                      <p className="clean-example-en">{word.example}</p>
+                      {word.exampleTranslation && <p className="clean-example-cn">{word.exampleTranslation}</p>}
+                    </div>
                   )}
 
                   {word.memoryAssets && (
-                    <details className="recall-memory" key={word.id}><summary>展开助记与常用搭配</summary><p className="source-note">内置助记草稿，联想不作为真实词源依据。</p><div style={{ marginTop: 14, padding: '10px 14px', background: '#f5f8ef', borderRadius: 8, fontSize: 12, color: '#4d6837' }}>
-                      {word.memoryAssets.mnemonics && (
-                        <p style={{ margin: '0 0 6px 0' }}><b>💡 巧记：</b>{word.memoryAssets.mnemonics}</p>
-                      )}
-                      {word.memoryAssets.roots && (
-                        <p style={{ margin: '0 0 6px 0' }}><b>🌿 词根：</b>{word.memoryAssets.roots}</p>
-                      )}
-                      {word.memoryAssets.collocations && word.memoryAssets.collocations.length > 0 && (
-                        <p style={{ margin: 0 }}><b>🔗 搭配：</b>{word.memoryAssets.collocations.join(' · ')}</p>
-                      )}
-                    </div></details>
+                    <details className="recall-memory" key={word.id}>
+                      <summary>展开词根、巧记与常用搭配</summary>
+                      <div className="recall-memory-content">
+                        {word.memoryAssets.mnemonics && (
+                          <p style={{ margin: '0 0 8px 0' }}><b>💡 巧记：</b>{word.memoryAssets.mnemonics}</p>
+                        )}
+                        {word.memoryAssets.roots && (
+                          <p style={{ margin: '0 0 8px 0' }}><b>🌿 词根：</b>{word.memoryAssets.roots}</p>
+                        )}
+                        {word.memoryAssets.collocations && word.memoryAssets.collocations.length > 0 && (
+                          <p style={{ margin: 0 }}><b>🔗 搭配：</b>{word.memoryAssets.collocations.join(' · ')}</p>
+                        )}
+                      </div>
+                    </details>
                   )}
-                  <button className="text-button full-word-help" onClick={() => onOpenWord(word)}>查看完整讲解 / AI 答疑 <ArrowRight size={13} /></button>
+
+                  <button className="text-button full-word-help" onClick={() => onOpenWord(word)}>
+                    查看完整讲解 / AI 答疑 <ArrowRight size={13} />
+                  </button>
 
                   {!word.meaning && savedExplanation?.meaning && (
                     <small>答案来自已保存的 AI 辅助讲解，仍可与词典核对。</small>
                   )}
                 </div>
+              </section>
+            </div>
+          </div>
 
-                <div className="recall-actions" aria-label="单词自评">
-                <p className="recall-cue">在揭示之前，你想起来了吗？{session?.hintUsed ? '（本词已使用提示）' : ''}</p>
-                <div className="rating-buttons">
-                  {([
-                    { label: '忘记了 (1)', rating: 1, tip: '本轮末尾重考' },
-                    { label: '费力想起 (2)', rating: 2, tip: '短间隔复习' },
-                    { label: '正常想起 (3)', rating: 3, tip: '正常间隔' },
-                    { label: '轻松想起 (4)', rating: 4, tip: '牢固掌握' }
-                  ] as const).map(item => (
-                    <button
-                      key={item.rating}
-                      disabled={busy || !meaning}
-                      onClick={() => void rate(item.rating)}
-                      title={item.tip}
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
+          {revealed && (
+            <div className="recall-actions" aria-label="单词自评">
+              <p className="recall-cue">在揭示之前，你想起来了吗？{session?.hintUsed ? '（本词已使用提示）' : ''}</p>
+              <div className="rating-buttons">
+                {([
+                  { label: '忘记了 (1)', rating: 1, tip: '本轮末尾重考' },
+                  { label: '费力想起 (2)', rating: 2, tip: '短间隔复习' },
+                  { label: '正常想起 (3)', rating: 3, tip: '正常间隔' },
+                  { label: '轻松想起 (4)', rating: 4, tip: '牢固掌握' }
+                ] as const).map(item => (
+                  <button
+                    key={item.rating}
+                    disabled={busy || !meaning}
+                    onClick={() => void rate(item.rating)}
+                    title={item.tip}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
 
-                {!meaning && (
-                  <p className="review-explanation">
-                    这个词缺少释义，暂不能确认自评。<button className="text-button" style={{ marginLeft: 8 }} disabled={busy} onClick={() => void skip()}>暂时跳过</button>
-                  </p>
-                )}
-                </div>
-              </>
-            )}
-          </section>
+              {!meaning && (
+                <p className="review-explanation">
+                  这个词缺少释义，暂不能确认自评。<button className="text-button" style={{ marginLeft: 8 }} disabled={busy} onClick={() => void skip()}>暂时跳过</button>
+                </p>
+              )}
+            </div>
+          )}
 
           <p className="review-explanation">
             按真实掌握度评定：选“忘记了”的词会在当轮尾部自动重现强化，帮助快速形成牢固记忆。

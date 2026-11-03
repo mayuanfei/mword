@@ -6,9 +6,9 @@ export function WordProvenance({ word }: { word: Word }) {
   return <div className="word-provenance">
     {draft && <p className="source-note definition-draft">基础释义待校对，请结合例句和来源确认。</p>}
     {word.usageNote && <p className="source-note usage-note">用法提示：{word.usageNote}</p>}
-    {(word.definitionSource || word.definitionSourceUrl || word.sourceUrl) && <small className="source-note">
-      释义来源：{sourceUrl
-        ? <a href={sourceUrl} target="_blank" rel="noreferrer">{word.definitionSource || '查看出处'}</a>
+    {word.definitionSource && <small className="source-note">
+      释义来源：{word.definitionSourceUrl
+        ? <a href={word.definitionSourceUrl} target="_blank" rel="noreferrer">{word.definitionSource}</a>
         : word.definitionSource}{word.definitionLicense && ` · ${word.definitionLicense}`}
     </small>}
   </div>;

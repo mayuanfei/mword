@@ -4,7 +4,7 @@ import { useLearningStore } from '../lib/store';
 import { speakWord } from '../lib/native';
 import type { AiScene, Article, Explanation, Word } from '../lib/types';
 import { Notice, parseResult } from './ui';
-import { WordProvenance, ExampleAttribution } from './WordProvenance';
+import { WordProvenance } from './WordProvenance';
 
 type MemoryTab = 'mnemonics' | 'roots' | 'etymology' | 'story' | 'collocations';
 
@@ -55,16 +55,29 @@ export function WordDrawer({word,article,onClose,onReview,reviewLabel = '隐藏�
     <div className="drawer-top"><span>先理解，再记住 · 单词手册</span><button className="icon-button" onClick={onClose} aria-label="关闭单词讲解"><X size={18}/></button></div>
     <div className="word-heading"><h2 id="word-title">{word.lemma}</h2><button className="icon-button" aria-label={`朗读 ${word.lemma}`} onClick={()=>void speakWord(word.lemma).catch(e=>setError(e instanceof Error?e.message:'当前设备没有可用英语朗读'))}><Volume2 size={19}/></button></div>
     <div className="drawer-phonetic">{word.phonetic || '点击扬声器听发音'}</div>
-    <p className="definition"><small>{word.partOfSpeech}</small>{word.meaning || explanation?.meaning || '本地词库暂未收录释义，可请求 AI 结合原句讲解。'}</p>
+    <p className="definition">
+      {word.partOfSpeech && !word.meaning?.trim().startsWith(word.partOfSpeech.trim()) && (
+        <small>{word.partOfSpeech}</small>
+      )}
+      {word.meaning || explanation?.meaning || '本地词库暂未收录释义，可请求 AI 结合原句讲解。'}
+    </p>
     <WordProvenance word={word} />
-    <section className="drawer-section"><h3><BookOpen size={14}/>在语境中理解</h3>{context?<div className="example">{context}<small>{context===word.example?word.exampleTranslation:'来自上下文语境，帮助结合句子加深记忆。'}</small>{context===word.example&&<ExampleAttribution word={word}/>}</div>:<p className="muted-copy">本词暂无内置例句，可按需请求 AI 补充。</p>}</section>
+    <section className="drawer-section">
+      <h3><BookOpen size={14}/>在语境中理解</h3>
+      {context ? (
+        <div className="example">
+          {context}
+          <small>{context===word.example?word.exampleTranslation:'来自上下文语境，帮助结合句子加深记忆。'}</small>
+        </div>
+      ) : <p className="muted-copy">本词暂无内置例句，可按需请求 AI 补充。</p>}
+    </section>
 
     {availableTabs.length>0&&<section className="memory-section">
       <div className="memory-header">
         <h3>多维助记卡片</h3>
-        <span className="pill green" style={{fontSize:10}}>离线内置 · 草稿</span>
+        <span className="pill green" style={{fontSize:10}}>离线内置 · 深度助记</span>
       </div>
-      <p className="source-note">助记联想不作为真实词源依据；词根与历史说明仍需核对。</p>
+      <p className="source-note">结合词根词缀、联想技巧与地道短语，建立立体记忆网络。</p>
       <div className="memory-tabs">
         {availableTabs.map(tab=><button key={tab.key} type="button" className={`memory-tab-btn ${activeTab===tab.key?'active':''}`} onClick={()=>setActiveTab(tab.key)}>{tab.icon} {tab.label}</button>)}
       </div>

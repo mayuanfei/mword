@@ -26,7 +26,7 @@ function normalizeFormProfile(profile: Profile): Profile {
 }
 
 export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAdmin: () => void; onArticle: (id: string) => void; onQuestion?: (task: AiTask) => void; onSaved: (message: string) => void }) {
-  const { user, profile, books, saveProfile, synchronize, refreshAccount, logout, quota, aiTasks, sync, online, reviewStates } = useLearningStore();
+  const { user, profile, books, saveProfile, synchronize, refreshAccount, logout, quota, aiTasks, sync, online, reviewStates, reloadWords } = useLearningStore();
   const [form, setForm] = useState<Profile>(() => normalizeFormProfile(profile));
   const [extra, setExtra] = useState('');
   const [busy, setBusy] = useState(false);
@@ -59,6 +59,19 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
       onSaved('已请求提醒权限。可在系统设置中管理通知。');
     } catch (e) {
       setError(e instanceof Error ? e.message : '当前设备暂不支持复习通知');
+    }
+  }
+
+  async function syncVocabCache() {
+    setError('');
+    setBusy(true);
+    try {
+      await reloadWords();
+      onSaved('当前词库已从服务器同步至最新版本（已刷新本地缓存）');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '刷新词库失败，请检查网络');
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -98,7 +111,12 @@ export function SettingsPage({ onAdmin, onArticle, onQuestion, onSaved }: { onAd
 
       {selectedBook && (
         <div className="source-note" style={{ marginBottom: 23 }}>
-          词表来源：<a href={selectedBook.sourceUrl} target="_blank" rel="noreferrer">查看原始词表</a> · {selectedBook.licenseUrl ? <a href={selectedBook.licenseUrl} target="_blank" rel="noreferrer">{selectedBook.license}</a> : selectedBook.license}。
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
+            <span>词表来源：<a href={selectedBook.sourceUrl} target="_blank" rel="noreferrer">查看原始词表</a> · {selectedBook.licenseUrl ? <a href={selectedBook.licenseUrl} target="_blank" rel="noreferrer">{selectedBook.license}</a> : selectedBook.license}</span>
+            <button type="button" className="text-button" disabled={busy} onClick={() => void syncVocabCache()} style={{ fontSize: 12 }}>
+              🔄 同步/更新最新词库缓存
+            </button>
+          </div>
           <p>{selectedBook.attribution?.join("；")}</p>
           <div className="license-links">
             <a href={`${import.meta.env.BASE_URL}licenses/ATTRIBUTION.md`} download>下载来源说明</a>

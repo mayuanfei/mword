@@ -183,6 +183,145 @@ svg { flex-shrink: 0; }
 .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; color: #98a58c; font-size: 11px; }
 .bar { height: 5px; background: #edf1e7; border-radius: 5px; overflow: hidden; }
 .bar-fill { height: 100%; background: #8ca867; border-radius: inherit; transition: width .2s; }
+
+/* 3D 翻转卡片体系 - 丝滑调优 */
+.flip-card-wrapper {
+  perspective: 1400px;
+  -webkit-perspective: 1400px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.flip-card-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+.flip-card-wrapper.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.flip-card-face {
+  grid-area: 1 / 1 / 2 / 2;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(53, 71, 45, 0.05);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: box-shadow 0.25s ease;
+}
+.flip-card-front {
+  transform: rotateY(0deg) translateZ(1px);
+  -webkit-transform: rotateY(0deg) translateZ(1px);
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 380px;
+  padding: 40px 30px;
+}
+.flip-card-front:hover {
+  box-shadow: 0 8px 30px rgba(53, 71, 45, 0.09);
+}
+.flip-card-back {
+  transform: rotateY(180deg) translateZ(1px);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
+  min-height: 380px;
+  padding: 32px 30px 36px;
+  text-align: center;
+}
+.flip-card-wrapper.is-flipped .flip-card-front {
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear 0.26s;
+}
+.flip-card-wrapper:not(.is-flipped) .flip-card-back {
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear 0.26s;
+}
+.flip-card-wrapper.is-flipped .flip-card-back {
+  visibility: visible;
+}
+.flip-card-wrapper:not(.is-flipped) .flip-card-front {
+  visibility: visible;
+}
+
+/* 背面内容精细美化 */
+.definition-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #3b502e;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.pos-badge {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #557241;
+  background: #e7eedd;
+  padding: 2px 7px;
+  border-radius: 6px;
+  margin-right: 4px;
+}
+.clean-example-section {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #e7ede0;
+  border-left: 4px solid #8ca867;
+  border-radius: 10px;
+}
+.clean-example-en {
+  font: 500 15px/1.8 Georgia, serif;
+  color: #3b4e2f;
+  margin: 0;
+}
+.clean-example-cn {
+  font-size: 13px;
+  color: #728464;
+  margin: 6px 0 0 0;
+  line-height: 1.6;
+}
+.recall-memory {
+  margin-top: 14px;
+  border: 1px solid #e6ece0;
+  border-radius: 10px;
+  background: #fbfdf9;
+  overflow: hidden;
+}
+.recall-memory summary {
+  padding: 11px 16px;
+  font-size: 12px;
+  font-weight: 550;
+  color: #587242;
+  cursor: pointer;
+  background: #f3f7ed;
+  user-select: none;
+  transition: background 0.15s;
+}
+.recall-memory summary:hover {
+  background: #ebf2e3;
+}
+.recall-memory-content {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #4b6339;
+  line-height: 1.8;
+}
+
 .recall-card { padding: 39px 45px; text-align: center; }
 .recall-card h2 { font: 500 47px Georgia, serif; color: #455a37; margin: 26px 0 12px; }
 .phonetic { font-size: 13px; color: #95a489; display: flex; align-items: center; justify-content: center; gap: 9px; }

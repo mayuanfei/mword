@@ -33,6 +33,7 @@ interface LearningStore {
   bootstrap(): Promise<void>;
   authenticate(mode: 'login' | 'register', credentials: { username: string; password: string }): Promise<void>;
   logout(): Promise<void>; saveProfile(profile: Partial<Profile>): Promise<void>; synchronize(): Promise<void>;
+  reloadWords(): Promise<void>;
   recordEvent(input: { wordId: string; senseId?: string; kind: ReviewEvent['kind']; rating: Rating; usedHint?: boolean; session?: SessionPosition }): Promise<void>;
   recordReading(articleId: string, position: number, completed: boolean): Promise<void>;
   requestAi(input: AiRequest): Promise<AiTask>; refreshAccount(): Promise<void>;
@@ -197,6 +198,15 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     set({ user: null, studySessions: {}, profile: { ...DEFAULT_PROFILE }, words: [], events: [], readingEvents: [], reviewStates: [], articles: [], quota: null, usage: [], aiTasks: [], draft: { title: '', body: '' }, sync: { pending: 0, lastSyncAt: null, status: 'idle', error: null } });
     try { await setSession(null); await writeLocal('activeUser', null); }
     catch { set({ error: '服务器会话已注销，但本机凭证清理失败。请联网重新打开应用后确认。' }); }
+  },
+  async reloadWords() {
+    const bookId = get().profile.bookId;
+    if (!bookId) return;
+    const version = get().books.find(book => book.id === bookId)?.version;
+    const words = await api<Word[]>(`/books/${encodeURIComponent(bookId)}/words`);
+    await writeLocal(`words:${bookId}`, words);
+    await writeLocal(`words-version:${bookId}`, version || null);
+    set({ words });
   },
   async saveProfile(partial) {
     const stamp = generation; const oldBook = assertAccount().profile.bookId;
