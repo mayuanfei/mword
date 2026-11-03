@@ -23,7 +23,7 @@ public class AppVersionService {
         @Value("${mword.app.latest-version-name:1.0.3}") String latestVersionName,
         @Value("${mword.app.min-supported-version-code:1}") int minSupportedVersionCode,
         @Value("${mword.app.changelog:}") String configuredChangelog,
-        @Value("${mword.app.download-url:https://www.mayuanfei.com/mword/mword-{version}.apk}") String downloadUrl
+        @Value("${mword.app.download-url:https://github.com/mayuanfei/mword/releases/download/v{version}/mword-{version}.apk}") String downloadUrl
     ) {
         this.latestVersionCode = latestVersionCode;
         this.latestVersionName = latestVersionName;
@@ -56,7 +56,7 @@ public class AppVersionService {
 
     public String resolveDownloadUrl(String versionName) {
         if (downloadUrl == null || downloadUrl.isBlank()) {
-            return "https://www.mayuanfei.com/mword/mword-" + versionName + ".apk";
+            return "https://github.com/mayuanfei/mword/releases/download/v" + versionName + "/mword-" + versionName + ".apk";
         }
         return downloadUrl.replace("{version}", versionName);
     }
