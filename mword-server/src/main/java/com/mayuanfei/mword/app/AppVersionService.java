@@ -23,7 +23,7 @@ public class AppVersionService {
         @Value("${mword.app.latest-version-name:1.0.3}") String latestVersionName,
         @Value("${mword.app.min-supported-version-code:1}") int minSupportedVersionCode,
         @Value("${mword.app.changelog:}") String configuredChangelog,
-        @Value("${mword.app.download-url:https://www.mayuanfei.com/mword/mword-debug.apk}") String downloadUrl
+        @Value("${mword.app.download-url:https://www.mayuanfei.com/mword/mword-{version}.apk}") String downloadUrl
     ) {
         this.latestVersionCode = latestVersionCode;
         this.latestVersionName = latestVersionName;
@@ -42,15 +42,23 @@ public class AppVersionService {
         // 判断客户端版本是否已被强制废弃需要强更
         boolean forceUpdate = clientVersionCode != null && clientVersionCode < minSupportedVersionCode;
         String changelog = resolveChangelog(latestVersionName);
+        String resolvedDownloadUrl = resolveDownloadUrl(latestVersionName);
         return new AppDtos.VersionResponse(
             latestVersionCode,
             latestVersionName,
             minSupportedVersionCode,
             changelog,
-            downloadUrl,
+            resolvedDownloadUrl,
             hasUpdate,
             forceUpdate
         );
+    }
+
+    public String resolveDownloadUrl(String versionName) {
+        if (downloadUrl == null || downloadUrl.isBlank()) {
+            return "https://www.mayuanfei.com/mword/mword-" + versionName + ".apk";
+        }
+        return downloadUrl.replace("{version}", versionName);
     }
 
     public String resolveChangelog(String versionName) {
