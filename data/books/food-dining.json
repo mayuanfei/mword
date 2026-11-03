@@ -1,0 +1,496 @@
+{
+  "id": "food-dining",
+  "name": "西餐厅点餐与风味口感",
+  "description": "涵盖西餐菜单架构、牛排熟度、多重风味与口感质感描述、就餐礼仪与账单结账实用英文。",
+  "version": "1.0.3",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 24,
+  "attribution": [
+    "mword 极简背词空间 · 舌尖与美食场景化精品词库",
+    "词义、地道例句与记忆资产由日常餐饮、原版食谱及餐饮场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:appetizer",
+      "senseId": "lemma:appetizer:core",
+      "lemma": "appetizer",
+      "partOfSpeech": "n.",
+      "phonetic": "/'æpɪtaɪzər/",
+      "meaning": "开胃菜，前菜",
+      "definitionStatus": "verified",
+      "example": "For our appetizer, we decided to share a plate of crispy calamari with lemon aioli.",
+      "exampleTranslation": "作为开胃前菜，我们决定分吃一盘配柠檬蒜黄酱的香脆炸鱿鱼圈。",
+      "memoryAssets": {
+        "roots": "appetite（食欲）+ -ize（使产生）+ -er。正餐前激发食欲的小盘菜品。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "order an appetizer (点开胃菜)",
+          "appetizer platter (前菜拼盘)",
+          "cold appetizer (凉菜冷盘)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:entree",
+      "senseId": "lemma:entree:core",
+      "lemma": "entree",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɑːntreɪ/",
+      "meaning": "主菜（美）；正餐前菜（英/法）",
+      "definitionStatus": "verified",
+      "example": "For my entree, I will have the pan-roasted duck breast with cherry reduction.",
+      "exampleTranslation": "我的主菜想要一份香煎鸭胸佐黑樱桃熬调浓汁。",
+      "memoryAssets": {
+        "roots": "源自法语 entrée（进入）。美语中专指宴席上的主要重头菜品（main course）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "choose an entree (选择主菜)",
+          "hearty entree (分量十足的主菜)",
+          "seafood entree (海鲜主菜)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dessert",
+      "senseId": "lemma:dessert:core",
+      "lemma": "dessert",
+      "partOfSpeech": "n.",
+      "phonetic": "/dɪ'zɜːrt/",
+      "meaning": "甜点，餐后甜品",
+      "definitionStatus": "verified",
+      "example": "Save room for dessert because the molten chocolate lava cake here is legendary.",
+      "exampleTranslation": "一定要留点肚子吃甜品，因为这里的熔岩黑巧克力流心蛋糕极其出名。",
+      "memoryAssets": {
+        "roots": "源自古法语 desservir（撤走餐具）。意为撤去所有正餐盘子后才呈上的最后甜点。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "decadent dessert (奢华甜品)",
+          "dessert menu (甜点单)",
+          "frozen dessert (冰品甜点)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cutlery",
+      "senseId": "lemma:cutlery:core",
+      "lemma": "cutlery",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kʌtləri/",
+      "meaning": "餐具（刀、叉、匙统称）",
+      "definitionStatus": "verified",
+      "example": "The waiter laid out shiny silver cutlery on either side of the porcelain plate.",
+      "exampleTranslation": "服务员在洁白光滑的瓷盘两侧整齐摆放好光洁闪亮的银质刀叉餐具。",
+      "memoryAssets": {
+        "roots": "源自 cut（切割）。英美餐厅泛指刀、叉、勺在内的全套餐具总称。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "polished cutlery (抛光的餐具)",
+          "set of cutlery (一套刀叉勺)",
+          "table cutlery (餐桌餐具)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:reservation",
+      "senseId": "lemma:reservation:core",
+      "lemma": "reservation",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌrezər'veɪʃn/",
+      "meaning": "预订，预定座位",
+      "definitionStatus": "verified",
+      "example": "We have a dinner reservation under the name of Miller for seven o'clock tonight.",
+      "exampleTranslation": "我们今晚七点有预订，预订人姓名是米勒。",
+      "memoryAssets": {
+        "roots": "reserve（保留）+ -ation。高档西餐厅一般都需要提前电话或网络预留桌位。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "make a reservation (预定座位)",
+          "confirm the reservation (确认预订)",
+          "cancel a reservation (取消预约)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:napkin",
+      "senseId": "lemma:napkin:core",
+      "lemma": "napkin",
+      "partOfSpeech": "n.",
+      "phonetic": "/'næpkɪn/",
+      "meaning": "餐巾，餐巾纸",
+      "definitionStatus": "verified",
+      "example": "Unfold your cloth napkin and gently place it across your lap as soon as you sit down.",
+      "exampleTranslation": "一入座后，将布质餐巾轻轻展开平铺在你的大腿上。",
+      "memoryAssets": {
+        "roots": "古法语 nappe（桌布）+ -kin（小指小词）。用餐时擦拭嘴角与保护衣物的布巾。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "cloth napkin (布餐巾)",
+          "paper napkin (餐巾纸)",
+          "fold a napkin (折叠餐巾)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:crispy",
+      "senseId": "lemma:crispy:core",
+      "lemma": "crispy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'krɪspi/",
+      "meaning": "酥脆的，香脆的（多形容表皮、炸物）",
+      "definitionStatus": "verified",
+      "example": "The fried chicken skin was perfectly golden, deeply savory, and delightfully crispy.",
+      "exampleTranslation": "这炸鸡的表皮金黄油亮，咸香浓郁，咬下去有着令人愉悦的酥脆口感。",
+      "memoryAssets": {
+        "roots": "crisp 的形容词形式。指外层干燥松脆、一咬即碎的美妙受热脆度。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "crispy crust (香脆外皮)",
+          "crispy fries (香脆薯条)",
+          "crispy skin (酥脆的表皮)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tender",
+      "senseId": "lemma:tender:core",
+      "lemma": "tender",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'tendər/",
+      "meaning": "柔嫩的，鲜嫩多汁的；一嚼即化",
+      "definitionStatus": "verified",
+      "example": "Cooked sous-vide for forty-eight hours, the braised short ribs were wonderfully tender.",
+      "exampleTranslation": "经过四十八小时真空低温烹调，这份慢炖牛小排肉质嫩得惊人，几乎入口即化。",
+      "memoryAssets": {
+        "roots": "拉丁语 tendere（伸展、轻柔）。用来赞美肉质不柴不硬、口感极佳。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "tender meat (鲜嫩的肉质)",
+          "tender and juicy (鲜嫩多汁)",
+          "tender texture (柔嫩口感)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:savory",
+      "senseId": "lemma:savory:core",
+      "lemma": "savory",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'seɪvəri/",
+      "meaning": "咸鲜的，美味咸香的（区别于甜味）",
+      "definitionStatus": "verified",
+      "example": "I usually prefer a rich, savory breakfast like eggs and bacon over sweet pancakes.",
+      "exampleTranslation": "相比甜松饼，我早餐通常更喜欢像煎蛋培根这种浓郁醇香的咸味餐点。",
+      "memoryAssets": {
+        "roots": "savor（风味、品尝）+ -y。特指非甜类的、富含肉香香料与天然鲜味口感受用词。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "savory dish (咸香味菜肴)",
+          "savory herbs (芳香调味香草)",
+          "savory flavor (浓郁咸鲜味)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tangy",
+      "senseId": "lemma:tangy:core",
+      "lemma": "tangy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'tæŋi/",
+      "meaning": "微酸带劲的，清新爽口的，开胃醒舌的",
+      "definitionStatus": "verified",
+      "example": "The chef dressed the summer heirloom tomato salad in a bright, tangy lemon vinaigrette.",
+      "exampleTranslation": "主厨用清新微酸的柠檬油醋汁拌匀了这份色彩明亮的夏日农园番茄沙拉。",
+      "memoryAssets": {
+        "roots": "tang（强烈刺激气味、尖锐刺激）+ -y。常形容果醋、柠檬汁或酸奶带来的活泼酸意。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "tangy flavor (微酸提神风味)",
+          "tangy dressing (酸香沙拉汁)",
+          "tangy sauce (开胃酸香酱)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:creamy",
+      "senseId": "lemma:creamy:core",
+      "lemma": "creamy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'kriːmi/",
+      "meaning": "浓稠顺滑的，奶香浓郁的，细腻绵密的",
+      "definitionStatus": "verified",
+      "example": "Whisk the cold cubed butter into the warm sauce until it achieves a rich, creamy texture.",
+      "exampleTranslation": "把冰黄油丁逐块搅打进温热的汤汁中，直到它呈现出浓郁顺滑的奶油般光泽质感。",
+      "memoryAssets": {
+        "roots": "cream（奶油）+ -y。指口感像丝缎般细腻厚实、充满天然油脂乳化的柔润。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "creamy soup (香浓奶油浓汤)",
+          "creamy texture (顺滑绵密口感)",
+          "creamy risotto (浓郁烩饭)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:bland",
+      "senseId": "lemma:bland:core",
+      "lemma": "bland",
+      "partOfSpeech": "adj.",
+      "phonetic": "/blænd/",
+      "meaning": "寡淡无味的，清淡乏味的；不咸不淡",
+      "definitionStatus": "verified",
+      "example": "Without enough salt and black pepper, the boiled mashed potatoes tasted completely bland.",
+      "exampleTranslation": "要是没有足够的盐和黑胡椒，这份白水煮的土豆泥吃起来简直寡淡无味。",
+      "memoryAssets": {
+        "roots": "原意为平淡、温和。在美食中特指缺少调料香气、滋味欠缺层次感。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "bland taste (寡淡味道)",
+          "bland diet (清淡流食饮食)",
+          "a bit bland (有点平淡寡淡)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:rare",
+      "senseId": "lemma:rare:core",
+      "lemma": "rare",
+      "partOfSpeech": "adj.",
+      "phonetic": "/rer/",
+      "meaning": "（牛排）一分熟的，微煎的（内部基本为深红鲜嫩温热肉质）",
+      "definitionStatus": "verified",
+      "example": "A true food lover often orders premium wagyu beef rare to taste its pure melting tenderness.",
+      "exampleTranslation": "懂行的老饕在品尝顶级和牛时往往点一分熟，只为体验纯粹的油脂奶香与原初软嫩。",
+      "memoryAssets": {
+        "roots": "肉类内部中心温度仅45-48摄氏度，表面经高温快速炙烤出美拉德褐色外壳。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "steak rare (一分熟牛排)",
+          "cooked rare (烤至一分熟)",
+          "extra rare (近乎全生表面微烫)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:medium",
+      "senseId": "lemma:medium:core",
+      "lemma": "medium",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'miːdiəm/",
+      "meaning": "（牛排）五分熟的，半生熟的；中等",
+      "definitionStatus": "verified",
+      "example": "If you're unsure what to choose, ordering your ribeye medium rare is usually the safest bet.",
+      "exampleTranslation": "如果你第一次吃拿不准熟度，点三分熟（medium rare）或五分熟通常是最保险美味的选择。",
+      "memoryAssets": {
+        "roots": "medium rare 为三分熟（粉红温热多汁）；medium 为五分熟（中心显粉红且肉质稳定）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "medium rare (三分熟)",
+          "medium well (七分熟)",
+          "cooked medium (烤至五分熟)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:refill",
+      "senseId": "lemma:refill:core",
+      "lemma": "refill",
+      "partOfSpeech": "v.",
+      "phonetic": "/ˌriː'fɪl/; n. /'riːfɪl/",
+      "meaning": "续杯，重新加满",
+      "definitionStatus": "verified",
+      "example": "Excuse me, could we please have a free refill on our iced lemon black tea?",
+      "exampleTranslation": "劳驾，能麻烦帮我们把这杯冰柠檬红茶免费续一下杯吗？",
+      "memoryAssets": {
+        "roots": "前缀 re-（再）+ fill（装满）。在很多西式美式餐厅，软饮或滴滤咖啡常提供免费续杯服务。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "free refill (免费续杯)",
+          "refill the glass (把杯子斟满)",
+          "ask for a refill (要求续杯)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:takeaway",
+      "senseId": "lemma:takeaway:core",
+      "lemma": "takeaway",
+      "partOfSpeech": "n.",
+      "phonetic": "/'teɪkəweɪ/",
+      "meaning": "外卖，打包带走（英）；美语常作 takeout 或 to-go",
+      "definitionStatus": "verified",
+      "example": "We were too exhausted to cook, so we ordered a spicy Thai curry takeaway.",
+      "exampleTranslation": "我们累得实在没力气做饭，于是点了泰式辛香咖喱外卖打包回家吃。",
+      "memoryAssets": {
+        "roots": "take（拿）+ away（走）。既指外卖食物本身，也可作形容词‘打包带走的’。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "takeaway food (外卖餐点)",
+          "order a takeaway (叫一份外卖)",
+          "takeaway box (外卖打包餐盒)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:check",
+      "senseId": "lemma:check:core",
+      "lemma": "check",
+      "partOfSpeech": "n.",
+      "phonetic": "/tʃek/",
+      "meaning": "（餐馆的）账单（美）；买单；英语常用 bill",
+      "definitionStatus": "verified",
+      "example": "We have finished our meals and desserts; could we get the check, please?",
+      "exampleTranslation": "我们已经享用完正餐和甜品了，请问可以帮我们结账买单吗？",
+      "memoryAssets": {
+        "roots": "用餐完毕示意服务员结账时的最高频日常口语词汇（‘Check, please’）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "ask for the check (要账单买单)",
+          "split the check (AA制分摊账单)",
+          "pay the check (支付餐费)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tip",
+      "senseId": "lemma:tip:core",
+      "lemma": "tip",
+      "partOfSpeech": "n.",
+      "phonetic": "/tɪp/",
+      "meaning": "小费；小窍门；v. 给小费",
+      "definitionStatus": "verified",
+      "example": "In North American restaurants, it is customary to leave a fifteen to twenty percent tip.",
+      "exampleTranslation": "在北美餐厅就餐时，结账通常需要根据服务满意度留下百分之十五到二十的小费。",
+      "memoryAssets": {
+        "roots": "传统说法源自 To Insure Promptitude（保证服务迅捷高效）的缩写首字母。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "generous tip (丰厚的小费)",
+          "tip the server (给服务生小费)",
+          "include a tip (包含小费)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:platter",
+      "senseId": "lemma:platter:core",
+      "lemma": "platter",
+      "partOfSpeech": "n.",
+      "phonetic": "/'plætər/",
+      "meaning": "大拼盘，大浅盘",
+      "definitionStatus": "verified",
+      "example": "We ordered an artisanal seafood platter laden with oysters, prawns, and crab legs.",
+      "exampleTranslation": "我们点了一大份奢华海鲜大拼盘，上面盛满了新鲜生蚝、大虾和雪蟹腿。",
+      "memoryAssets": {
+        "roots": "源自 plate（盘子）的放大形式。西餐派对或聚餐常见的共享大拼盘。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "seafood platter (海鲜大拼盘)",
+          "cheese platter (芝士奶酪拼盘)",
+          "fruit platter (水果大拼盘)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:crunchy",
+      "senseId": "lemma:crunchy:core",
+      "lemma": "crunchy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'krʌntʃi/",
+      "meaning": "松脆的，嘎吱嘎吱响的（如坚果、生胡萝卜、薯片）",
+      "definitionStatus": "verified",
+      "example": "Sprinkle crunchy toasted almonds over the yogurt bowl for extra texture.",
+      "exampleTranslation": "在酸奶碗里撒上一小把香脆烤杏仁碎，能大大丰富咀嚼的层次与口感。",
+      "memoryAssets": {
+        "roots": "拟声词 crunch（嘎吱咬碎）的形容词形式。描述牙齿咬下硬脆食物时发出的声音。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "crunchy texture (松脆耐嚼口感)",
+          "crunchy vegetables (爽脆时蔬)",
+          "crunchy nuts (香脆坚果)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:juicy",
+      "senseId": "lemma:juicy:core",
+      "lemma": "juicy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'dʒuːsi/",
+      "meaning": "多汁的，鲜嫩饱满的",
+      "definitionStatus": "verified",
+      "example": "Biting into the thick grilled burger released a burst of savory, juicy richness.",
+      "exampleTranslation": "一口咬下厚实的烤牛肉汉堡，舌尖瞬间充盈着醇厚多汁的肉香与脂香。",
+      "memoryAssets": {
+        "roots": "juice（汁水）+ -y。赞美水果饱满或肉类火候极佳、肉汁丰盈。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "juicy steak (鲜嫩多汁的牛排)",
+          "sweet and juicy (甜美多汁)",
+          "juicy burger (汁水充盈的汉堡)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:flaky",
+      "senseId": "lemma:flaky:core",
+      "lemma": "flaky",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'fleɪki/",
+      "meaning": "起酥的，层层酥软的，层叠松脆的（如法式可颂、派皮）",
+      "definitionStatus": "verified",
+      "example": "The freshly baked apple turnover had a delightfully buttery, flaky crust.",
+      "exampleTranslation": "刚出炉的苹果酥皮点心有着一层极其诱人、充满浓郁黄油香气且层层起酥的金色外壳。",
+      "memoryAssets": {
+        "roots": "flake（薄片、鳞片）+ -y。特指多层开酥面点在受热后形成的千层起酥质感。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "flaky pastry (层层起酥的点心)",
+          "flaky crust (起酥外皮)",
+          "flaky croissant (酥皮牛角包)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:bitter",
+      "senseId": "lemma:bitter:core",
+      "lemma": "bitter",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'bɪtər/",
+      "meaning": "苦的，苦涩的",
+      "definitionStatus": "verified",
+      "example": "Eighty-five percent dark chocolate possesses a complex, deeply satisfying bitter note.",
+      "exampleTranslation": "百分之八十五纯黑巧克力拥有一种层次极其深邃、令人沉迷回味的优雅苦香。",
+      "memoryAssets": {
+        "roots": "古英语 biter（咬刺、刺痛）。基础五味之一，咖啡与精酿的核心魅力来源。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "bitter taste (苦味)",
+          "bittersweet (苦甜参半的)",
+          "bitter greens (微苦沙拉蔬菜)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:zesty",
+      "senseId": "lemma:zesty:core",
+      "lemma": "zesty",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'zesti/",
+      "meaning": "风味热烈的，酸香开胃的，充满柑橘清香生机的",
+      "definitionStatus": "verified",
+      "example": "Add a splash of fresh lemon zest to give the creamy sauce a bright, zesty lift.",
+      "exampleTranslation": "擦入少许新鲜柠檬皮屑碎末，让这道浓郁白酱瞬间焕发出活泼开胃的清亮风味。",
+      "memoryAssets": {
+        "roots": "zest（柑橘外皮最外层精油芳香层）+ -y。用来形容让人精神一振的香气风味。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "zesty sauce (开胃提鲜酱汁)",
+          "zesty lemon flavor (清爽热烈柠檬味)",
+          "zesty aroma (芳香扑鼻)"
+        ]
+      }
+    }
+  ]
+}

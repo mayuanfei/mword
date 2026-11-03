@@ -68,24 +68,27 @@ export const BOOK_SECTIONS: SectionPlan[] = [
     description: '日常食材与厨房烹饪、西餐厅点餐与口感风味、咖啡烘焙与调酒饮品',
     topics: [
       {
+        bookId: 'food-cooking',
         title: '日常食材与厨房烹饪',
-        wordCount: '约 200~300 词',
+        wordCount: '50 词',
         examples: 'crispy, simmer, broccoli, fillet, whisk, marinate',
-        status: 'UPCOMING',
+        status: 'AVAILABLE',
         description: '常见果蔬蛋肉、调料香辛料与切片煎炒焖煮日常烹饪动作',
       },
       {
+        bookId: 'food-dining',
         title: '西餐厅点餐与风味口感',
-        wordCount: '约 150~200 词',
+        wordCount: '24 词',
         examples: 'entree, dressing, tender, rare, savory, appetizing',
-        status: 'UPCOMING',
+        status: 'AVAILABLE',
         description: '头盘前菜、牛排熟度、沙拉酱汁与层次丰富的味觉描述',
       },
       {
+        bookId: 'food-drinks',
         title: '咖啡、烘焙与酒饮文化',
-        wordCount: '约 150 词',
+        wordCount: '17 词',
         examples: 'espresso, sourdough, acidity, brew, aroma, tannin',
-        status: 'UPCOMING',
+        status: 'AVAILABLE',
         description: '意式手冲品类、面包烘焙工艺与精酿红酒风味品鉴词汇',
       },
     ],
@@ -469,7 +472,7 @@ export function BookSelectionModal({ open, currentBookId, books, onSelect, onClo
                 已选词书：<strong className="text-stone-900">{selectedTopic.title}</strong>
               </span>
             ) : (
-              '请从升学考试板块选择一本词书'
+              '请从可用板块中选择一本词书'
             )}
           </div>
 

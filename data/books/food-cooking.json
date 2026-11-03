@@ -1,0 +1,1016 @@
+{
+  "id": "food-cooking",
+  "name": "日常食材与厨房烹饪",
+  "description": "涵盖蔬菜果品、肉类海鲜、调味香辛料与常用烹饪技艺动作，轻松读懂原版食谱与厨房交流。",
+  "version": "1.0.3",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 50,
+  "attribution": [
+    "mword 极简背词空间 · 舌尖与美食场景化精品词库",
+    "词义、地道例句与记忆资产由日常餐饮、原版食谱及餐饮场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:broccoli",
+      "senseId": "lemma:broccoli:core",
+      "lemma": "broccoli",
+      "partOfSpeech": "n.",
+      "phonetic": "/'brɑːkəli/",
+      "meaning": "西蓝花，绿花椰菜",
+      "definitionStatus": "verified",
+      "example": "Steam the broccoli for three minutes so it stays bright green and crunchy.",
+      "exampleTranslation": "将西蓝花蒸三分钟，这样能保持鲜绿且口感爽脆。",
+      "memoryAssets": {
+        "roots": "brocc（意大利语枝杈、嫩芽）+ -oli（复数）。常吃健康蔬菜，富含抗氧化成分。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "steamed broccoli (清蒸西蓝花)",
+          "broccoli florets (西蓝花小朵)",
+          "roasted broccoli (烤西蓝花)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:asparagus",
+      "senseId": "lemma:asparagus:core",
+      "lemma": "asparagus",
+      "partOfSpeech": "n.",
+      "phonetic": "/ə'spærəɡəs/",
+      "meaning": "芦笋",
+      "definitionStatus": "verified",
+      "example": "Grilled asparagus with sea salt and olive oil is a perfect side dish.",
+      "exampleTranslation": "撒上海盐和橄榄油的烤芦笋是一道绝佳的配菜。",
+      "memoryAssets": {
+        "roots": "源自希腊语 asparagos（新芽）。每年初春最嫩的绿色蔬菜。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "grilled asparagus (烤芦笋)",
+          "asparagus spears (芦笋嫩茎)",
+          "fresh asparagus (新鲜芦笋)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:lettuce",
+      "senseId": "lemma:lettuce:core",
+      "lemma": "lettuce",
+      "partOfSpeech": "n.",
+      "phonetic": "/'letɪs/",
+      "meaning": "生菜，生菜叶",
+      "definitionStatus": "verified",
+      "example": "Rinse the crisp romaine lettuce and spin it dry before tossing the salad.",
+      "exampleTranslation": "拌沙拉之前，将爽脆的罗马生菜洗净并甩干水分。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 lactuca（牛奶），因生菜茎切开时会渗出乳白色汁液而得名。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "romaine lettuce (罗马生菜)",
+          "crisp lettuce (脆嫩生菜)",
+          "lettuce wrap (生菜包肉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:zucchini",
+      "senseId": "lemma:zucchini:core",
+      "lemma": "zucchini",
+      "partOfSpeech": "n.",
+      "phonetic": "/zu'kiːni/",
+      "meaning": "西葫芦，美洲南瓜",
+      "definitionStatus": "verified",
+      "example": "Slice the zucchini into thin coins and saute them with minced garlic.",
+      "exampleTranslation": "把西葫芦切成薄圆片，加蒜末一起煎炒。",
+      "memoryAssets": {
+        "roots": "意大利语 zucca（南瓜）的小称词，意为‘小南瓜’。美语称 zucchini，英语常用 courgette。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "sliced zucchini (西葫芦切片)",
+          "grilled zucchini (烤西葫芦)",
+          "zucchini noodles (西葫芦面条)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:avocado",
+      "senseId": "lemma:avocado:core",
+      "lemma": "avocado",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌævə'kɑːdoʊ/",
+      "meaning": "牛油果，鳄梨",
+      "definitionStatus": "verified",
+      "example": "Mash the ripe avocado with lime juice, sea salt, and diced tomatoes to make guacamole.",
+      "exampleTranslation": "把成熟的牛油果捣成泥，加入青柠汁、海盐和西红柿丁做成牛油果酱。",
+      "memoryAssets": {
+        "roots": "源自阿兹特克纳瓦特尔语 ahuacatl。富含优质健康不饱和脂肪酸。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "ripe avocado (成熟牛油果)",
+          "avocado toast (牛油果吐司)",
+          "mashed avocado (牛油果泥)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cauliflower",
+      "senseId": "lemma:cauliflower:core",
+      "lemma": "cauliflower",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɔːliflaʊər/",
+      "meaning": "菜花，花椰菜，白花菜",
+      "definitionStatus": "verified",
+      "example": "Roasting cauliflower florets at high heat brings out their natural sweetness.",
+      "exampleTranslation": "高温烘烤菜花小朵能充分激发其天然的甘甜焦香。",
+      "memoryAssets": {
+        "roots": "caulis（茎）+ flower（花）。字面意为‘长在茎上的花’。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "cauliflower rice (花椰菜碎饭)",
+          "roasted cauliflower (烤菜花)",
+          "cauliflower florets (菜花小朵)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:eggplant",
+      "senseId": "lemma:eggplant:core",
+      "lemma": "eggplant",
+      "partOfSpeech": "n.",
+      "phonetic": "/'eɡplænt/",
+      "meaning": "茄子",
+      "definitionStatus": "verified",
+      "example": "Brush the eggplant slices with sesame oil before putting them onto the hot grill.",
+      "exampleTranslation": "把茄子片刷上一层芝麻油，然后放到滚烫的烤架上烤制。",
+      "memoryAssets": {
+        "roots": "早期欧洲引进的白色小茄子形状与大小极像白鹅蛋，因此美语得名 eggplant（英国称 aubergine）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "roasted eggplant (烤茄子)",
+          "eggplant dip (茄子泥酱)",
+          "braised eggplant (红烧茄子)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:spinach",
+      "senseId": "lemma:spinach:core",
+      "lemma": "spinach",
+      "partOfSpeech": "n.",
+      "phonetic": "/'spɪnɪtʃ/",
+      "meaning": "菠菜",
+      "definitionStatus": "verified",
+      "example": "Fresh baby spinach wilts quickly, so add it to the soup at the very end.",
+      "exampleTranslation": "新鲜的嫩菠菜极易变软，所以在出锅前最后放进汤里即可。",
+      "memoryAssets": {
+        "roots": "原产波斯，经丝绸之路传入中国和欧洲。常作沙拉底菜或热炒佐菜。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "baby spinach (嫩菠菜)",
+          "sauteed spinach (清炒菠菜)",
+          "spinach salad (菠菜沙拉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:celery",
+      "senseId": "lemma:celery:core",
+      "lemma": "celery",
+      "partOfSpeech": "n.",
+      "phonetic": "/'seləri/",
+      "meaning": "芹菜",
+      "definitionStatus": "verified",
+      "example": "Finely chopped celery, onions, and carrots form the aromatic base for many soups.",
+      "exampleTranslation": "细切的芹菜、洋葱和胡萝卜构成了许多浓汤的芳香基底。",
+      "memoryAssets": {
+        "roots": "源自希腊语 selinon。香味独特、爽脆多汁且富含高纤维。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "celery stalks (芹菜茎)",
+          "chopped celery (切碎芹菜)",
+          "crisp celery (脆嫩芹菜)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:mushroom",
+      "senseId": "lemma:mushroom:core",
+      "lemma": "mushroom",
+      "partOfSpeech": "n.",
+      "phonetic": "/'mʌʃruːm/",
+      "meaning": "蘑菇，食用菌；v. 迅速增长",
+      "definitionStatus": "verified",
+      "example": "Saute the sliced mushrooms in melted butter until they turn golden and tender.",
+      "exampleTranslation": "用融化的黄油煎炒切片蘑菇，直到它们金黄柔嫩并散发出浓郁香气。",
+      "memoryAssets": {
+        "roots": "源自古法语 mousseron（长在青苔上的菌类）。烹饪中提供丰厚的天然鲜味（umami）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "button mushroom (白蘑菇)",
+          "wild mushrooms (野生菌菇)",
+          "sauteed mushrooms (黄油煎口蘑)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:garlic",
+      "senseId": "lemma:garlic:core",
+      "lemma": "garlic",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɡɑːrlɪk/",
+      "meaning": "大蒜，蒜头",
+      "definitionStatus": "verified",
+      "example": "Crush two cloves of garlic and cook them gently in olive oil until fragrant.",
+      "exampleTranslation": "将两瓣大蒜压碎，放入橄榄油中小火煸炒至蒜香四溢。",
+      "memoryAssets": {
+        "roots": "古英语 gar（矛、尖剑）+ leek（韭、葱）-> 指蒜瓣呈长矛尖状的葱类植物。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "clove of garlic (一瓣蒜)",
+          "minced garlic (大蒜碎、蒜末)",
+          "garlic bread (蒜香面包)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:ginger",
+      "senseId": "lemma:ginger:core",
+      "lemma": "ginger",
+      "partOfSpeech": "n.",
+      "phonetic": "/'dʒɪndʒər/",
+      "meaning": "生姜，姜",
+      "definitionStatus": "verified",
+      "example": "Grate a teaspoon of fresh ginger to add warmth and zest to the stir-fry sauce.",
+      "exampleTranslation": "磨入一茶匙新鲜生姜末，为炒菜酱汁增添一丝温润与辛香提味。",
+      "memoryAssets": {
+        "roots": "源自梵语 singabera（角状的根茎）。中西餐去腥解腻提香不可或缺的核心香辛料。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "fresh ginger (生姜)",
+          "grated ginger (姜蓉、生姜末)",
+          "ginger tea (生姜茶)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cilantro",
+      "senseId": "lemma:cilantro:core",
+      "lemma": "cilantro",
+      "partOfSpeech": "n.",
+      "phonetic": "/sɪ'læntroʊ/",
+      "meaning": "香菜，芫荽叶",
+      "definitionStatus": "verified",
+      "example": "Garnish the hot noodle soup with fresh cilantro right before serving.",
+      "exampleTranslation": "在热气腾腾的面条上桌前，撒上一小把新鲜香菜提味。",
+      "memoryAssets": {
+        "roots": "源自西班牙语 cilantro，特指新鲜香菜叶（其干籽香料通常称为 coriander）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "fresh cilantro (新鲜香菜)",
+          "chopped cilantro (切碎香菜)",
+          "cilantro garnish (香菜点缀)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cucumber",
+      "senseId": "lemma:cucumber:core",
+      "lemma": "cucumber",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kjuːkʌmbər/",
+      "meaning": "黄瓜，青瓜",
+      "definitionStatus": "verified",
+      "example": "Thinly sliced cold cucumber dressed with vinegar makes a refreshing summer appetizer.",
+      "exampleTranslation": "切得极薄的冰爽黄瓜片拌入香醋，是一道非常解腻清爽的夏日开胃小食。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 cucumis。含水量高达95%以上，生津止渴、口感爽脆。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "fresh cucumber (新鲜黄瓜)",
+          "pickled cucumber (酸黄瓜)",
+          "cucumber slices (黄瓜片)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:onion",
+      "senseId": "lemma:onion:core",
+      "lemma": "onion",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ʌnjən/",
+      "meaning": "洋葱",
+      "definitionStatus": "verified",
+      "example": "Caramelize the sliced onions slowly over low heat until deeply golden and sweet.",
+      "exampleTranslation": "用小火慢炒切细的洋葱丝，直到完全焦糖化变软、泛出浓厚甜香。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 unio（单独、珍珠）。西餐所有美味高汤与炖肉的灵魂奠基食材。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "diced onion (洋葱丁)",
+          "caramelized onions (焦糖洋葱)",
+          "red onion (紫洋葱)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:fillet",
+      "senseId": "lemma:fillet:core",
+      "lemma": "fillet",
+      "partOfSpeech": "n.",
+      "phonetic": "/fɪ'leɪ/",
+      "meaning": "无骨肉片，里脊肉，鱼片；v. 剔骨切片",
+      "definitionStatus": "verified",
+      "example": "Pan-sear the salmon fillet skin-side down until the exterior is shatteringly crisp.",
+      "exampleTranslation": "把三文鱼排鱼皮朝下煎至表皮极其酥脆。",
+      "memoryAssets": {
+        "roots": "源自古法语 filet（细线、细肉条）。专指不带骨头的精选纯肉块或鱼柳。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "salmon fillet (三文鱼柳)",
+          "beef fillet (牛里脊、菲力)",
+          "fillet of fish (鱼排)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tenderloin",
+      "senseId": "lemma:tenderloin:core",
+      "lemma": "tenderloin",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tendərˌlɔɪn/",
+      "meaning": "里脊肉，嫩腰肉",
+      "definitionStatus": "verified",
+      "example": "Pork tenderloin is one of the leanest and most tender cuts of meat available.",
+      "exampleTranslation": "猪里脊是肉类中最瘦、肉质最柔嫩的部位之一。",
+      "memoryAssets": {
+        "roots": "tender（嫩的）+ loin（腰肉）。牛肉中对应的部位即顶级菲力（filet mignon）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "beef tenderloin (牛里脊)",
+          "pork tenderloin (猪里脊)",
+          "roasted tenderloin (烤里脊肉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:bacon",
+      "senseId": "lemma:bacon:core",
+      "lemma": "bacon",
+      "partOfSpeech": "n.",
+      "phonetic": "/'beɪkən/",
+      "meaning": "培根，熏肉，咸肉",
+      "definitionStatus": "verified",
+      "example": "Fry the cured bacon strips in a dry pan until crispy, then drain them on paper towels.",
+      "exampleTranslation": "将腌制好的培根条放入平底锅煎至焦脆，然后放在厨房纸巾上沥去多余油脂。",
+      "memoryAssets": {
+        "roots": "源自日耳曼语 bako（背肉）。现代指经过盐腌并烟熏的五花肉片。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "crispy bacon (香脆培根)",
+          "bacon strips (培根肉条)",
+          "smoked bacon (烟熏培根)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:salmon",
+      "senseId": "lemma:salmon:core",
+      "lemma": "salmon",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sæmən/",
+      "meaning": "三文鱼，鲑鱼",
+      "definitionStatus": "verified",
+      "example": "Rich in omega-3 fatty acids, baked salmon pairs beautifully with dill and lemon slices.",
+      "exampleTranslation": "富含欧米伽-3脂肪酸的烤三文鱼与莳萝和柠檬片搭配相得益彰。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 salire（跳跃、逆流跃瀑）。注意其中的字母 l 不发音，读作 /'sæmən/。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "smoked salmon (烟熏三文鱼)",
+          "salmon steak (三文鱼排)",
+          "wild salmon (野生鲑鱼)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:shrimp",
+      "senseId": "lemma:shrimp:core",
+      "lemma": "shrimp",
+      "partOfSpeech": "n.",
+      "phonetic": "/ʃrɪmp/",
+      "meaning": "虾，海虾；小虾",
+      "definitionStatus": "verified",
+      "example": "Saute the peeled shrimp with butter, minced garlic, and white wine for two minutes.",
+      "exampleTranslation": "将剥好的虾仁与黄油、蒜末和白葡萄酒一起翻炒两分钟至变色即可。",
+      "memoryAssets": {
+        "roots": "原意与 shrink（收缩、瘦小）同源，指受热后会自然卷曲弯成小团的海味。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "peeled shrimp (剥壳虾仁)",
+          "grilled shrimp (烤大虾)",
+          "fried shrimp (炸虾)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:oyster",
+      "senseId": "lemma:oyster:core",
+      "lemma": "oyster",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɔɪstər/",
+      "meaning": "生蚝，牡蛎",
+      "definitionStatus": "verified",
+      "example": "Serve chilled fresh oysters on crushed ice with fresh lemon wedges and mignonette sauce.",
+      "exampleTranslation": "将新鲜冰镇生蚝盛在碎冰上，佐以柠檬角和经典红葱醋汁食用。",
+      "memoryAssets": {
+        "roots": "源自希腊语 ostreon（骨状硬壳）。海洋风味浓郁的高档天然鲜美贝类食材。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "fresh oysters (新鲜生蚝)",
+          "shuck oysters (撬生蚝壳)",
+          "baked oysters (烤生蚝)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:brisket",
+      "senseId": "lemma:brisket:core",
+      "lemma": "brisket",
+      "partOfSpeech": "n.",
+      "phonetic": "/'brɪskɪt/",
+      "meaning": "牛胸肉，胸脯肉",
+      "definitionStatus": "verified",
+      "example": "Texas-style smoked beef brisket is cooked low and slow for twelve hours until meltingly tender.",
+      "exampleTranslation": "德州风味的烟熏牛胸肉采用低温慢熏十二小时，直到肉质酥烂、入口即化。",
+      "memoryAssets": {
+        "roots": "源自古诺斯语 brjosk（软骨）。富含胶原蛋白，最适合慢炖、烧烤与长时间焖煮。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "smoked brisket (烟熏牛胸肉)",
+          "beef brisket (牛腩、牛胸肉)",
+          "braised brisket (红焖牛胸肉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:sausage",
+      "senseId": "lemma:sausage:core",
+      "lemma": "sausage",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sɔːsɪdʒ/",
+      "meaning": "香肠，腊肠",
+      "definitionStatus": "verified",
+      "example": "Grill the pork sausages over medium charcoal heat until the skin turns taut and brown.",
+      "exampleTranslation": "在炭火中温上翻烤猪肉香肠，直到肠衣紧绷、表面泛出诱人的棕红焦色。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 salsus（盐腌的）。各种调味猪牛肉灌入肠衣制成的世界级经典美食。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "grilled sausage (烤香肠)",
+          "smoked sausage (烟熏红肠)",
+          "sausage link (一根香肠)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tuna",
+      "senseId": "lemma:tuna:core",
+      "lemma": "tuna",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tuːnə/",
+      "meaning": "金枪鱼，吞拿鱼",
+      "definitionStatus": "verified",
+      "example": "Sear the fresh tuna steak quickly on high heat, keeping the interior vibrant pink.",
+      "exampleTranslation": "高温快速炙烤新鲜金枪鱼排表面，使鱼肉内部依旧保持鲜嫩艳丽的深粉色生鱼质感。",
+      "memoryAssets": {
+        "roots": "源自希腊语 thynnos（飞速冲刺）。大洋洄游顶级鱼类，刺身与罐头的主角。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "canned tuna (金枪鱼罐头)",
+          "seared tuna (炙烤金枪鱼排)",
+          "tuna salad (吞拿鱼沙拉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:scallop",
+      "senseId": "lemma:scallop:core",
+      "lemma": "scallop",
+      "partOfSpeech": "n.",
+      "phonetic": "/'skɑːləp/",
+      "meaning": "带子，扇贝肉",
+      "definitionStatus": "verified",
+      "example": "Pan-seared scallops should develop a deep golden crust while staying silky inside.",
+      "exampleTranslation": "香煎大扇贝需要煎出一层诱人的深金黄焦壳，而内部则保持丝缎般幼嫩水润。",
+      "memoryAssets": {
+        "roots": "源自日耳曼语 skal（贝壳）。扇贝闭壳肌，鲜甜细嫩、高贵优雅的西餐经典海鲜。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "seared scallops (香煎鲜贝柱)",
+          "sea scallops (深海大扇贝)",
+          "fresh scallops (新鲜扇贝)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:yolk",
+      "senseId": "lemma:yolk:core",
+      "lemma": "yolk",
+      "partOfSpeech": "n.",
+      "phonetic": "/joʊk/",
+      "meaning": "蛋黄",
+      "definitionStatus": "verified",
+      "example": "Separate the egg yolk from the white carefully without puncturing the delicate membrane.",
+      "exampleTranslation": "小心地将蛋黄与蛋清分离，注意不要戳破脆弱的蛋黄薄膜。",
+      "memoryAssets": {
+        "roots": "古英语 geolu（黄色）演变而来，字母 l 同样不发音，读作 /joʊk/。浓缩天然卵磷脂。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "egg yolk (蛋黄)",
+          "creamy yolk (流心蛋黄)",
+          "runny yolk (流心溏心蛋黄)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:butter",
+      "senseId": "lemma:butter:core",
+      "lemma": "butter",
+      "partOfSpeech": "n.",
+      "phonetic": "/'bʌtər/",
+      "meaning": "黄油，牛油",
+      "definitionStatus": "verified",
+      "example": "Melt two tablespoons of unsalted butter in a hot pan before adding the diced garlic.",
+      "exampleTranslation": "在热锅中融化两汤匙无盐黄油，然后下入蒜末煸炒提香。",
+      "memoryAssets": {
+        "roots": "源自希腊语 boutyron（牛 + 奶酪）。西餐与烘焙最重要的油脂香气基石。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "unsalted butter (无盐黄油)",
+          "melted butter (融化的黄油)",
+          "brown butter (焦化黄油)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cheddar",
+      "senseId": "lemma:cheddar:core",
+      "lemma": "cheddar",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tʃedər/",
+      "meaning": "切达干酪，切达奶酪",
+      "definitionStatus": "verified",
+      "example": "Melt a slice of aged sharp cheddar cheese directly over the juicy burger patty.",
+      "exampleTranslation": "将一片陈年浓香切达奶酪直接覆在多汁的牛肉汉堡肉饼上融化拉丝。",
+      "memoryAssets": {
+        "roots": "原产于英格兰切达村（Cheddar）。世界上生产和消耗量最大的经典硬质奶酪之一。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "sharp cheddar (浓郁重风味切达)",
+          "melted cheddar (融化的切达芝士)",
+          "cheddar slice (切达芝士片)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:flour",
+      "senseId": "lemma:flour:core",
+      "lemma": "flour",
+      "partOfSpeech": "n.",
+      "phonetic": "/flaʊər/",
+      "meaning": "面粉",
+      "definitionStatus": "verified",
+      "example": "Sift the all-purpose flour into the mixing bowl to prevent any lumps in the dough.",
+      "exampleTranslation": "把中筋面粉过筛倒入搅拌碗中，防止揉面时产生干粉结块。",
+      "memoryAssets": {
+        "roots": "与 flower（花）同源。历史上指把谷物反复研磨过滤后得到的最精纯最好的‘花’部分。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "all-purpose flour (通用中筋面粉)",
+          "bread flour (高筋面包粉)",
+          "sift the flour (过筛面粉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:simmer",
+      "senseId": "lemma:simmer:core",
+      "lemma": "simmer",
+      "partOfSpeech": "v.",
+      "phonetic": "/'sɪmər/",
+      "meaning": "文火慢炖，煨；微沸；n. 慢炖状态",
+      "definitionStatus": "verified",
+      "example": "Turn the heat down to low, cover the pot, and let the savory broth simmer for an hour.",
+      "exampleTranslation": "将火调小，盖上锅盖，让浓郁的肉汤文火慢慢慢煨一小时。",
+      "memoryAssets": {
+        "roots": "拟声词源，模拟水在临近沸腾边缘时持续冒出微小气泡的沙沙声音。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "bring to a simmer (煮至微沸)",
+          "simmer gently (轻微慢炖)",
+          "simmer over low heat (小火微沸慢煨)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:saute",
+      "senseId": "lemma:saute:core",
+      "lemma": "saute",
+      "partOfSpeech": "v.",
+      "phonetic": "/soʊ'teɪ/",
+      "meaning": "嫩煎，煸炒，用少许油脂快炒",
+      "definitionStatus": "verified",
+      "example": "Saute the finely diced shallots in olive oil until they are soft and translucent.",
+      "exampleTranslation": "将切成细丁的小红葱头倒入橄榄油中煸炒，直至变得透明柔嫩。",
+      "memoryAssets": {
+        "roots": "源自法语 sauter（跳跃）。指用少许热油、通过晃动平底锅让食材在锅内跳跃快速翻熟。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "saute in butter (黄油嫩煎)",
+          "saute until golden (煸炒至金黄色)",
+          "quick saute (快速滑炒)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:marinate",
+      "senseId": "lemma:marinate:core",
+      "lemma": "marinate",
+      "partOfSpeech": "v.",
+      "phonetic": "/'mærɪneɪt/",
+      "meaning": "腌制，浸泡腌味",
+      "definitionStatus": "verified",
+      "example": "Marinate the chicken thighs in soy sauce, garlic, and honey for at least four hours.",
+      "exampleTranslation": "将鸡腿肉浸在生抽、蒜末和蜂蜜调成的腌料中腌制至少四个小时以充分入味。",
+      "memoryAssets": {
+        "roots": "源自 marine（海洋、盐水卤水）。最初指把肉类浸在海水盐汁中保鲜腌渍。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "marinate overnight (隔夜腌制)",
+          "marinate with spices (香料浸腌)",
+          "marinated beef (腌制好的牛肉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:whisk",
+      "senseId": "lemma:whisk:core",
+      "lemma": "whisk",
+      "partOfSpeech": "v.",
+      "phonetic": "/wɪsk/",
+      "meaning": "快速搅拌，搅打；n. 打蛋器",
+      "definitionStatus": "verified",
+      "example": "Whisk the egg yolks and heavy cream together until the mixture is silky smooth.",
+      "exampleTranslation": "把蛋黄和淡奶油快速搅打在一起，直至质地柔滑均匀。",
+      "memoryAssets": {
+        "roots": "拟声动作词，形容手腕快速挥动时发出的呼呼拂风声。也是烘焙最常用的工具名。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "whisk the eggs (打发鸡蛋)",
+          "wire whisk (钢丝打蛋器)",
+          "whisk vigorously (用力快速搅打)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:drizzle",
+      "senseId": "lemma:drizzle:core",
+      "lemma": "drizzle",
+      "partOfSpeech": "v.",
+      "phonetic": "/'drɪzl/",
+      "meaning": "淋上，细细倾洒；n. 毛毛细雨",
+      "definitionStatus": "verified",
+      "example": "Drizzle a tablespoon of extra-virgin olive oil over the warm pasta before serving.",
+      "exampleTranslation": "在上桌前，将一汤匙特级初榨橄榄油缓缓淋在温热的意面上提香增亮。",
+      "memoryAssets": {
+        "roots": "原意为细蒙细雨，在西餐烹饪摆盘中引申为用小勺或细嘴瓶在菜肴表面均匀细线状浇淋酱汁。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "drizzle with honey (淋上蜂蜜)",
+          "drizzle olive oil (浇淋橄榄油)",
+          "balsamic drizzle (淋上黑醋汁)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:garnish",
+      "senseId": "lemma:garnish:core",
+      "lemma": "garnish",
+      "partOfSpeech": "v.",
+      "phonetic": "/'ɡɑːrnɪʃ/",
+      "meaning": "装饰，点缀（菜肴）；n. 装饰物",
+      "definitionStatus": "verified",
+      "example": "Garnish the creamy potato soup with chopped chives and cracked black pepper.",
+      "exampleTranslation": "用切碎的细香葱和现磨黑胡椒碎点缀这碗香浓的土豆浓汤。",
+      "memoryAssets": {
+        "roots": "源自古法语 garnir（装备、装点）。烹饪专指在出锅盛盘后放置香草、柠檬片等提升食欲。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "garnish with parsley (用欧芹点缀)",
+          "edible garnish (可食用配饰装饰)",
+          "final garnish (出盘点缀)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:roast",
+      "senseId": "lemma:roast:core",
+      "lemma": "roast",
+      "partOfSpeech": "v.",
+      "phonetic": "/roʊst/",
+      "meaning": "烘烤（肉类、整鸡、根茎蔬菜）；adj. 烤好的",
+      "definitionStatus": "verified",
+      "example": "Season the whole chicken with rosemary and roast it in the oven at 200 degrees.",
+      "exampleTranslation": "用迷迭香腌制整鸡，放入烤箱中在200摄氏度下烘烤至表皮焦香金黄。",
+      "memoryAssets": {
+        "roots": "区别于 bake（主要烤面粉类面包蛋糕），roast 专门指高温烘烤肉类、坚果或根茎类大块食材。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "roast chicken (烤全鸡)",
+          "roast vegetables (烤时蔬)",
+          "roast beef (烤牛肉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:defrost",
+      "senseId": "lemma:defrost:core",
+      "lemma": "defrost",
+      "partOfSpeech": "v.",
+      "phonetic": "/ˌdiː'frɔːst/",
+      "meaning": "解冻（冷冻食材）",
+      "definitionStatus": "verified",
+      "example": "Allow the frozen steak to defrost slowly in the refrigerator overnight.",
+      "exampleTranslation": "提前让冷冻牛排放在冷藏室里缓慢冷藏解冻一整夜，能最大程度锁住肉汁。",
+      "memoryAssets": {
+        "roots": "前缀 de-（除去）+ frost（霜冻）。指使冷冻食品回到常温或冷藏状态。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "defrost naturally (自然解冻)",
+          "defrost in the microwave (微波炉解冻)",
+          "thoroughly defrost (彻底解冻)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:poach",
+      "senseId": "lemma:poach:core",
+      "lemma": "poach",
+      "partOfSpeech": "v.",
+      "phonetic": "/poʊtʃ/",
+      "meaning": "水波煮，温水慢煮（蛋、鱼）",
+      "definitionStatus": "verified",
+      "example": "To poach an egg perfectly, create a gentle whirlpool in simmering water before dropping it in.",
+      "exampleTranslation": "制作完美的水波溏心蛋时，先把微沸的水搅出一个柔和的漩涡，再将生鸡蛋轻放进去。",
+      "memoryAssets": {
+        "roots": "源自古法语 poche（口袋），蛋清受热包裹住蛋黄就像装进口袋一样。属于健康无油低温烹调法。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "poached egg (水波蛋、溏心蛋)",
+          "poach in white wine (白葡萄酒微沸慢煮)",
+          "poached salmon (水波三文鱼)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:season",
+      "senseId": "lemma:season:core",
+      "lemma": "season",
+      "partOfSpeech": "v.",
+      "phonetic": "/'siːzn/",
+      "meaning": "调味，给...加盐调料；给铁锅开锅",
+      "definitionStatus": "verified",
+      "example": "Season both sides of the thick-cut ribeye generously with coarse sea salt and cracked pepper.",
+      "exampleTranslation": "在厚切肉眼牛排的两面慷慨地撒上海盐与黑胡椒粒进行调味。",
+      "memoryAssets": {
+        "roots": "源自季节 season。在适当的时候加入调料就像在适当时令播种收获一样，达到风味黄金平衡。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "season generously (充分调味)",
+          "season to taste (按个人口味适量调味)",
+          "season a cast-iron skillet (铁锅开锅养护)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:chop",
+      "senseId": "lemma:chop:core",
+      "lemma": "chop",
+      "partOfSpeech": "v.",
+      "phonetic": "/tʃɑːp/",
+      "meaning": "切碎，剁碎，粗切",
+      "definitionStatus": "verified",
+      "example": "Coarsely chop the fresh herbs and toss them into the mixing bowl.",
+      "exampleTranslation": "把新鲜香草粗粗切碎，然后扔进搅拌碗里备用。",
+      "memoryAssets": {
+        "roots": "拟声词，模拟手起刀落快斩的声音。比 mince（剁成极细泥状）颗粒稍大。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "chop finely (切细碎)",
+          "chop onions (切洋葱)",
+          "chopped vegetables (切碎的时蔬)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dice",
+      "senseId": "lemma:dice:core",
+      "lemma": "dice",
+      "partOfSpeech": "v.",
+      "phonetic": "/daɪs/",
+      "meaning": "切成小方块，切丁；n. 骰子",
+      "definitionStatus": "verified",
+      "example": "Dice the bell peppers and carrots into uniform small cubes for the fried rice.",
+      "exampleTranslation": "把彩椒和胡萝卜切成大小均匀整齐的小方丁，用来做香气喷喷的炒饭。",
+      "memoryAssets": {
+        "roots": "dice 原意为色子骰子。在烹饪中特指切出像小骰子一样四方方整的小立方块。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "diced tomatoes (番茄丁)",
+          "finely dice (切成细丁)",
+          "dice the potatoes (把土豆切丁)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:slice",
+      "senseId": "lemma:slice:core",
+      "lemma": "slice",
+      "partOfSpeech": "v.",
+      "phonetic": "/slaɪs/",
+      "meaning": "切片，片成薄片；n. 薄片",
+      "definitionStatus": "verified",
+      "example": "Use a sharp chef's knife to slice the tender roast beef into paper-thin portions.",
+      "exampleTranslation": "用一把锋利的主厨刀把鲜嫩的烤牛肉片成薄如蝉翼的肉片。",
+      "memoryAssets": {
+        "roots": "源自古法语 esclice（碎片、剥落）。面包、火腿、芝士切片通用此词。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "thin slice (薄片)",
+          "slice evenly (均匀切片)",
+          "bread slice (面包片)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:peel",
+      "senseId": "lemma:peel:core",
+      "lemma": "peel",
+      "partOfSpeech": "v.",
+      "phonetic": "/piːl/",
+      "meaning": "剥皮，削皮；n. 果皮",
+      "definitionStatus": "verified",
+      "example": "Peel the ripe potatoes and soak them in cold water to remove excess starch.",
+      "exampleTranslation": "把熟透的土豆削去外皮，浸泡在冷水中以去除多余的表面淀粉质。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 pilare（去毛、脱皮）。厨房中削果皮、土豆皮高频动作。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "peel potatoes (削土豆皮)",
+          "lemon peel (柠檬皮)",
+          "easy to peel (容易剥皮的)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:grate",
+      "senseId": "lemma:grate:core",
+      "lemma": "grate",
+      "partOfSpeech": "v.",
+      "phonetic": "/ɡreɪt/",
+      "meaning": "磨碎，擦成碎丝，擦蓉",
+      "definitionStatus": "verified",
+      "example": "Grate some aged Parmesan cheese over the steaming bowl of spaghetti.",
+      "exampleTranslation": "在热气腾腾的意大利面条上擦上一层厚厚的陈年帕玛森干酪碎屑。",
+      "memoryAssets": {
+        "roots": "源自古法语 grater（擦刮）。用带孔磨丝擦板把芝士、柠檬皮擦成极细茸末。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "grate cheese (擦干酪碎)",
+          "grated ginger (姜蓉)",
+          "finely grate (细细磨成末)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:rosemary",
+      "senseId": "lemma:rosemary:core",
+      "lemma": "rosemary",
+      "partOfSpeech": "n.",
+      "phonetic": "/'roʊzmeri/",
+      "meaning": "迷迭香（常用于牛排、羊肉与烤土豆）",
+      "definitionStatus": "verified",
+      "example": "A fresh sprig of rosemary infuses the melted butter with an earthy, pine-like aroma.",
+      "exampleTranslation": "一枝新鲜的迷迭香能为锅里融化的黄油注入一股浓郁温润、带有松木清香的复合风味。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 ros marinus（海之露珠）。西餐煎牛排与烤羊排的黄金搭档香草。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "sprig of rosemary (一枝迷迭香)",
+          "fresh rosemary (新鲜迷迭香)",
+          "rosemary roast potatoes (迷迭香烤土豆)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cinnamon",
+      "senseId": "lemma:cinnamon:core",
+      "lemma": "cinnamon",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sɪnəmən/",
+      "meaning": "肉桂，肉桂粉，桂皮",
+      "definitionStatus": "verified",
+      "example": "Sprinkle a dash of ground cinnamon over your morning oatmeal or apple pie.",
+      "exampleTranslation": "在清晨的热燕麦粥或刚出炉的苹果派上轻轻撒上一小撮肉桂粉。",
+      "memoryAssets": {
+        "roots": "常绿树木的干燥芳香内树皮。香甜温润，广泛用于甜点烘焙与热红酒中。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "ground cinnamon (肉桂粉)",
+          "cinnamon stick (肉桂棒)",
+          "cinnamon roll (肉桂卷)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:thyme",
+      "senseId": "lemma:thyme:core",
+      "lemma": "thyme",
+      "partOfSpeech": "n.",
+      "phonetic": "/taɪm/",
+      "meaning": "百里香（西餐高频基础香草）",
+      "definitionStatus": "verified",
+      "example": "Thyme leaves add a subtle, herbal depth to slow-cooked stews and tomato sauces.",
+      "exampleTranslation": "百里香叶片能为慢炖肉汤和番茄熬制的浓酱增添一层细腻温厚的草本深度香气。",
+      "memoryAssets": {
+        "roots": "注意首字母 th 发音为 /t/，与 time（时间）同音。耐热度高，适合长时间炖汤。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "fresh thyme (新鲜百里香)",
+          "thyme sprigs (百里香小枝)",
+          "lemon thyme (柠檬百里香)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:skillet",
+      "senseId": "lemma:skillet:core",
+      "lemma": "skillet",
+      "partOfSpeech": "n.",
+      "phonetic": "/'skɪlɪt/",
+      "meaning": "平底长柄煎锅（通常指重质铸铁或不锈钢煎锅）",
+      "definitionStatus": "verified",
+      "example": "Heat the heavy cast-iron skillet until it is smoking hot before searing the steaks.",
+      "exampleTranslation": "在高温炙烤牛排之前，先将沉重的铸铁平底锅烧至微微冒烟。",
+      "memoryAssets": {
+        "roots": "源自古法语 esculette（浅盘）。导热储热均匀，是煎出外焦里嫩牛排的核心厨具神器。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "cast-iron skillet (铸铁平底锅)",
+          "hot skillet (滚烫的平底锅)",
+          "skillet meal (一锅炖家常菜)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:spatula",
+      "senseId": "lemma:spatula:core",
+      "lemma": "spatula",
+      "partOfSpeech": "n.",
+      "phonetic": "/'spætʃələ/",
+      "meaning": "锅铲，翻刀；烘焙刮刀",
+      "definitionStatus": "verified",
+      "example": "Use a flexible silicone spatula to gently fold the egg whites into the cake batter.",
+      "exampleTranslation": "使用柔韧的硅胶刮刀将打发的蛋白霜轻轻翻拌融入蛋糕面糊中。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 spatha（阔剑、宽扁刀）。厨房里用来翻面牛排或刮净碗壁面糊的利器。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "silicone spatula (硅胶刮刀)",
+          "wooden spatula (木质锅铲)",
+          "metal spatula (不锈钢翻铲)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:colander",
+      "senseId": "lemma:colander:core",
+      "lemma": "colander",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɑːləndər/",
+      "meaning": "沥水篮，滤锅，漏勺",
+      "definitionStatus": "verified",
+      "example": "Drain the freshly boiled pasta in a stainless-steel colander over the kitchen sink.",
+      "exampleTranslation": "在厨房水槽上方，用不锈钢沥水篮将刚煮熟的意大利面沥干水分。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 colare（过滤）。底部带有很多密集滤水小孔的盆形厨具。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "drain in a colander (在沥水篮中沥干)",
+          "mesh colander (滤网漏盆)",
+          "rinse in a colander (在漏盆中冲洗)"
+        ]
+      }
+    }
+  ]
+}

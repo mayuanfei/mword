@@ -19,8 +19,8 @@ public class AppVersionService {
     private final String downloadUrl;
 
     public AppVersionService(
-        @Value("${mword.app.latest-version-code:2}") int latestVersionCode,
-        @Value("${mword.app.latest-version-name:1.0.1}") String latestVersionName,
+        @Value("${mword.app.latest-version-code:3}") int latestVersionCode,
+        @Value("${mword.app.latest-version-name:1.0.3}") String latestVersionName,
         @Value("${mword.app.min-supported-version-code:1}") int minSupportedVersionCode,
         @Value("${mword.app.changelog:}") String configuredChangelog,
         @Value("${mword.app.download-url:https://www.mayuanfei.com/mword/mword-debug.apk}") String downloadUrl

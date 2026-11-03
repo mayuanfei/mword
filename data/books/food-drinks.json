@@ -1,0 +1,356 @@
+{
+  "id": "food-drinks",
+  "name": "咖啡、烘焙与酒饮文化",
+  "description": "涵盖意式与手冲咖啡风味工艺、欧包糕点烘焙发酵、红酒精酿与佐餐饮料品鉴词汇。",
+  "version": "1.0.3",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 17,
+  "attribution": [
+    "mword 极简背词空间 · 舌尖与美食场景化精品词库",
+    "词义、地道例句与记忆资产由日常餐饮、原版食谱及餐饮场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:espresso",
+      "senseId": "lemma:espresso:core",
+      "lemma": "espresso",
+      "partOfSpeech": "n.",
+      "phonetic": "/e'spresoʊ/",
+      "meaning": "意式浓缩咖啡",
+      "definitionStatus": "verified",
+      "example": "A single shot of dark espresso is crowned with a golden, velvety layer of crema.",
+      "exampleTranslation": "一份新鲜萃取的深烘意式浓缩咖啡表面漂浮着一层金黄细腻的油脂泡沫。",
+      "memoryAssets": {
+        "roots": "源自意大利语 esprimere（高压强力挤出、现点现压）。所有奶咖与特调的母核灵魂。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "double espresso (双份意式浓缩)",
+          "espresso shot (浓缩咖啡萃取液)",
+          "espresso machine (意式咖啡机)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:americano",
+      "senseId": "lemma:americano:core",
+      "lemma": "americano",
+      "partOfSpeech": "n.",
+      "phonetic": "/əˌmerɪ'kɑːnoʊ/",
+      "meaning": "美式咖啡（浓缩加水稀释）",
+      "definitionStatus": "verified",
+      "example": "He prefers an iced americano without syrup to enjoy the clean, roasted chocolate notes.",
+      "exampleTranslation": "他喜欢喝一杯不加糖浆的冰美式咖啡，细细品味干净纯粹的黑巧克力烘焙焦香。",
+      "memoryAssets": {
+        "roots": "二战期间驻意美军喝不惯过于浓烈焦苦的纯浓缩，习惯加热水兑淡饮用，由此被意大利人戏称为 Americano。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "iced americano (冰美式)",
+          "hot americano (热美式)",
+          "extra shot americano (加浓美式)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:latte",
+      "senseId": "lemma:latte:core",
+      "lemma": "latte",
+      "partOfSpeech": "n.",
+      "phonetic": "/'lɑːteɪ/",
+      "meaning": "拿铁咖啡（浓缩加大量温热牛奶与少许薄奶泡）",
+      "definitionStatus": "verified",
+      "example": "Pouring warm micro-foamed milk into the espresso shot creates intricate latte art.",
+      "exampleTranslation": "将温热细腻微奶泡缓缓倒入浓缩咖啡中，能够在杯中制作出精美细致的拿铁拉花。",
+      "memoryAssets": {
+        "roots": "意大利语 latte 即‘牛奶’（所以在意大利单独点 latte 只会给你端来一杯纯白牛奶）。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "vanilla latte (香草拿铁)",
+          "iced latte (冰拿铁)",
+          "latte art (拿铁拉花艺术)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cappuccino",
+      "senseId": "lemma:cappuccino:core",
+      "lemma": "cappuccino",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌkæpə'tʃiːnoʊ/",
+      "meaning": "卡布奇诺（浓缩、热奶与厚绵密奶泡各占三分之一）",
+      "definitionStatus": "verified",
+      "example": "A traditional Italian cappuccino is topped with a thick, cloud-like dome of velvety milk foam.",
+      "exampleTranslation": "传统的意式卡布奇诺顶部覆盖着一层如云朵般厚实、绵密细腻的丝缎奶泡。",
+      "memoryAssets": {
+        "roots": "源自天主教圣方济各卡布遣会（Capuchin）修士棕色长袍配白色头巾的颜色对应。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "frothy cappuccino (奶泡浓厚的卡布奇诺)",
+          "dust with cocoa (撒上可可粉)",
+          "morning cappuccino (晨间卡布奇诺)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:barista",
+      "senseId": "lemma:barista:core",
+      "lemma": "barista",
+      "partOfSpeech": "n.",
+      "phonetic": "/bə'riːstə/",
+      "meaning": "咖啡师，专业冲调师",
+      "definitionStatus": "verified",
+      "example": "The skilled barista adjusted the grind size on the burr grinder for a cleaner extraction.",
+      "exampleTranslation": "这位技艺纯熟的咖啡师微调了磨豆机的研磨刻度，以获得更纯净清澈的风味萃取。",
+      "memoryAssets": {
+        "roots": "源自意大利语 bar（吧台）+ -ista（专家）。特指精通意式拼配与手冲单品萃取的专业吧台师傅。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "skilled barista (技艺精湛的咖啡师)",
+          "barista championship (世界咖啡师大赛)",
+          "head barista (首席咖啡师)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tannin",
+      "senseId": "lemma:tannin:core",
+      "lemma": "tannin",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tænɪn/",
+      "meaning": "单宁（赋予红酒涩感、骨架与陈年潜力的多酚物质）",
+      "definitionStatus": "verified",
+      "example": "This young Cabernet Sauvignon has firm, grippy tannins that soften when paired with fatty ribeye steak.",
+      "exampleTranslation": "这款年轻的赤霞珠红葡萄酒单宁紧实有力，搭配富含雪花油脂的肉眼牛排时会变得极其柔顺圆润。",
+      "memoryAssets": {
+        "roots": "源自鞣制皮革的鞣酸。来自葡萄皮、籽及橡木桶，在舌面和牙龈带来微干爽利的收敛感。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "firm tannins (紧实强劲的单宁)",
+          "silky tannins (如丝顺滑的单宁)",
+          "high in tannins (高单宁)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:acidity",
+      "senseId": "lemma:acidity:core",
+      "lemma": "acidity",
+      "partOfSpeech": "n.",
+      "phonetic": "/ə'sɪdəti/",
+      "meaning": "酸度，活泼果酸；明亮酸质",
+      "definitionStatus": "verified",
+      "example": "A high-altitude Ethiopian pour-over coffee is celebrated for its bright, floral, citrus acidity.",
+      "exampleTranslation": "产自高海拔埃塞俄比亚的手冲咖啡因其清新明快、充满花香与柑橘风味的高雅酸质而备受赞誉。",
+      "memoryAssets": {
+        "roots": "酸度是精品咖啡与葡萄酒高级感的关键指标，绝非粗暴发酸，而是让人舌底生津的灵动活力。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "bright acidity (明亮活泼的酸质)",
+          "pleasant acidity (令人愉悦的果酸)",
+          "balanced acidity (均衡的酸度)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:aroma",
+      "senseId": "lemma:aroma:core",
+      "lemma": "aroma",
+      "partOfSpeech": "n.",
+      "phonetic": "/ə'roʊmə/",
+      "meaning": "香气，芬芳，风味气息",
+      "definitionStatus": "verified",
+      "example": "Swirl the wine glass gently to aerate the wine and release its complex aromas of berries and oak.",
+      "exampleTranslation": "轻轻摇晃高脚杯让酒液与空气充分接触氧化，从而释放出浆果与烘烤橡木的复合芬芳香气。",
+      "memoryAssets": {
+        "roots": "源自希腊语 aroma（香料）。专指烘焙咖啡豆、陈年佳酿或刚烤出炉的面包散发的诱人香醇气息。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "rich aroma (馥郁香气)",
+          "coffee aroma (咖啡醇香)",
+          "fruity aroma (果香气息)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:sourdough",
+      "senseId": "lemma:sourdough:core",
+      "lemma": "sourdough",
+      "partOfSpeech": "n.",
+      "phonetic": "/'saʊərdoʊ/",
+      "meaning": "酸种面包，天然酵母酵种面包",
+      "definitionStatus": "verified",
+      "example": "A rustic loaf of artisanal sourdough features a blistered crust and an airy, open crumb.",
+      "exampleTranslation": "一只手工打造的粗粝天然酵种欧包，拥有气泡密布焦香薄脆的外壳和孔洞蓬松的大气孔内芯。",
+      "memoryAssets": {
+        "roots": "sour（酸的）+ dough（面团）。利用野生天然乳酸菌与野生酵母复合慢发酵制作的传统硬欧包。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "sourdough bread (天然酸酵欧包)",
+          "sourdough starter (天然酵母发酵种)",
+          "sourdough loaf (酸种面包大圆球)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:croissant",
+      "senseId": "lemma:croissant:core",
+      "lemma": "croissant",
+      "partOfSpeech": "n.",
+      "phonetic": "/kwɑː'sɑ̃ː; krwɑː'sɑːnt/",
+      "meaning": "可颂牛角包，羊角面包",
+      "definitionStatus": "verified",
+      "example": "Laminated with layers of French cultured butter, the freshly baked croissant flaked into golden shards.",
+      "exampleTranslation": "经过层层折叠包入优质法式发酵黄油的面团，刚烤出炉的可颂一捏便散落成一片片金黄酥脆的碎屑。",
+      "memoryAssets": {
+        "roots": "源自法语‘新月（crescent）’。烘焙开酥折叠（lamination）技艺的最高典范之作。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "buttery croissant (黄油酥香可颂)",
+          "almond croissant (杏仁可颂)",
+          "freshly baked croissant (现烤牛角包)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:yeast",
+      "senseId": "lemma:yeast:core",
+      "lemma": "yeast",
+      "partOfSpeech": "n.",
+      "phonetic": "/jiːst/",
+      "meaning": "酵母，酵母菌",
+      "definitionStatus": "verified",
+      "example": "Active dry yeast needs to be awakened in warm water with a pinch of sugar before kneading into flour.",
+      "exampleTranslation": "活性干酵母在揉入面粉前，需要在温水里加少许糖静置几分钟完成活化起泡。",
+      "memoryAssets": {
+        "roots": "古英语 gist（冒泡、沸腾发泡）。单细胞真菌生物，将糖分转化为二氧化碳气体和酒精赋予面团蓬松生命。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "instant yeast (耐高糖即发干酵母)",
+          "baker's yeast (烘焙专用酵母)",
+          "wild yeast (野生天然酵母)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:knead",
+      "senseId": "lemma:knead:core",
+      "lemma": "knead",
+      "partOfSpeech": "v.",
+      "phonetic": "/niːd/",
+      "meaning": "揉面，揉捏面团",
+      "definitionStatus": "verified",
+      "example": "Knead the elastic dough on a lightly floured countertop until the windowpane gluten test is achieved.",
+      "exampleTranslation": "在撒了少许干粉的台面上用力推按揉搓面团，直到揉出均匀透光的薄膜手套手感。",
+      "memoryAssets": {
+        "roots": "注意首字母 k 不发音，读作 /niːd/。通过反复揉拉按压强化小麦面筋蛋白质的三维网状结构。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "knead the dough (揉按面团)",
+          "knead by hand (手工手工揉面)",
+          "knead until elastic (揉至光滑充满弹性)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cocktail",
+      "senseId": "lemma:cocktail:core",
+      "lemma": "cocktail",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɑːkteɪl/",
+      "meaning": "鸡尾酒，特调调制酒",
+      "definitionStatus": "verified",
+      "example": "The bartender shook the classic gin martini with ice and strained it into a chilled coupe glass.",
+      "exampleTranslation": "调酒师将经典的杜松子金汤力马天尼加入冰块快速摇晃，过滤缓缓倾倒入冰镇香槟碟形杯中。",
+      "memoryAssets": {
+        "roots": "将基酒、果汁、糖浆、苦精或苏打水按精准比例混合调制的艺术饮品。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "craft cocktail (手工特调鸡尾酒)",
+          "signature cocktail (招牌主打鸡尾酒)",
+          "mocktail (无酒精特调鸡尾酒)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:mocktail",
+      "senseId": "lemma:mocktail:core",
+      "lemma": "mocktail",
+      "partOfSpeech": "n.",
+      "phonetic": "/'mɑːkteɪl/",
+      "meaning": "无酒精鸡尾酒，无醇特调饮料",
+      "definitionStatus": "verified",
+      "example": "For designated drivers, the bar offers refreshing mocktails infused with fresh mint and berries.",
+      "exampleTranslation": "为开车不喝酒的朋友，酒吧贴心提供了由新鲜薄荷叶和野生莓果调制的爽口无酒精特调饮品。",
+      "memoryAssets": {
+        "roots": "mock（仿制、模拟）+ cocktail。拥有鸡尾酒的高级调味层次和精致颜值，却完全零酒精负担。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "refreshing mocktail (清爽解渴无醇特调)",
+          "fruit mocktail (鲜果风味无酒精鸡尾酒)",
+          "order a mocktail (点一杯特调饮品)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:champagne",
+      "senseId": "lemma:champagne:core",
+      "lemma": "champagne",
+      "partOfSpeech": "n.",
+      "phonetic": "/ʃæm'peɪn/",
+      "meaning": "香槟酒，法国香槟起泡酒",
+      "definitionStatus": "verified",
+      "example": "We popped a bottle of vintage chilled champagne to celebrate the project launch.",
+      "exampleTranslation": "我们开启了一瓶冰镇好的年份香槟，庆祝新项目顺利上线发布。",
+      "memoryAssets": {
+        "roots": "法国香槟产区采用传统瓶内二次发酵法酿造的法定顶级起泡葡萄酒。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "vintage champagne (年份香槟)",
+          "champagne flute (郁金香细长香槟杯)",
+          "sparkling champagne (气泡丰盈的香槟)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:brew",
+      "senseId": "lemma:brew:core",
+      "lemma": "brew",
+      "partOfSpeech": "v.",
+      "phonetic": "/bruː/",
+      "meaning": "冲泡（咖啡、茶）；酿造（啤酒）；n. 冲泡饮品",
+      "definitionStatus": "verified",
+      "example": "Take your time to brew the pour-over coffee slowly with circular water motions.",
+      "exampleTranslation": "耐下心来，用由内向外均匀打圈的水流，慢慢冲泡萃取这壶手冲咖啡。",
+      "memoryAssets": {
+        "roots": "古英语 breowan（酿酒、煎熬）。制作茶水、手冲咖啡和精酿啤酒的通用核心动词。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "cold brew (冷萃咖啡)",
+          "freshly brewed (现磨现泡的)",
+          "craft brew (精酿啤酒)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:roast",
+      "senseId": "lemma:roast:core",
+      "lemma": "roast",
+      "partOfSpeech": "n.",
+      "phonetic": "/roʊst/; v.",
+      "meaning": "（咖啡豆）烘焙度；烘烤",
+      "definitionStatus": "verified",
+      "example": "A light roast preserves delicate floral acidity, while a dark roast emphasizes smoky dark chocolate body.",
+      "exampleTranslation": "浅烘焙能完好保留细腻轻盈的花果酸香，而深烘焙则赋予咖啡厚重的烟熏黑巧油脂感。",
+      "memoryAssets": {
+        "roots": "咖啡生豆受热发生一爆二爆脱水产生美拉德风味物质的关键工序。",
+        "mnemonics": "【生活场景速记】在西餐厨房、餐厅点餐或饮品吧台中高频出现，联想生活实物画面加深记忆。",
+        "collocations": [
+          "light roast (浅度烘焙)",
+          "medium roast (中度烘焙)",
+          "dark roast (深度烘焙)"
+        ]
+      }
+    }
+  ]
+}

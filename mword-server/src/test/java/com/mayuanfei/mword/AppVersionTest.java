@@ -11,11 +11,11 @@ class AppVersionTest {
     @Test
     void shouldDetectNewVersionWhenClientCodeIsOlder() {
         AppVersionService service = new AppVersionService(
-            2,
-            "1.0.1",
+            3,
+            "1.0.3",
             1,
             "",
-            "https://www.mayuanfei.com/mword-downloads/mword.apk"
+            "https://www.mayuanfei.com/mword/mword-debug.apk"
         );
         AppVersionController controller = new AppVersionController(service);
 
@@ -23,12 +23,12 @@ class AppVersionTest {
         AppDtos.VersionResponse updateResp = controller.version(1);
         Assertions.assertTrue(updateResp.hasUpdate());
         Assertions.assertFalse(updateResp.forceUpdate());
-        Assertions.assertEquals(2, updateResp.latestVersionCode());
-        Assertions.assertEquals("1.0.1", updateResp.latestVersionName());
-        Assertions.assertTrue(updateResp.changelog().contains("手机端版本检测与更新日志"));
+        Assertions.assertEquals(3, updateResp.latestVersionCode());
+        Assertions.assertEquals("1.0.3", updateResp.latestVersionName());
+        Assertions.assertTrue(updateResp.changelog().contains("场景化词书重磅上线（舌尖与美食）"));
 
-        // 客户端版本已是最新2时，应提示无更新
-        AppDtos.VersionResponse latestResp = controller.version(2);
+        // 客户端版本已是最新3时，应提示无更新
+        AppDtos.VersionResponse latestResp = controller.version(3);
         Assertions.assertFalse(latestResp.hasUpdate());
         Assertions.assertFalse(latestResp.forceUpdate());
     }
