@@ -37,18 +37,13 @@ jobs:
         run: |
           git fetch --tags --force
           INPUT_VER="${{ github.event.inputs.version }}"
+          CURRENT_TAG=$(git tag --points-at HEAD | grep -E '^v?[0-9]' | head -n 1 || true)
           if [[ -n "$INPUT_VER" ]]; then
             VERSION="${INPUT_VER#v}"
+          elif [[ -n "$CURRENT_TAG" ]]; then
+            VERSION="${CURRENT_TAG#v}"
           else
-            BASE_VERSION=$(node -p "require('./mword-client/package.json').version")
-            MAJOR_MINOR="${BASE_VERSION%.*}"
-            EXISTING=$(git tag -l "v${MAJOR_MINOR}.*" | sed "s/^v${MAJOR_MINOR}\.//" | grep -E '^[0-9]+$' | sort -n | tail -n 1 || true)
-            if [[ -z "$EXISTING" ]]; then
-              VERSION="$BASE_VERSION"
-            else
-              NEXT_PATCH=$((EXISTING + 1))
-              VERSION="${MAJOR_MINOR}.${NEXT_PATCH}"
-            fi
+            VERSION=$(node -p "require('./mword-client/package.json').version")
           fi
           TAG="v${VERSION}"
           echo "VERSION=${VERSION}" >> "$GITHUB_ENV"

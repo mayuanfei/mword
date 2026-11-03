@@ -38,6 +38,20 @@ export async function getLocalAppInfo(): Promise<LocalAppInfo> {
   };
 }
 
+// 语义化版本对比：v1 > v2 返回 1，v1 < v2 返回 -1，相等返回 0
+export function compareSemVer(v1: string, v2: string): number {
+  const p1 = (v1 || '').replace(/^v/, '').split('.').map(x => parseInt(x, 10) || 0);
+  const p2 = (v2 || '').replace(/^v/, '').split('.').map(x => parseInt(x, 10) || 0);
+  const len = Math.max(p1.length, p2.length);
+  for (let i = 0; i < len; i++) {
+    const num1 = p1[i] ?? 0;
+    const num2 = p2[i] ?? 0;
+    if (num1 > num2) return 1;
+    if (num1 < num2) return -1;
+  }
+  return 0;
+}
+
 // 检查是否存在新版本
 export async function checkAppUpdate(): Promise<{
   local: LocalAppInfo;
@@ -45,8 +59,14 @@ export async function checkAppUpdate(): Promise<{
   hasUpdate: boolean;
 }> {
   const local = await getLocalAppInfo();
-  const remote = await api<AppVersionResponse>(`/app/version?currentVersionCode=${local.build}`);
-  const hasUpdate = Boolean(remote.hasUpdate || remote.latestVersionCode > local.build);
+  const remote = await api<AppVersionResponse>(
+    `/app/version?currentVersionCode=${local.build}&currentVersionName=${encodeURIComponent(local.version)}`
+  );
+  const hasUpdate = Boolean(
+    remote.hasUpdate ||
+    remote.latestVersionCode > local.build ||
+    compareSemVer(remote.latestVersionName, local.version) > 0
+  );
   return {
     local,
     remote: {

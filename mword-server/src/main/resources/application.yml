@@ -44,7 +44,7 @@ mword:
   ai-worker-enabled: ${MW_AI_WORKER_ENABLED:true}
   ai-request-timeout-seconds: ${MW_AI_REQUEST_TIMEOUT_SECONDS:55}
   app:
-    latest-version-code: ${MW_APP_LATEST_VERSION_CODE:3}
+    latest-version-code: ${MW_APP_LATEST_VERSION_CODE:8}
     latest-version-name: ${MW_APP_LATEST_VERSION_NAME:1.0.3}
     min-supported-version-code: ${MW_APP_MIN_SUPPORTED_VERSION_CODE:1}
     changelog: ${MW_APP_LATEST_CHANGELOG:}
