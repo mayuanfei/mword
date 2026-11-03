@@ -20,9 +20,109 @@ import {
   X
 } from 'lucide-react';
 import { useLearningStore } from '../lib/store';
-import type { AdminData, AdminLedgerEntry, AdminUser, AiScene, ProviderInput } from '../lib/types';
+import type { AdminData, AdminLedgerEntry, AdminTask, AdminUsage, AdminUser, AiScene, AiStats, PageResult, ProviderInput } from '../lib/types';
 import { SCENE_NAMES } from '../lib/types';
 import { Heading, Metric, Notice, Select, formatTime } from '../components/ui';
+
+function PaginationBar({
+  page,
+  totalPages,
+  total,
+  pageSize,
+  onPageChange,
+  onPageSizeChange,
+  itemLabel = '条记录'
+}: {
+  page: number;
+  totalPages: number;
+  total: number;
+  pageSize: number;
+  onPageChange: (newPage: number) => void;
+  onPageSizeChange?: (newSize: number) => void;
+  itemLabel?: string;
+}) {
+  const safeTotalPages = Math.max(1, totalPages);
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        marginTop: 16,
+        paddingTop: 12,
+        borderTop: '1px solid #edf2e8',
+        fontSize: 12,
+        color: '#6d8357'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span>
+          共 <b>{total}</b> {itemLabel} · 第 <b>{page}</b> / <b>{safeTotalPages}</b> 页
+        </span>
+        {onPageSizeChange && (
+          <select
+            value={pageSize}
+            onChange={e => onPageSizeChange(Number(e.target.value))}
+            style={{
+              border: '1px solid #d4dfcc',
+              borderRadius: 6,
+              padding: '3px 8px',
+              fontSize: 11,
+              background: '#fcfdf9',
+              color: '#4c5e41',
+              cursor: 'pointer'
+            }}
+          >
+            <option value={10}>10 条/页</option>
+            <option value={20}>20 条/页</option>
+            <option value={50}>50 条/页</option>
+          </select>
+        )}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <button
+          type="button"
+          disabled={page <= 1}
+          onClick={() => onPageChange(1)}
+          className="button secondary small"
+          style={{ padding: '2px 8px', fontSize: 11, opacity: page <= 1 ? 0.4 : 1, cursor: page <= 1 ? 'not-allowed' : 'pointer' }}
+        >
+          首页
+        </button>
+        <button
+          type="button"
+          disabled={page <= 1}
+          onClick={() => onPageChange(page - 1)}
+          className="button secondary small"
+          style={{ padding: '2px 10px', fontSize: 11, opacity: page <= 1 ? 0.4 : 1, cursor: page <= 1 ? 'not-allowed' : 'pointer' }}
+        >
+          上一页
+        </button>
+        <span style={{ padding: '0 4px', fontWeight: 600, color: '#4c5e41' }}>{page}</span>
+        <button
+          type="button"
+          disabled={page >= safeTotalPages}
+          onClick={() => onPageChange(page + 1)}
+          className="button secondary small"
+          style={{ padding: '2px 10px', fontSize: 11, opacity: page >= safeTotalPages ? 0.4 : 1, cursor: page >= safeTotalPages ? 'not-allowed' : 'pointer' }}
+        >
+          下一页
+        </button>
+        <button
+          type="button"
+          disabled={page >= safeTotalPages}
+          onClick={() => onPageChange(safeTotalPages)}
+          className="button secondary small"
+          style={{ padding: '2px 8px', fontSize: 11, opacity: page >= safeTotalPages ? 0.4 : 1, cursor: page >= safeTotalPages ? 'not-allowed' : 'pointer' }}
+        >
+          末页
+        </button>
+      </div>
+    </div>
+  );
+}
 
 const emptyProvider: ProviderInput = {
   name: '',
@@ -43,27 +143,118 @@ const LEDGER_KIND_LABELS: Record<string, string> = {
 };
 
 export function AdminAiPage() {
-  const { user, loadAdmin, saveProvider, deleteProvider } = useLearningStore();
-  const [data, setData] = useState<AdminData>({ providers: [], users: [], usage: [], tasks: [] });
+  const {
+    user,
+    loadAdmin,
+    loadAdminUsagePage,
+    loadAdminTasksPage,
+    loadAiStats,
+    saveProvider,
+    deleteProvider
+  } = useLearningStore();
+
+  const [data, setData] = useState<{ providers: AdminData['providers']; users: AdminUser[] }>({
+    providers: [],
+    users: []
+  });
+  const [stats, setStats] = useState<AiStats>({ totalTokens: 0, activeTasks: 0, totalTasks: 0 });
   const [form, setForm] = useState<ProviderInput>({ ...emptyProvider });
   const [editing, setEditing] = useState<string | undefined>();
   const [showForm, setShowForm] = useState(false);
-  const [usageSearch, setUsageSearch] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  async function refresh() {
+  // AI 调用与用户用量明细服务端分页状态
+  const [usagePage, setUsagePage] = useState(1);
+  const [usagePageSize, setUsagePageSize] = useState(10);
+  const [usageSearchInput, setUsageSearchInput] = useState('');
+  const [usageSearch, setUsageSearch] = useState('');
+  const [usageData, setUsageData] = useState<PageResult<AdminUsage>>({
+    items: [],
+    total: 0,
+    page: 1,
+    pageSize: 10,
+    totalPages: 1
+  });
+  const [usageLoading, setUsageLoading] = useState(false);
+
+  // 服务端异步生成任务队列服务端分页状态
+  const [taskPage, setTaskPage] = useState(1);
+  const [taskPageSize, setTaskPageSize] = useState(10);
+  const [taskStatus, setTaskStatus] = useState<string>('ALL');
+  const [taskData, setTaskData] = useState<PageResult<AdminTask>>({
+    items: [],
+    total: 0,
+    page: 1,
+    pageSize: 10,
+    totalPages: 1
+  });
+  const [taskLoading, setTaskLoading] = useState(false);
+
+  async function refreshProvidersAndStats() {
     try {
-      setData(await loadAdmin());
+      const [adminRes, statsRes] = await Promise.all([
+        loadAdmin(),
+        loadAiStats().catch(() => null)
+      ]);
+      setData({ providers: adminRes.providers, users: adminRes.users });
+      if (statsRes) {
+        setStats(statsRes);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'AI 管理数据加载失败');
     }
   }
 
+  async function fetchUsage(page: number, pageSize: number, search: string) {
+    setUsageLoading(true);
+    try {
+      const res = await loadAdminUsagePage(page, pageSize, search);
+      setUsageData(res);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '用量明细加载失败');
+    } finally {
+      setUsageLoading(false);
+    }
+  }
+
+  async function fetchTasks(page: number, pageSize: number, status: string) {
+    setTaskLoading(true);
+    try {
+      const res = await loadAdminTasksPage(page, pageSize, status);
+      setTaskData(res);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '任务队列加载失败');
+    } finally {
+      setTaskLoading(false);
+    }
+  }
+
+  async function refreshAll() {
+    setBusy(true);
+    try {
+      await Promise.all([
+        refreshProvidersAndStats(),
+        fetchUsage(usagePage, usagePageSize, usageSearch),
+        fetchTasks(taskPage, taskPageSize, taskStatus)
+      ]);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   useEffect(() => {
-    if (user?.role === 'ADMIN') void refresh();
+    if (user?.role === 'ADMIN') void refreshProvidersAndStats();
   }, [user?.role]);
+
+  useEffect(() => {
+    if (user?.role === 'ADMIN') void fetchUsage(usagePage, usagePageSize, usageSearch);
+  }, [user?.role, usagePage, usagePageSize, usageSearch]);
+
+  useEffect(() => {
+    if (user?.role === 'ADMIN') void fetchTasks(taskPage, taskPageSize, taskStatus);
+  }, [user?.role, taskPage, taskPageSize, taskStatus]);
 
   useEffect(() => {
     if (!showForm) return;
@@ -83,14 +274,6 @@ export function AdminAiPage() {
   }
 
   const enabledCount = data.providers.filter(p => p.enabled).length;
-  const totalTokens = (data.usage ?? []).reduce((sum, u) => sum + (u.inputTokens ?? 0) + (u.outputTokens ?? 0), 0);
-  const activeTaskCount = (data.tasks ?? []).filter(t => t.status === 'QUEUED' || t.status === 'RUNNING').length;
-
-  const filteredUsage = (data.usage ?? []).filter(item => {
-    if (!usageSearch.trim()) return true;
-    const q = usageSearch.trim().toLowerCase();
-    return item.username.toLowerCase().includes(q) || SCENE_NAMES[item.scene].toLowerCase().includes(q);
-  });
 
   function closeForm() {
     setShowForm(false);
@@ -106,7 +289,7 @@ export function AdminAiPage() {
       await saveProvider({ ...form, apiKey: form.apiKey?.trim() || undefined }, editing);
       closeForm();
       setMessage('供应商配置已保存，密钥已加密入库。');
-      await refresh();
+      await refreshProvidersAndStats();
     } catch (e) {
       setForm(previous => ({ ...previous, apiKey: '' }));
       setError(e instanceof Error ? e.message : '配置未保存，请重新输入密钥后重试');
@@ -132,7 +315,7 @@ export function AdminAiPage() {
         provider.id
       );
       setMessage(`已${provider.enabled ? '停用' : '启用'}供应商“${provider.name}”`);
-      await refresh();
+      await refreshProvidersAndStats();
     } catch (e) {
       setError(e instanceof Error ? e.message : '状态切换失败');
     } finally {
@@ -152,11 +335,10 @@ export function AdminAiPage() {
               className="button secondary small"
               disabled={busy}
               onClick={() => {
-                setBusy(true);
-                void refresh().finally(() => setBusy(false));
+                void refreshAll();
               }}
             >
-              <RefreshCw size={13} /> 刷新数据
+              <RefreshCw size={13} className={busy ? 'spin' : ''} /> 刷新数据
             </button>
             <button
               className="button small"
@@ -189,23 +371,23 @@ export function AdminAiPage() {
         />
         <Metric
           label="AI 调用总计"
-          value={data.usage?.length ?? 0}
+          value={usageData.total}
           unit="次"
-          detail="近期模型请求记录"
+          detail="模型请求记录总数"
           icon={<Sparkles size={14} />}
         />
         <Metric
           label="累计 Token 消耗"
-          value={totalTokens.toLocaleString()}
+          value={stats.totalTokens.toLocaleString()}
           unit="tokens"
           detail="输入与输出 Token 合计"
           icon={<Wallet size={14} />}
         />
         <Metric
           label="活跃生成任务"
-          value={activeTaskCount}
+          value={stats.activeTasks}
           unit="个"
-          detail={`历史任务共 ${data.tasks?.length ?? 0} 条`}
+          detail={`任务队列总计 ${taskData.total || stats.totalTasks} 条`}
           icon={<RefreshCw size={14} />}
         />
       </section>
@@ -403,7 +585,7 @@ export function AdminAiPage() {
                           onClick={() => {
                             if (window.confirm(`确认删除供应商“${provider.name}”吗？`)) {
                               void deleteProvider(provider.id)
-                                .then(refresh)
+                                .then(refreshProvidersAndStats)
                                 .catch(e => setError(e instanceof Error ? e.message : '删除失败'));
                             }
                           }}
@@ -426,57 +608,110 @@ export function AdminAiPage() {
         <div className="card-title">
           <h2>AI 调用与用户用量明细</h2>
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            <input
-              value={usageSearch}
-              onChange={e => setUsageSearch(e.target.value)}
-              placeholder="搜索用户名或场景…"
-              style={{
-                border: '1px solid #e2e8da',
-                borderRadius: 8,
-                padding: '6px 10px',
-                fontSize: 11,
-                background: '#fcfdf9'
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+              <Search size={13} style={{ position: 'absolute', left: 10, color: '#9aa88a' }} />
+              <input
+                value={usageSearchInput}
+                onChange={e => setUsageSearchInput(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    setUsagePage(1);
+                    setUsageSearch(usageSearchInput.trim());
+                  }
+                }}
+                placeholder="搜索用户名或场景…"
+                style={{
+                  border: '1px solid #e2e8da',
+                  borderRadius: 8,
+                  padding: '6px 10px 6px 28px',
+                  fontSize: 11,
+                  background: '#fcfdf9',
+                  minWidth: 180
+                }}
+              />
+            </div>
+            <button
+              type="button"
+              className="button secondary small"
+              onClick={() => {
+                setUsagePage(1);
+                setUsageSearch(usageSearchInput.trim());
               }}
-            />
+              style={{ padding: '5px 10px', fontSize: 11 }}
+            >
+              搜索
+            </button>
+            {usageSearch && (
+              <button
+                type="button"
+                className="button secondary small"
+                onClick={() => {
+                  setUsageSearchInput('');
+                  setUsageSearch('');
+                  setUsagePage(1);
+                }}
+                style={{ padding: '5px 8px', fontSize: 11 }}
+              >
+                重置
+              </button>
+            )}
           </div>
         </div>
         <p className="muted-copy">Token 与耗时来自服务端实时调用账本；失败或取消的任务会自动退回预占额度。</p>
-        {filteredUsage.length ? (
-          <div className="table-scroll">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>用户</th>
-                  <th>功能场景</th>
-                  <th>状态 / 额度结算</th>
-                  <th>输入 Token</th>
-                  <th>输出 Token</th>
-                  <th>响应耗时</th>
-                  <th>调用时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredUsage.map(item => (
-                  <tr key={item.id}>
-                    <td>
-                      <b>{item.username}</b>
-                    </td>
-                    <td>
-                      <span className="pill">{SCENE_NAMES[item.scene]}</span>
-                    </td>
-                    <td>
-                      {item.status === 'FAILED' ? '已释放' : item.status === 'SUCCEEDED' ? '已消耗' : '预占中'}
-                      <small>{item.status === 'FAILED' ? '未扣除额度' : `${item.cost} 额度`}</small>
-                    </td>
-                    <td>{item.inputTokens ?? '—'}</td>
-                    <td>{item.outputTokens ?? '—'}</td>
-                    <td>{item.durationMs == null ? '—' : `${(item.durationMs / 1000).toFixed(1)} 秒`}</td>
-                    <td>{formatTime(item.createdAt)}</td>
+        {usageLoading ? (
+          <p className="muted-copy" style={{ padding: '24px 0', textAlign: 'center' }}>
+            正在加载用量明细…
+          </p>
+        ) : usageData.items.length ? (
+          <>
+            <div className="table-scroll">
+              <table className="admin-table">
+                <thead>
+                  <tr>
+                    <th>用户</th>
+                    <th>功能场景</th>
+                    <th>状态 / 额度结算</th>
+                    <th>输入 Token</th>
+                    <th>输出 Token</th>
+                    <th>响应耗时</th>
+                    <th>调用时间</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {usageData.items.map(item => (
+                    <tr key={item.id}>
+                      <td>
+                        <b>{item.username}</b>
+                      </td>
+                      <td>
+                        <span className="pill">{SCENE_NAMES[item.scene] || item.scene}</span>
+                      </td>
+                      <td>
+                        {item.status === 'FAILED' ? '已释放' : item.status === 'SUCCEEDED' ? '已消耗' : '预占中'}
+                        <small>{item.status === 'FAILED' ? '未扣除额度' : `${item.cost} 额度`}</small>
+                      </td>
+                      <td>{item.inputTokens ?? '—'}</td>
+                      <td>{item.outputTokens ?? '—'}</td>
+                      <td>{item.durationMs == null ? '—' : `${(item.durationMs / 1000).toFixed(1)} 秒`}</td>
+                      <td>{formatTime(item.createdAt)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <PaginationBar
+              page={usageData.page}
+              totalPages={usageData.totalPages}
+              total={usageData.total}
+              pageSize={usagePageSize}
+              onPageChange={setUsagePage}
+              onPageSizeChange={size => {
+                setUsagePageSize(size);
+                setUsagePage(1);
+              }}
+              itemLabel="条记录"
+            />
+          </>
         ) : (
           <p className="muted-copy" style={{ marginTop: 14 }}>
             暂无匹配的模型调用记录。
@@ -486,38 +721,88 @@ export function AdminAiPage() {
 
       <section className="card settings-card">
         <div className="card-title">
-          <h2>服务端异步生成任务队列</h2>
-          <small>持久化队列 · 用户离开页面后仍在后台执行</small>
-        </div>
-        {data.tasks?.length ? (
-          <div className="task-list">
-            {data.tasks.slice(0, 30).map(task => (
-              <div className="task-card" key={task.id}>
-                <header>
-                  <span className="pill">{SCENE_NAMES[task.scene]}</span>
-                  <span className={`task-state ${task.status.toLowerCase()}`}>
-                    {task.status === 'QUEUED'
-                      ? '等待执行'
-                      : task.status === 'RUNNING'
-                        ? '执行中'
-                        : task.status === 'SUCCEEDED'
-                          ? '已成功'
-                          : '已失败'}
-                  </span>
-                </header>
-                <small>
-                  用户：{data.users.find(item => item.id === task.userId)?.username || task.userId} ·{' '}
-                  {formatTime(task.createdAt)} · {task.status === 'FAILED' ? '未扣除额度' : `${task.cost} 额度`}
-                </small>
-                {task.error && <p className="task-error">{task.error}</p>}
-                <p className="source-note">
-                  请求编号：{task.requestId} · 最后更新：{formatTime(task.updatedAt)}
-                </p>
-              </div>
+          <div>
+            <h2>服务端异步生成任务队列</h2>
+            <small style={{ color: '#88987b', fontSize: 11 }}>持久化队列 · 用户离开页面后仍在后台执行</small>
+          </div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+            {[
+              { key: 'ALL', label: '全部' },
+              { key: 'QUEUED', label: '等待中' },
+              { key: 'RUNNING', label: '执行中' },
+              { key: 'SUCCEEDED', label: '已成功' },
+              { key: 'FAILED', label: '已失败' }
+            ].map(tab => (
+              <button
+                key={tab.key}
+                type="button"
+                onClick={() => {
+                  setTaskStatus(tab.key);
+                  setTaskPage(1);
+                }}
+                className={`pill ${taskStatus === tab.key ? 'active' : ''}`}
+                style={{
+                  border: taskStatus === tab.key ? '1px solid #6d8357' : '1px solid #d4dfcc',
+                  background: taskStatus === tab.key ? '#6d8357' : '#fcfdf9',
+                  color: taskStatus === tab.key ? '#ffffff' : '#5a6d4d',
+                  cursor: 'pointer',
+                  fontSize: 11,
+                  padding: '3px 10px',
+                  fontWeight: taskStatus === tab.key ? 600 : 400
+                }}
+              >
+                {tab.label}
+              </button>
             ))}
           </div>
+        </div>
+        {taskLoading ? (
+          <p className="muted-copy" style={{ padding: '24px 0', textAlign: 'center' }}>
+            正在拉取任务队列…
+          </p>
+        ) : taskData.items.length ? (
+          <>
+            <div className="task-list">
+              {taskData.items.map(task => (
+                <div className="task-card" key={task.id}>
+                  <header>
+                    <span className="pill">{SCENE_NAMES[task.scene] || task.scene}</span>
+                    <span className={`task-state ${task.status.toLowerCase()}`}>
+                      {task.status === 'QUEUED'
+                        ? '等待执行'
+                        : task.status === 'RUNNING'
+                          ? '执行中'
+                          : task.status === 'SUCCEEDED'
+                            ? '已成功'
+                            : '已失败'}
+                    </span>
+                  </header>
+                  <small>
+                    用户：{task.username || data.users.find(item => item.id === task.userId)?.username || task.userId} ·{' '}
+                    {formatTime(task.createdAt)} · {task.status === 'FAILED' ? '未扣除额度' : `${task.cost} 额度`}
+                  </small>
+                  {task.error && <p className="task-error">{task.error}</p>}
+                  <p className="source-note">
+                    请求编号：{task.requestId} · 最后更新：{formatTime(task.updatedAt)}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <PaginationBar
+              page={taskData.page}
+              totalPages={taskData.totalPages}
+              total={taskData.total}
+              pageSize={taskPageSize}
+              onPageChange={setTaskPage}
+              onPageSizeChange={size => {
+                setTaskPageSize(size);
+                setTaskPage(1);
+              }}
+              itemLabel="个任务"
+            />
+          </>
         ) : (
-          <p className="muted-copy">暂无异步生成任务。</p>
+          <p className="muted-copy">暂无匹配的异步生成任务。</p>
         )}
       </section>
     </>

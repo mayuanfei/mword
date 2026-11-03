@@ -53,7 +53,9 @@ export interface CreateAdminUserInput {
   remark?: string;
 }
 export interface AdminUsage { id: string; userId: string; username: string; scene: AiScene; cost: number; status: string; inputTokens: number | null; outputTokens: number | null; durationMs: number | null; createdAt: string }
-export interface AdminTask { id: string; userId: string; requestId: string; scene: AiScene; status: string; cost: number; error: string | null; createdAt: string; updatedAt: string }
+export interface AdminTask { id: string; userId: string; username?: string; requestId: string; scene: AiScene; status: string; cost: number; error: string | null; createdAt: string; updatedAt: string }
+export interface PageResult<T> { items: T[]; total: number; page: number; pageSize: number; totalPages: number }
+export interface AiStats { totalTokens: number; activeTasks: number; totalTasks: number }
 export interface AdminData { providers: Provider[]; users: AdminUser[]; usage?: AdminUsage[]; tasks?: AdminTask[] }
 export interface SyncStatus { pending: number; lastSyncAt: string | null; status: 'idle' | 'syncing' | 'error'; error: string | null }
 export interface AppVersionResponse {

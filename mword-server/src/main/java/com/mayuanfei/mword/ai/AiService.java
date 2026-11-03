@@ -109,6 +109,88 @@ public class AiService {
     public List<Map<String,Object>> adminUsage(){return adminDates(jdbc.queryForList("SELECT t.id,t.user_id AS userId,u.username,t.scene,t.cost,t.status,t.input_tokens AS inputTokens,t.output_tokens AS outputTokens,t.duration_ms AS durationMs,t.created_at AS createdAt FROM mw_ai_task t JOIN mw_user u ON u.id=t.user_id ORDER BY t.created_at DESC LIMIT 500"));}
     public List<Map<String,Object>> adminTasks(){return adminDates(jdbc.queryForList("SELECT id,user_id AS userId,request_id AS requestId,scene,status,cost,error_message AS error,created_at AS createdAt,updated_at AS updatedAt FROM mw_ai_task ORDER BY created_at DESC LIMIT 500"));}
 
+    public AiDtos.PageResult<Map<String,Object>> adminUsagePage(Integer page, Integer pageSize, String search) {
+        int p = (page == null || page < 1) ? 1 : page;
+        int size = (pageSize == null || pageSize < 1 || pageSize > 100) ? 10 : pageSize;
+        int offset = (p - 1) * size;
+        String where = "";
+        List<Object> countArgs = new ArrayList<>();
+        List<Object> queryArgs = new ArrayList<>();
+        if (search != null && !search.isBlank()) {
+            where = " WHERE u.username LIKE ? OR t.scene LIKE ? ";
+            String pattern = "%" + search.trim() + "%";
+            countArgs.add(pattern);
+            countArgs.add(pattern);
+            queryArgs.add(pattern);
+            queryArgs.add(pattern);
+        }
+        long total = jdbc.queryForObject(
+            "SELECT COUNT(*) FROM mw_ai_task t JOIN mw_user u ON u.id=t.user_id" + where,
+            Long.class,
+            countArgs.toArray()
+        );
+        queryArgs.add(size);
+        queryArgs.add(offset);
+        String sql = "SELECT t.id,t.user_id AS userId,u.username,t.scene,t.cost,t.status," +
+                     "t.input_tokens AS inputTokens,t.output_tokens AS outputTokens," +
+                     "t.duration_ms AS durationMs,t.created_at AS createdAt " +
+                     "FROM mw_ai_task t JOIN mw_user u ON u.id=t.user_id" + where +
+                     " ORDER BY t.created_at DESC LIMIT ? OFFSET ?";
+        List<Map<String,Object>> rows = adminDates(jdbc.queryForList(sql, queryArgs.toArray()));
+        int totalPages = (int) Math.ceil((double) total / size);
+        return new AiDtos.PageResult<>(rows, total, p, size, totalPages);
+    }
+
+    public AiDtos.PageResult<Map<String,Object>> adminTasksPage(Integer page, Integer pageSize, String status) {
+        int p = (page == null || page < 1) ? 1 : page;
+        int size = (pageSize == null || pageSize < 1 || pageSize > 100) ? 10 : pageSize;
+        int offset = (p - 1) * size;
+        String countWhere = "";
+        String queryWhere = "";
+        List<Object> countArgs = new ArrayList<>();
+        List<Object> queryArgs = new ArrayList<>();
+        if (status != null && !status.isBlank() && !"ALL".equalsIgnoreCase(status)) {
+            countWhere = " WHERE status = ? ";
+            queryWhere = " WHERE t.status = ? ";
+            countArgs.add(status.trim().toUpperCase());
+            queryArgs.add(status.trim().toUpperCase());
+        }
+        long total = jdbc.queryForObject(
+            "SELECT COUNT(*) FROM mw_ai_task" + countWhere,
+            Long.class,
+            countArgs.toArray()
+        );
+        queryArgs.add(size);
+        queryArgs.add(offset);
+        String sql = "SELECT t.id,t.user_id AS userId,u.username,t.request_id AS requestId,t.scene,t.status,t.cost," +
+                     "t.error_message AS error,t.created_at AS createdAt,t.updated_at AS updatedAt " +
+                     "FROM mw_ai_task t LEFT JOIN mw_user u ON u.id=t.user_id" + queryWhere +
+                     " ORDER BY t.created_at DESC LIMIT ? OFFSET ?";
+        List<Map<String,Object>> rows = adminDates(jdbc.queryForList(sql, queryArgs.toArray()));
+        int totalPages = (int) Math.ceil((double) total / size);
+        return new AiDtos.PageResult<>(rows, total, p, size, totalPages);
+    }
+
+    public Map<String,Object> adminStats() {
+        Long totalTokens = jdbc.queryForObject(
+            "SELECT COALESCE(SUM(input_tokens + output_tokens), 0) FROM mw_ai_task",
+            Long.class
+        );
+        Long activeTasks = jdbc.queryForObject(
+            "SELECT COUNT(*) FROM mw_ai_task WHERE status IN ('QUEUED', 'RUNNING')",
+            Long.class
+        );
+        Long totalTasks = jdbc.queryForObject(
+            "SELECT COUNT(*) FROM mw_ai_task",
+            Long.class
+        );
+        return Map.of(
+            "totalTokens", totalTokens == null ? 0L : totalTokens,
+            "activeTasks", activeTasks == null ? 0L : activeTasks,
+            "totalTasks", totalTasks == null ? 0L : totalTasks
+        );
+    }
+
     //////////////////////////////////////公私有方法分割线//////////////////////////////////
 
     private void validate(AiDtos.CreateTask input){

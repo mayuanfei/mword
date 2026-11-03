@@ -8,7 +8,7 @@ import { syncReviewReminder } from './native';
 import { calculateStates, mergeEvents, SCHEDULER_VERSION } from './scheduler';
 import { advanceStudySession, assertSessionPosition, SessionPositionError } from './studySession';
 import type { SessionPosition, StudySession } from './types';
-import { DEFAULT_PROFILE, type AdminData, type AdminLedgerEntry, type AiRequest, type AiTask, type Article, type AuthResponse, type Book, type CreateAdminUserInput, type Profile, type ProviderInput, type Quota, type Rating, type ReadingEvent, type ReviewEvent, type ReviewState, type SyncResponse, type SyncStatus, type Usage, type User, type Word } from './types';
+import { DEFAULT_PROFILE, type AdminData, type AdminLedgerEntry, type AdminTask, type AdminUsage, type AiRequest, type AiStats, type AiTask, type Article, type AuthResponse, type Book, type CreateAdminUserInput, type PageResult, type Profile, type ProviderInput, type Quota, type Rating, type ReadingEvent, type ReviewEvent, type ReviewState, type SyncResponse, type SyncStatus, type Usage, type User, type Word } from './types';
 
 interface AccountCache {
   user: User; profile: Profile; events: ReviewEvent[]; readingEvents: ReadingEvent[]; articles: Article[];
@@ -39,6 +39,9 @@ interface LearningStore {
   requestAi(input: AiRequest): Promise<AiTask>; refreshAccount(): Promise<void>;
   createArticle(input: { title: string; body: string; targetWordIds: string[] }): Promise<Article>;
   clearError(): void; loadAdmin(): Promise<AdminData>; saveProvider(input: ProviderInput, id?: string): Promise<void>;
+  loadAdminUsagePage(page: number, pageSize: number, search?: string): Promise<PageResult<AdminUsage>>;
+  loadAdminTasksPage(page: number, pageSize: number, status?: string): Promise<PageResult<AdminTask>>;
+  loadAiStats(): Promise<AiStats>;
   deleteProvider(id: string): Promise<void>; adjustQuota(userId: string, amount: number, reason: string): Promise<void>;
   createAdminUser(input: CreateAdminUserInput): Promise<void>;
   updateUserStatus(userId: string, status: 'ACTIVE' | 'DISABLED'): Promise<void>;
@@ -431,6 +434,19 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
   },
   clearError() { set({ error: null }); },
   async loadAdmin() { const [providers, users, usage, tasks] = await Promise.all([api<AdminData['providers']>('/admin/providers'), api<AdminData['users']>('/admin/users'), api<AdminData['usage']>('/admin/usage'), api<AdminData['tasks']>('/admin/tasks')]); return { providers, users, usage, tasks }; },
+  async loadAdminUsagePage(page, pageSize, search) {
+    const params = new URLSearchParams({ page: String(page), pageSize: String(pageSize) });
+    if (search?.trim()) params.set('search', search.trim());
+    return api<PageResult<AdminUsage>>(`/admin/usage?${params.toString()}`);
+  },
+  async loadAdminTasksPage(page, pageSize, status) {
+    const params = new URLSearchParams({ page: String(page), pageSize: String(pageSize) });
+    if (status && status !== 'ALL') params.set('status', status);
+    return api<PageResult<AdminTask>>(`/admin/tasks?${params.toString()}`);
+  },
+  async loadAiStats() {
+    return api<AiStats>('/admin/ai-stats');
+  },
   async saveProvider(input, id) { await api(`/admin/providers${id ? `/${id}` : ''}`, id ? 'PUT' : 'POST', input); },
   async deleteProvider(id) { await api(`/admin/providers/${id}`, 'DELETE'); },
   async adjustQuota(userId, amount, reason) {

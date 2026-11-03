@@ -27,4 +27,5 @@ public final class AiDtos {
                                 boolean enabled,List<Scene> scenes,@Min(-1000) @Max(1000) int priority) {}
     public record QuotaAdjustment(@NotBlank @Size(max=100) String requestId,@Min(-1000000) @Max(1000000) long amount,
                                   @NotBlank @Size(max=200) String reason) {}
+    public record PageResult<T>(List<T> items, long total, int page, int pageSize, int totalPages) {}
 }
