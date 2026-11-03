@@ -1,0 +1,716 @@
+{
+  "id": "health-fitness",
+  "name": "健身锻炼与运动解剖",
+  "description": "核心肌群解剖定位、三大项与分化训练动作要领、增肌刷脂与有氧耐力运动专项词汇。",
+  "version": "1.0.4",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 35,
+  "attribution": [
+    "mword 极简背词空间 · 身体与健康场景化精品词库",
+    "词义、地道例句与记忆资产由日常生活、医疗问诊与运动健身解剖场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:hamstring",
+      "senseId": "lemma:hamstring:core",
+      "lemma": "hamstring",
+      "partOfSpeech": "n.",
+      "phonetic": "/'hæmstrɪŋ/",
+      "meaning": "腘绳肌，大腿后侧肌群",
+      "definitionStatus": "verified",
+      "example": "Always warm up properly to avoid pulling your hamstrings during sprint drills.",
+      "exampleTranslation": "在进行百米冲刺跑训练前务必充分热身，以防大腿后侧腘绳肌严重拉伤。",
+      "memoryAssets": {
+        "roots": "ham（膝后弯曲窝）+ string（紧绷有力的腱索肌肉带）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "pulled hamstring (腘绳肌拉伤)",
+          "hamstring stretch (大腿后侧拉伸)",
+          "hamstring curl (俯卧腿弯举)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:plank",
+      "senseId": "lemma:plank:core",
+      "lemma": "plank",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/plæŋk/",
+      "meaning": "平板支撑；支撑锻炼",
+      "definitionStatus": "verified",
+      "example": "Hold a straight plank for sixty seconds to reinforce your deep abdominal wall.",
+      "exampleTranslation": "坚持标准身体笔直的平板支撑六十秒，能切实强化你的深层腹横肌腹壁。",
+      "memoryAssets": {
+        "roots": "字面意思为平整坚硬的厚木板，形象比喻全身笔直绷紧如木板。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "forearm plank (肘板支撑)",
+          "side plank (侧向平板支撑)",
+          "plank challenge (平板支撑打卡挑战)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cardio",
+      "senseId": "lemma:cardio:core",
+      "lemma": "cardio",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɑːrdioʊ/",
+      "meaning": "有氧运动，心肺训练",
+      "definitionStatus": "verified",
+      "example": "Thirty minutes of morning cardio helps burn fat and boost your cardiovascular stamina.",
+      "exampleTranslation": "清晨三十分钟的有氧跑步有助于消耗多余体脂并提升心肺耐力机能。",
+      "memoryAssets": {
+        "roots": "源自希腊语 kardia（心脏），心血管耐力运动的简称。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "cardio workout (有氧训练课)",
+          "do cardio (做有氧运动)",
+          "intense cardio (高强度心肺锻炼)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:hypertrophy",
+      "senseId": "lemma:hypertrophy:core",
+      "lemma": "hypertrophy",
+      "partOfSpeech": "n.",
+      "phonetic": "/haɪ'pɜːrtrəfi/",
+      "meaning": "肌肉肥大，肌肥大增肌",
+      "definitionStatus": "verified",
+      "example": "Sets of eight to twelve repetitions with moderate weights are optimal for muscle hypertrophy.",
+      "exampleTranslation": "采用中等重量每组完成 8 至 12 次标准动作，是刺激骨骼肌肥大增肌的黄金区间。",
+      "memoryAssets": {
+        "roots": "hyper-（过度、超出常规）+ trophy（滋养、细胞生长）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "muscle hypertrophy (肌纤维肥大/增肌)",
+          "hypertrophy training (增肌健美专项训练)",
+          "stimulate hypertrophy (刺激肌肉增大)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:squat",
+      "senseId": "lemma:squat:core",
+      "lemma": "squat",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/skwɑːt/",
+      "meaning": "深蹲；下蹲动作",
+      "definitionStatus": "verified",
+      "example": "Keep your knees aligned with your toes as you lower into a deep squat.",
+      "exampleTranslation": "下蹲做深蹲动作时，膝盖方向务必与双脚脚尖保持同向对齐。",
+      "memoryAssets": {
+        "roots": "古法语 esquatir（向下挤压、蹲伏贴近地面）。力量三大项之首。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "barbell squat (杠铃深蹲)",
+          "bodyweight squat (徒手深蹲)",
+          "squat depth (深蹲下沉深度)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:lunge",
+      "senseId": "lemma:lunge:core",
+      "lemma": "lunge",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/lʌndʒ/",
+      "meaning": "箭步蹲，弓步跨步",
+      "definitionStatus": "verified",
+      "example": "Walking lunges are fantastic for sculpting glute muscles and enhancing single-leg balance.",
+      "exampleTranslation": "行进间箭步蹲对于雕刻饱满翘臀和提升单腿核心平衡力效果非凡。",
+      "memoryAssets": {
+        "roots": "源自法语 allonge（手臂或躯干向前伸展跨出）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "walking lunges (行进间箭步蹲)",
+          "reverse lunge (后跨步弓箭步)",
+          "lunge jump (跳跃箭步蹲)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:deadlift",
+      "senseId": "lemma:deadlift:core",
+      "lemma": "deadlift",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/'dedlɪft/",
+      "meaning": "硬拉；硬举",
+      "definitionStatus": "verified",
+      "example": "The conventional deadlift engages your entire posterior chain from heels to traps.",
+      "exampleTranslation": "传统硬拉能调动激活从足跟、腘绳肌、臀大肌到上背斜方肌的整条后侧动力链。",
+      "memoryAssets": {
+        "roots": "dead（静止不动的死重物）+ lift（提升），从地面静止死重直接拔起拉升。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "Romanian deadlift / RDL (罗马尼亚硬拉)",
+          "conventional deadlift (传统地面硬拉)",
+          "deadlift form (硬拉规范姿态)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:biceps",
+      "senseId": "lemma:biceps:core",
+      "lemma": "biceps",
+      "partOfSpeech": "n.",
+      "phonetic": "/'baɪseps/",
+      "meaning": "肱二头肌，二头肌",
+      "definitionStatus": "verified",
+      "example": "Focus on the mind-muscle connection during dumbbell curls to peak your biceps.",
+      "exampleTranslation": "在做哑铃弯举动作时将注意力聚焦于意念肌联结，能让肱二头肌获得极致泵感。",
+      "memoryAssets": {
+        "roots": "bi-（双、两个）+ ceps/caput（头），具有长头与短头两个肌腱起点的上臂肌肉。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "biceps curl (二头肌弯举)",
+          "biceps peak (二头肌峰度)",
+          "biceps contraction (二头肌收缩)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:triceps",
+      "senseId": "lemma:triceps:core",
+      "lemma": "triceps",
+      "partOfSpeech": "n.",
+      "phonetic": "/'traɪseps/",
+      "meaning": "肱三头肌，三头肌",
+      "definitionStatus": "verified",
+      "example": "Overhead dumbbell extensions specifically isolate the long head of your triceps.",
+      "exampleTranslation": "过顶哑铃臂屈伸能高度孤立轰炸并刺激肱三头肌的长头部位。",
+      "memoryAssets": {
+        "roots": "tri-（三、三个）+ ceps/caput（头），占据大臂三分之二体积的三头肌群。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "triceps dip (臂屈伸)",
+          "triceps pushdown (绳索下压锻炼三头)",
+          "triceps extension (三头臂伸展)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:abs",
+      "senseId": "lemma:abs:core",
+      "lemma": "abs",
+      "partOfSpeech": "n.",
+      "phonetic": "/æbz/",
+      "meaning": "腹肌（abdominal muscles 缩写）",
+      "definitionStatus": "verified",
+      "example": "Abs are revealed in the kitchen through a calorie deficit, not just endless crunches.",
+      "exampleTranslation": "清晰可见的腹肌线条是靠饮食热量缺口刷脂显现出来的，而不仅是拼命做卷腹。",
+      "memoryAssets": {
+        "roots": "abdominals 的日常亲切简写，常指王字腹直肌与腹外斜肌构成的腹肌群。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "six-pack abs (六块腹肌)",
+          "tighten your abs (收腹收紧核心)",
+          "abs definition (腹肌线条分明清晰)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:glute",
+      "senseId": "lemma:glute:core",
+      "lemma": "glute",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɡluːt/",
+      "meaning": "臀大肌，臀部肌群",
+      "definitionStatus": "verified",
+      "example": "Barbell hip thrusts place maximum tension directly across your glutes at lockout.",
+      "exampleTranslation": "杠铃臀推在动作顶峰锁定时能将最大张力直接压迫施加在整个臀肌上。",
+      "memoryAssets": {
+        "roots": "gluteus 的口语简称，源自希腊语 gloutos（屁股、臀大肌部位）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "glute bridge (臀桥)",
+          "glute activation (臀肌激活唤醒)",
+          "hip thrust for glutes (打造蜜桃臀推)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:quadriceps",
+      "senseId": "lemma:quadriceps:core",
+      "lemma": "quadriceps",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kwɑːdrɪseps/",
+      "meaning": "股四头肌，大腿前侧肌群",
+      "definitionStatus": "verified",
+      "example": "Leg extensions isolate the burning pump in all four heads of the quadriceps.",
+      "exampleTranslation": "坐姿器械腿屈伸能让大腿前侧整块股四头肌体会到燃烧撕裂般的泵感充血。",
+      "memoryAssets": {
+        "roots": "quadri-（四、四个）+ ceps（头），包含股直肌、股中肌、股外侧与股内侧肌。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "burning quads (酸胀燃烧的股四头肌)",
+          "quadriceps strength (大腿正面肌肉力量)",
+          "quad sweep (大腿外侧轮廓弧度)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:pectoral",
+      "senseId": "lemma:pectoral:core",
+      "lemma": "pectoral",
+      "partOfSpeech": "adj./n.",
+      "phonetic": "/'pektərəl/",
+      "meaning": "胸肌的；胸大肌（口语简写为 pecs）",
+      "definitionStatus": "verified",
+      "example": "Flat bench press builds overall dense thickness in the middle pectoral fibers.",
+      "exampleTranslation": "平板卧推能显著增厚胸大肌中束肌纤维的整体维度与力量质感。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 pectus（胸膛、胸膛挂锁保护位）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "pectoral muscle (胸大肌)",
+          "upper pecs (上胸肌群)",
+          "pectoral stretch (胸部拉伸拓展)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:core",
+      "senseId": "lemma:core:core",
+      "lemma": "core",
+      "partOfSpeech": "n.",
+      "phonetic": "/kɔːr/",
+      "meaning": "核心，核心肌群",
+      "definitionStatus": "verified",
+      "example": "A solid core stabilizes your spine and transfers force during athletic movements.",
+      "exampleTranslation": "强悍稳定的核心肌群能锁定保护脊椎，并在各类爆发力竞技动作中高效传导力量。",
+      "memoryAssets": {
+        "roots": "字面意思为果核、动力源核心枢纽，指腹肌、竖脊肌、腰方肌与盆底肌组成的中央动力圈。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "core stability (核心稳定性)",
+          "engage your core (收紧核心发力)",
+          "core strength (核心躯干力量)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:rep",
+      "senseId": "lemma:rep:core",
+      "lemma": "rep",
+      "partOfSpeech": "n.",
+      "phonetic": "/rep/",
+      "meaning": "（动作的）一次，单次重复",
+      "definitionStatus": "verified",
+      "example": "Push through the discomfort and give me two more clean reps to failure.",
+      "exampleTranslation": "咬牙顶住酸痛，再给我做两个标准到位、直至力竭的动作！",
+      "memoryAssets": {
+        "roots": "repetition（重复）的全球健身房行业通用超高频缩写。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "one rep max / 1RM (一次极限负重)",
+          "clean rep (标准不借力的一次动作)",
+          "rep range (组内建议重复次数区间)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:set",
+      "senseId": "lemma:set:core",
+      "lemma": "set",
+      "partOfSpeech": "n.",
+      "phonetic": "/set/",
+      "meaning": "（动作的）一组",
+      "definitionStatus": "verified",
+      "example": "Rest for sixty to ninety seconds between each working set of overhead presses.",
+      "exampleTranslation": "在站姿过顶推举的每个正式工作组之间，保持静息放松休息 60 到 90 秒。",
+      "memoryAssets": {
+        "roots": "一套连续完成的动作回合单元组合。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "working set (正式负重工作组)",
+          "warm-up set (热身小重量组)",
+          "drop set (递减组/力竭减重连做组)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:warm-up",
+      "senseId": "lemma:warm-up:core",
+      "lemma": "warm-up",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/'wɔːrmʌp/",
+      "meaning": "热身，准备活动",
+      "definitionStatus": "verified",
+      "example": "A dynamic warm-up elevates tissue temperature and lubricates joint capsules.",
+      "exampleTranslation": "动态拉伸热身能提高深层肌肉温度并促进各关节囊分泌滑液润滑。",
+      "memoryAssets": {
+        "roots": "warm（温暖）+ up（升温上来），让身体由凉变热进入竞技状态。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "dynamic warm-up (动态热身)",
+          "general warm-up (全身通用热身)",
+          "ten-minute warm-up (十分钟热身)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cooldown",
+      "senseId": "lemma:cooldown:core",
+      "lemma": "cooldown",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kuːldaʊn/",
+      "meaning": "冷身，整理放松运动",
+      "definitionStatus": "verified",
+      "example": "Don't skip the cooldown walk after high-intensity interval sprinting.",
+      "exampleTranslation": "高强度间歇冲刺跑结束后，千万不要图省事跳过慢走冷身整理放松环节。",
+      "memoryAssets": {
+        "roots": "cool（凉爽降温）+ down（降下来），让激昂心率平稳回落到安静状态。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "proper cooldown (规范到位的冷身恢复)",
+          "cooldown stretch (放松静态拉伸)",
+          "post-workout cooldown (训后整理)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:stretch",
+      "senseId": "lemma:stretch:core",
+      "lemma": "stretch",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/stretʃ/",
+      "meaning": "拉伸，舒展，伸展",
+      "definitionStatus": "verified",
+      "example": "Static stretches post-workout lengthen tight muscles and decrease soreness.",
+      "exampleTranslation": "训练后进行静态长拉伸可以舒展紧绷肌束，并减轻次日的延迟性肌肉酸痛。",
+      "memoryAssets": {
+        "roots": "古英语 streccan（拉长、舒展肢体）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "static stretch (静态拉伸)",
+          "stretch tight muscles (拉伸紧绷肌肉)",
+          "full-body stretch (全身伸展大拉伸)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:aerobic",
+      "senseId": "lemma:aerobic:core",
+      "lemma": "aerobic",
+      "partOfSpeech": "adj.",
+      "phonetic": "/eə'roʊbɪk/",
+      "meaning": "有氧的，需氧的",
+      "definitionStatus": "verified",
+      "example": "Aerobic exercises rely on oxygen to burn both fatty acids and carbohydrates.",
+      "exampleTranslation": "有氧运动依赖充足氧气供给来氧化分解体内的脂肪酸与糖原储备。",
+      "memoryAssets": {
+        "roots": "aero-（空气、氧气）+ bios（生命生命体运作模式）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "aerobic capacity (有氧代谢耐力储能)",
+          "aerobic exercise (有氧运动健身)",
+          "aerobic fitness (心肺有氧机能)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:anaerobic",
+      "senseId": "lemma:anaerobic:core",
+      "lemma": "anaerobic",
+      "partOfSpeech": "adj.",
+      "phonetic": "/ˌænə'roʊbɪk/",
+      "meaning": "无氧的，高强度的",
+      "definitionStatus": "verified",
+      "example": "Heavy weightlifting and 100-meter sprints are primarily anaerobic activities.",
+      "exampleTranslation": "大重量抗阻举重和百米极限爆发冲刺，本质上都属于无氧供能运动。",
+      "memoryAssets": {
+        "roots": "an-（非、无）+ aero-（氧气）+ -bic。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "anaerobic threshold (无氧阈值点)",
+          "anaerobic workout (无氧抗阻力量课)",
+          "anaerobic glycolysis (无氧糖酵解)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:endurance",
+      "senseId": "lemma:endurance:core",
+      "lemma": "endurance",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɪn'dʊrəns/",
+      "meaning": "耐力，持久力",
+      "definitionStatus": "verified",
+      "example": "High-repetition kettlebell circuits build exceptional muscular endurance.",
+      "exampleTranslation": "高次数壶铃间歇循环课能打磨出极其过硬的肌肉耐力和持久做功能力。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 durare（坚硬耐久、顶得住时光磨练）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "muscular endurance (肌肉抗疲劳耐力)",
+          "cardiovascular endurance (心血管长程耐力)",
+          "endurance race (耐力越野马拉松赛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:stamina",
+      "senseId": "lemma:stamina:core",
+      "lemma": "stamina",
+      "partOfSpeech": "n.",
+      "phonetic": "/'stæmɪnə/",
+      "meaning": "体力，精力，持久抗压耐力",
+      "definitionStatus": "verified",
+      "example": "Boxing requires incredible stamina to sustain fast footwork over twelve rounds.",
+      "exampleTranslation": "职业拳击赛要求拳手具备极强的精力体魄，以在十二个回合中保持迅疾脚步。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 stamen（纺织命运的生命织线，后指人撑起沉重生命力的内在元气）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "build stamina (增强体力精力)",
+          "physical stamina (充沛体能耐力)",
+          "mental stamina (意志韧劲)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:metabolism",
+      "senseId": "lemma:metabolism:core",
+      "lemma": "metabolism",
+      "partOfSpeech": "n.",
+      "phonetic": "/mə'tæbəlɪzəm/",
+      "meaning": "新陈代谢，代谢率",
+      "definitionStatus": "verified",
+      "example": "Adding lean muscle mass elevates your basal metabolic rate around the clock.",
+      "exampleTranslation": "增加瘦体重肌肉量能够全天候二十四小时提升人体的基础新陈代谢速率。",
+      "memoryAssets": {
+        "roots": "源自希腊语 metabole（转化、物质状态更迭交替）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "boost metabolism (提升代谢能力)",
+          "basal metabolic rate / BMR (基础代谢率)",
+          "fast metabolism (代谢旺盛体质)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:calorie",
+      "senseId": "lemma:calorie:core",
+      "lemma": "calorie",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kæləri/",
+      "meaning": "卡路里，大卡",
+      "definitionStatus": "verified",
+      "example": "Weight loss fundamentally requires consuming fewer calories than your body burns.",
+      "exampleTranslation": "减脂减重在物理热力学底层上遵循能量守恒：摄入卡路里务必低于身体消耗总量。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 calor（热量、热能）。日常口语中 1 calorie 常借指 1 kcal（大卡）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "burn calories (燃烧卡路里脂肪)",
+          "calorie intake (热量总摄入)",
+          "calorie tracking (记录卡路里)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:deficit",
+      "senseId": "lemma:deficit:core",
+      "lemma": "deficit",
+      "partOfSpeech": "n.",
+      "phonetic": "/'defɪsɪt/",
+      "meaning": "赤字，缺口",
+      "definitionStatus": "verified",
+      "example": "A modest daily calorie deficit of 300 to 500 kcal promotes steady, sustainable fat loss.",
+      "exampleTranslation": "每天保持 300 至 500 大卡适度热量缺口，能促进稳健持久且不掉肌的减脂成果。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 deficere（不足、欠缺缺少）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "calorie deficit (热量缺口)",
+          "deficit diet (减脂缺口控食)",
+          "maintain a deficit (维持热量赤字)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:protein",
+      "senseId": "lemma:protein:core",
+      "lemma": "protein",
+      "partOfSpeech": "n.",
+      "phonetic": "/'proʊtiːn/",
+      "meaning": "蛋白质",
+      "definitionStatus": "verified",
+      "example": "Aim for 1.6 to 2.2 grams of protein per kilogram of body weight to fuel muscle repair.",
+      "exampleTranslation": "每公斤体重摄入 1.6 至 2.2 克优质蛋白质，能为肌肉微损伤超量恢复注入源源燃料。",
+      "memoryAssets": {
+        "roots": "源自希腊语 proteios（排在第一位的、首要的核心营养基石）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "whey protein (乳清蛋白粉)",
+          "protein synthesis (肌肉蛋白质合成)",
+          "lean protein (低脂优质蛋白)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:hydration",
+      "senseId": "lemma:hydration:core",
+      "lemma": "hydration",
+      "partOfSpeech": "n.",
+      "phonetic": "/haɪ'dreɪʃn/",
+      "meaning": "水分补给，补水",
+      "definitionStatus": "verified",
+      "example": "Proper hydration maintains blood volume, prevents cramping, and optimizes athletic output.",
+      "exampleTranslation": "及时充分的补水能维持健康血容量，防止肌肉抽筋并让运动表现发挥到极致。",
+      "memoryAssets": {
+        "roots": "hydra（水）+ -tion，维持机体水盐动态平衡状态。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "stay hydrated (保持体内水分充足)",
+          "hydration pack (运动水袋背包)",
+          "optimal hydration (黄金水合状态)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:treadmill",
+      "senseId": "lemma:treadmill:core",
+      "lemma": "treadmill",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tredmɪl/",
+      "meaning": "跑步机",
+      "definitionStatus": "verified",
+      "example": "She walked at an incline on the treadmill for forty-five minutes during her morning routine.",
+      "exampleTranslation": "在晨练流程中，她在跑步机上以高坡度倾角快走了整整四十五分钟。",
+      "memoryAssets": {
+        "roots": "tread（踩踏、脚步移动）+ mill（磨坊踏车）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "treadmill belt (跑步机履带跑带)",
+          "run on the treadmill (在跑步机上慢跑)",
+          "incline treadmill (坡度跑步机)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dumbbell",
+      "senseId": "lemma:dumbbell:core",
+      "lemma": "dumbbell",
+      "partOfSpeech": "n.",
+      "phonetic": "/'dʌmbel/",
+      "meaning": "哑铃",
+      "definitionStatus": "verified",
+      "example": "Adjustable dumbbells allow you to complete progressive overload workouts at home.",
+      "exampleTranslation": "可调式便携哑铃能让你在居家环境下顺畅进行抗阻渐进超负荷力量进阶训练。",
+      "memoryAssets": {
+        "roots": "dumb（哑的/无声的）+ bell（大钟），英国古人模仿拉教堂大钟锻炼臂力却不装钟舌发声的器材。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "dumbbell bench press (哑铃卧推)",
+          "pair of dumbbells (一对哑铃)",
+          "dumbbell lateral raise (哑铃侧平举练肩)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:barbell",
+      "senseId": "lemma:barbell:core",
+      "lemma": "barbell",
+      "partOfSpeech": "n.",
+      "phonetic": "/'bɑːrbel/",
+      "meaning": "杠铃",
+      "definitionStatus": "verified",
+      "example": "Load the weight plates symmetrically onto both sleeves of the Olympic barbell.",
+      "exampleTranslation": "将大号配重杠铃片对称卡紧固定在标准奥林匹克竞技杠铃杆两侧套筒上。",
+      "memoryAssets": {
+        "roots": "bar（铁杠、金属长杆）+ bell（比照 dumbbell 创造的新词）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "Olympic barbell (标准奥杆)",
+          "barbell row (杠铃划船动作)",
+          "load the barbell (往杠铃杆上配重挂片)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:posture",
+      "senseId": "lemma:posture:core",
+      "lemma": "posture",
+      "partOfSpeech": "n.",
+      "phonetic": "/'pɑːstʃər/",
+      "meaning": "体态，姿势，姿态",
+      "definitionStatus": "verified",
+      "example": "Good seated posture prevents chronic neck stiffness and rounded forward shoulders.",
+      "exampleTranslation": "保持优良端正的坐姿体态能有效预防慢性颈椎僵硬和圆肩驼背不良体态。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 positura（摆放的位置、身体架构站位）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "correct posture (矫正不良体态)",
+          "poor posture (驼背耸肩塌腰体态)",
+          "posture alignment (骨骼体态正位对齐)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:recovery",
+      "senseId": "lemma:recovery:core",
+      "lemma": "recovery",
+      "partOfSpeech": "n.",
+      "phonetic": "/rɪ'kʌvəri/",
+      "meaning": "恢复，恢复期",
+      "definitionStatus": "verified",
+      "example": "Quality deep sleep is when hormones surge to accelerate cellular muscle tissue recovery.",
+      "exampleTranslation": "优质深睡眠期是生长激素分泌高峰，能全速催化肌肉微损伤细胞组织的修复。",
+      "memoryAssets": {
+        "roots": "re-（重新）+ cover（找回、康复复原）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "active recovery (主动积极恢复/低强度散步)",
+          "rest and recovery (休息与休整恢复)",
+          "recovery time (组间/训后恢复时长)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:overtraining",
+      "senseId": "lemma:overtraining:core",
+      "lemma": "overtraining",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌoʊvər'treɪnɪŋ/",
+      "meaning": "过度训练，训练过度综合征",
+      "definitionStatus": "verified",
+      "example": "Persistent fatigue and plateaued strength are telltale warning signs of overtraining.",
+      "exampleTranslation": "长期难以消退的深层倦怠感和力量陷入停滞瓶颈，是身体在拉响过度训练的警报。",
+      "memoryAssets": {
+        "roots": "over-（过量）+ training（训练），负荷打破了机体适应恢复的生理平衡阈值。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "overtraining syndrome (过度训练综合征)",
+          "avoid overtraining (防止盲目练废过度训练)",
+          "symptoms of overtraining (练过头的典型征兆)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:pull-up",
+      "senseId": "lemma:pull-up:core",
+      "lemma": "pull-up",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/'pʊlʌp/",
+      "meaning": "引体向上",
+      "definitionStatus": "verified",
+      "example": "Strict pull-ups build exceptional vertical pulling strength and broad lat width.",
+      "exampleTranslation": "标准不借力的正手引体向上能铸就惊人的垂直拉力并延展出倒三角背阔肌外沿。",
+      "memoryAssets": {
+        "roots": "pull（拉）+ up（向上），自重上肢背部王牌复合动作。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "wide-grip pull-up (宽握引体向上)",
+          "assisted pull-up (弹力带/器械辅助引体)",
+          "weighted pull-up (负重引体向上)"
+        ]
+      }
+    }
+  ]
+}

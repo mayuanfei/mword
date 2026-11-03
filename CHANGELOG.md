@@ -2,6 +2,17 @@
 
 所有关键版本的更新历史都将记录于此文件中。
 
+## [1.0.4] - 2026-11-03
+
+### 🧍「身体与健康」全新板块词书重磅上线
+- **全量上线 3 大健康主题场景精品词书**：
+  - 《人体器官与外观特征》（50 词）：五官面貌、手足关节、骨骼脊柱与内脏器官（knuckle、nostril、torso、dimple、collarbone、freckle、spine、liver 等）；
+  - 《常见不适与医院问诊》（40 词）：感冒发热、头晕恶心、过敏扭伤以及海外看病问诊、药房购药全流程核心英语（nausea、prescribe、allergy、bruise、sprain、clinic、antibiotic、capsule 等）；
+  - 《健身锻炼与运动解剖》（35 词）：核心肌群、健美增肌动作要领、力量三大项与有氧耐力运动生理术语（hamstring、plank、cardio、hypertrophy、squat、biceps、core 等）。
+- **下载与更新体验升级**：
+  - 接入 GitHub Release 官方直链高速分发，安装包命名规范化为 `mword-{version}.apk`；
+  - 支持 SemVer 语义化版本多维校验与按需极速离线词书加载。
+
 ## [1.0.3] - 2026-11-03
 
 ### 🍔 场景化词书重磅上线（舌尖与美食）

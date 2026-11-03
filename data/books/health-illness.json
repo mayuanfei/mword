@@ -1,0 +1,816 @@
+{
+  "id": "health-illness",
+  "name": "常见不适与医院问诊",
+  "description": "感冒发烧头疼、突发扭伤过敏及海外看病问诊全场景沟通用词，药房取药买药零障碍。",
+  "version": "1.0.4",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 40,
+  "attribution": [
+    "mword 极简背词空间 · 身体与健康场景化精品词库",
+    "词义、地道例句与记忆资产由日常生活、医疗问诊与运动健身解剖场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:nausea",
+      "senseId": "lemma:nausea:core",
+      "lemma": "nausea",
+      "partOfSpeech": "n.",
+      "phonetic": "/'nɔːziə/",
+      "meaning": "恶心，反胃",
+      "definitionStatus": "verified",
+      "example": "She drank ginger tea to ease the waves of motion sickness and nausea.",
+      "exampleTranslation": "她喝了些生姜茶来缓解晕车带来的阵阵恶心与反胃感。",
+      "memoryAssets": {
+        "roots": "源自希腊语 nausia（晕船、海浪颠簸引起的呕吐感，与 naval、astronaut 同源）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "feeling of nausea (恶心反胃感)",
+          "relieve nausea (缓解反胃恶心)",
+          "morning nausea (孕吐/晨吐)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:prescribe",
+      "senseId": "lemma:prescribe:core",
+      "lemma": "prescribe",
+      "partOfSpeech": "v.",
+      "phonetic": "/prɪ'skraɪb/",
+      "meaning": "开处方，开药",
+      "definitionStatus": "verified",
+      "example": "The doctor prescribed a course of antibiotics for her sinus infection.",
+      "exampleTranslation": "医生为她的鼻窦感染开了为期一周的抗生素疗程。",
+      "memoryAssets": {
+        "roots": "pre-（预先、前头）+ scribe（书写），原意指在取药前先写下医嘱明细。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "prescribe medication (开处方药)",
+          "as prescribed by a physician (按遵医嘱)",
+          "prescribe rest (建议卧床静养)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:allergy",
+      "senseId": "lemma:allergy:core",
+      "lemma": "allergy",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ælərdʒi/",
+      "meaning": "过敏，过敏症",
+      "definitionStatus": "verified",
+      "example": "Let the server know if you have any severe food allergies to peanuts.",
+      "exampleTranslation": "如果你对花生有任何严重食物过敏，请务必提前告知服务员。",
+      "memoryAssets": {
+        "roots": "allos（其他的、异样的）+ ergon（反应、活动），免疫系统对外界的异常剧烈反应。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "peanut allergy (花生过敏)",
+          "allergic reaction (过敏反应)",
+          "seasonal allergy (花粉季时令过敏)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:bruise",
+      "senseId": "lemma:bruise:core",
+      "lemma": "bruise",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/bruːz/",
+      "meaning": "淤青，碰伤；擦伤",
+      "definitionStatus": "verified",
+      "example": "He had a dark purple bruise on his knee after bumping into the coffee table.",
+      "exampleTranslation": "在膝盖不小心撞到茶几后，上面留下了一大块深紫色的淤青。",
+      "memoryAssets": {
+        "roots": "古法语 bruisier（打碎、击破皮下微细血管形成瘀斑）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "nasty bruise (严重的淤青)",
+          "bruise easily (皮肤娇嫩容易淤青)",
+          "heal a bruise (化瘀)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:sprain",
+      "senseId": "lemma:sprain:core",
+      "lemma": "sprain",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/spreɪn/",
+      "meaning": "扭伤，挫伤",
+      "definitionStatus": "verified",
+      "example": "Rest, ice, and elevation are the key treatments for a minor ankle sprain.",
+      "exampleTranslation": "休息、冰敷和抬高肢体是治疗轻度踝关节扭伤的核心准则。",
+      "memoryAssets": {
+        "roots": "古法语 espreindre（挤压、过度扭扯），韧带超出正常活动范围导致的拉扯损伤。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "ankle sprain (踝扭伤)",
+          "wrist sprain (手腕挫伤)",
+          "sprain one's ligament (扭扯伤韧带)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:fever",
+      "senseId": "lemma:fever:core",
+      "lemma": "fever",
+      "partOfSpeech": "n.",
+      "phonetic": "/'fiːvər/",
+      "meaning": "发烧，发热",
+      "definitionStatus": "verified",
+      "example": "His fever climbed to 39 degrees Celsius late in the evening.",
+      "exampleTranslation": "傍晚深夜时分，他的体温一度飙升至摄氏 39 度高烧。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 febris（灼热、寒颤发热）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "high fever (高烧)",
+          "break a fever (退烧)",
+          "run a fever (发着烧)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cough",
+      "senseId": "lemma:cough:core",
+      "lemma": "cough",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/kɔːf/",
+      "meaning": "咳嗽",
+      "definitionStatus": "verified",
+      "example": "Cover your mouth with your elbow whenever you cough or sneeze.",
+      "exampleTranslation": "无论咳嗽还是打喷嚏，都请用肘窝遮住口鼻。",
+      "memoryAssets": {
+        "roots": "拟声词，模仿胸腔肺管喷出急促气流的声响。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "dry cough (干咳)",
+          "persistent cough (久咳不愈)",
+          "cough syrup (止咳糖浆)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dizzy",
+      "senseId": "lemma:dizzy:core",
+      "lemma": "dizzy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'dɪzi/",
+      "meaning": "头晕的，眩晕的",
+      "definitionStatus": "verified",
+      "example": "Standing up too quickly from the sofa made him feel dizzy for a moment.",
+      "exampleTranslation": "从沙发上站得太猛让他瞬间感到一阵头晕目眩。",
+      "memoryAssets": {
+        "roots": "古英语 dysig（愚钝、眩晕迷离）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "feel dizzy (感到眩晕)",
+          "dizzy spell (阵发性眩晕)",
+          "dizzy with vertigo (真性眩晕)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:headache",
+      "senseId": "lemma:headache:core",
+      "lemma": "headache",
+      "partOfSpeech": "n.",
+      "phonetic": "/'hedeɪk/",
+      "meaning": "头痛",
+      "definitionStatus": "verified",
+      "example": "Looking at computer screens all day gave him a throbbing headache.",
+      "exampleTranslation": "整天对着电脑屏幕工作让他产生了一阵阵跳动的神经性头痛。",
+      "memoryAssets": {
+        "roots": "head（头）+ ache（持续隐痛）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "tension headache (紧张性头痛)",
+          "splitting headache (头痛欲裂)",
+          "relieve a headache (缓解头痛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:fatigue",
+      "senseId": "lemma:fatigue:core",
+      "lemma": "fatigue",
+      "partOfSpeech": "n.",
+      "phonetic": "/fə'tiːɡ/",
+      "meaning": "疲劳，劳累，衰竭",
+      "definitionStatus": "verified",
+      "example": "Chronic fatigue is often caused by long-term stress and sleep deprivation.",
+      "exampleTranslation": "慢性疲劳往往是由长期的心理压力和睡眠严重匮乏引起的。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 fatigare（使精疲力竭、累倒）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "muscle fatigue (肌肉疲劳酸胀)",
+          "chronic fatigue (慢性疲劳综合征)",
+          "extreme fatigue (极度困顿乏力)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:sore",
+      "senseId": "lemma:sore:core",
+      "lemma": "sore",
+      "partOfSpeech": "adj./n.",
+      "phonetic": "/sɔːr/",
+      "meaning": "酸痛的，疼痛的；痛处",
+      "definitionStatus": "verified",
+      "example": "My legs are incredibly sore today after yesterday's intense leg workout.",
+      "exampleTranslation": "做完昨天的高强度练腿后，我今天的双腿格外酸痛。",
+      "memoryAssets": {
+        "roots": "古英语 sar（伤痛的、发炎触痛的）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sore muscles (肌肉酸痛)",
+          "sore throat (咽喉肿痛)",
+          "sore spot (触痛点/揭人痛处)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:symptom",
+      "senseId": "lemma:symptom:core",
+      "lemma": "symptom",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sɪmptəm/",
+      "meaning": "症状，征兆",
+      "definitionStatus": "verified",
+      "example": "Loss of smell and high fever are common symptoms of respiratory viral infections.",
+      "exampleTranslation": "嗅觉丧失和高烧是呼吸道病毒感染的典型临床症状。",
+      "memoryAssets": {
+        "roots": "sym-（共同、同时）+ ptom（发生、跌落），伴随疾病同时降临的表征。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "mild symptoms (轻微症状)",
+          "symptom onset (症状发作)",
+          "relieve symptoms (缓解症状)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:diagnose",
+      "senseId": "lemma:diagnose:core",
+      "lemma": "diagnose",
+      "partOfSpeech": "v.",
+      "phonetic": "/'daɪəɡnoʊz/",
+      "meaning": "诊断，确诊",
+      "definitionStatus": "verified",
+      "example": "The specialist diagnosed her condition as mild seasonal allergic rhinitis.",
+      "exampleTranslation": "专科医生将她的病情确诊为轻度季节性过敏性鼻炎。",
+      "memoryAssets": {
+        "roots": "dia-（穿透、彻底）+ gnosis（认识、了解），透过现象看清病根。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "diagnose a disease (诊断出疾病)",
+          "early diagnosis (早期确诊)",
+          "correctly diagnosed (精准诊断)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:prescription",
+      "senseId": "lemma:prescription:core",
+      "lemma": "prescription",
+      "partOfSpeech": "n.",
+      "phonetic": "/prɪ'skrɪpʃn/",
+      "meaning": "处方，药方",
+      "definitionStatus": "verified",
+      "example": "You need a doctor's prescription to purchase strong antibiotics at the pharmacy.",
+      "exampleTranslation": "在药房购买强效抗生素必须持有执业医生的纸质或电子处方单。",
+      "memoryAssets": {
+        "roots": "pre-（预先）+ script（写），字面意思是预先写在纸上的开药凭据。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "fill a prescription (在药房按方抓药/拿药)",
+          "prescription glasses (定制有度数的配镜)",
+          "prescription drug (处方药)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dose",
+      "senseId": "lemma:dose:core",
+      "lemma": "dose",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/doʊs/",
+      "meaning": "剂量，一剂；服药",
+      "definitionStatus": "verified",
+      "example": "Do not exceed the recommended daily dose of two capsules after meals.",
+      "exampleTranslation": "饭后服药请勿超过每日建议的两粒胶囊剂量上限。",
+      "memoryAssets": {
+        "roots": "源自希腊语 dosis（给予、赐予的一份配给）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "recommended dose (建议剂量)",
+          "overdose (用药过量)",
+          "miss a dose (漏服一次药物)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:antibiotic",
+      "senseId": "lemma:antibiotic:core",
+      "lemma": "antibiotic",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌæntibaɪ'ɑːtɪk/",
+      "meaning": "抗生素，抗菌药",
+      "definitionStatus": "verified",
+      "example": "Always complete the full course of antibiotics even if you start feeling better.",
+      "exampleTranslation": "即便自觉身体已有好转，也请务必吃完整个抗生素用药疗程以防耐药。",
+      "memoryAssets": {
+        "roots": "anti-（反抗、杀灭）+ bio（生命、微生物菌体）+ -tic。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "course of antibiotics (抗生素用药疗程)",
+          "antibiotic resistance (抗生素抗药性/耐药性)",
+          "prescribe antibiotics (开具抗生素)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:ointment",
+      "senseId": "lemma:ointment:core",
+      "lemma": "ointment",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɔɪntmənt/",
+      "meaning": "软膏，药膏",
+      "definitionStatus": "verified",
+      "example": "Gently apply a thin layer of antibacterial ointment over the scrape.",
+      "exampleTranslation": "在擦伤的伤口表层薄薄地涂上一层抗菌消炎药膏。",
+      "memoryAssets": {
+        "roots": "源自古法语 oignement，与 anoint（涂抹圣油）同源。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "topical ointment (外用药膏)",
+          "soothing ointment (舒缓油膏)",
+          "apply ointment (涂抹药膏)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:capsule",
+      "senseId": "lemma:capsule:core",
+      "lemma": "capsule",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kæpsl/",
+      "meaning": "胶囊",
+      "definitionStatus": "verified",
+      "example": "Swallow the capsule whole with a glass of water without chewing.",
+      "exampleTranslation": "随水整粒吞服胶囊，切勿在口腔中咀嚼咬破。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 capsa（小箱子、微型包装盒）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "gelatin capsule (明胶软胶囊)",
+          "take a capsule (服用一粒胶囊)",
+          "capsule shell (胶囊壳)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tablet",
+      "senseId": "lemma:tablet:core",
+      "lemma": "tablet",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tæblət/",
+      "meaning": "药片，片剂",
+      "definitionStatus": "verified",
+      "example": "Take one pain-relief tablet every six hours as needed.",
+      "exampleTranslation": "如有需要，可每隔六小时服用一片止痛药片缓解症状。",
+      "memoryAssets": {
+        "roots": "table（桌面、平整面板）+ -et（小），压制平整的小药饼。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "effervescent tablet (泡腾片)",
+          "chewable tablet (咀嚼片)",
+          "tablet coating (药片糖衣薄膜)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:syrup",
+      "senseId": "lemma:syrup:core",
+      "lemma": "syrup",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sɪrəp/",
+      "meaning": "糖浆，糖浆药剂",
+      "definitionStatus": "verified",
+      "example": "Cough syrup coats the irritated throat lining to reduce tickling sensations.",
+      "exampleTranslation": "止咳糖浆能附着在受刺激的喉咙黏膜上以舒缓干痒咳嗽感。",
+      "memoryAssets": {
+        "roots": "源自阿拉伯语 sharab（含糖药饮、甜药汁）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "cough syrup (止咳糖浆)",
+          "maple syrup (枫糖浆)",
+          "teaspoon of syrup (一茶匙糖浆剂)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:injection",
+      "senseId": "lemma:injection:core",
+      "lemma": "injection",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɪn'dʒekʃn/",
+      "meaning": "注射，打针",
+      "definitionStatus": "verified",
+      "example": "The nurse administered an intramuscular injection in his shoulder.",
+      "exampleTranslation": "护士在他的肩膀三角肌部位做了一记肌肉深层注射。",
+      "memoryAssets": {
+        "roots": "in-（进入）+ ject（射击、推进），将药液推入机体组织。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "give an injection (打一针)",
+          "intravenous injection (静脉推注/打点滴)",
+          "painless injection (无痛注射)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:vaccine",
+      "senseId": "lemma:vaccine:core",
+      "lemma": "vaccine",
+      "partOfSpeech": "n.",
+      "phonetic": "/væk'siːn/",
+      "meaning": "疫苗",
+      "definitionStatus": "verified",
+      "example": "Receiving the annual influenza vaccine significantly lowers the risk of severe flu.",
+      "exampleTranslation": "每年接种流感疫苗可显著降低罹患严重并发症重流感的概率。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 vacca（牛），源自爱德华·琴纳利用牛痘（cowpox）开创人类免疫接种史。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "flu vaccine (流感疫苗)",
+          "vaccine booster (疫苗加强针)",
+          "vaccination card (接种证明)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:clinic",
+      "senseId": "lemma:clinic:core",
+      "lemma": "clinic",
+      "partOfSpeech": "n.",
+      "phonetic": "/'klɪnɪk/",
+      "meaning": "门诊部，社区诊所",
+      "definitionStatus": "verified",
+      "example": "He went to the local walk-in clinic for a quick flu test.",
+      "exampleTranslation": "他去了社区无需预约的门诊诊所做了一次流感快筛检测。",
+      "memoryAssets": {
+        "roots": "源自希腊语 kline（床榻），医生到床榻边为病人问诊巡诊之处。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "dental clinic (牙科诊所)",
+          "walk-in clinic (免预约便民诊所)",
+          "private clinic (私立门诊部)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:ward",
+      "senseId": "lemma:ward:core",
+      "lemma": "ward",
+      "partOfSpeech": "n.",
+      "phonetic": "/wɔːrd/",
+      "meaning": "病房，病区",
+      "definitionStatus": "verified",
+      "example": "Visiting hours for patients in the cardiology ward end at eight in the evening.",
+      "exampleTranslation": "心血管内科病区病人的家属探视时间截止至每晚八点。",
+      "memoryAssets": {
+        "roots": "古英语 weard（守护、监护看顾的指定区域）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "hospital ward (医院病房大区)",
+          "intensive care ward (重症监护病房/ICU)",
+          "maternity ward (产科病房)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:emergency",
+      "senseId": "lemma:emergency:core",
+      "lemma": "emergency",
+      "partOfSpeech": "n.",
+      "phonetic": "/i'mɜːrdʒənsi/",
+      "meaning": "急诊室，突发急救",
+      "definitionStatus": "verified",
+      "example": "Call paramedics immediately or drive to the nearest emergency department.",
+      "exampleTranslation": "请立即拨打急救救援电话或驱车赶往最近的医院急诊中心。",
+      "memoryAssets": {
+        "roots": "e-（向外）+ merge（潜入、浮现），紧急浮出水面的突发性事件。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "emergency room / ER (急诊室)",
+          "emergency contact (紧急联络人)",
+          "medical emergency (突发医疗险情)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:physician",
+      "senseId": "lemma:physician:core",
+      "lemma": "physician",
+      "partOfSpeech": "n.",
+      "phonetic": "/fɪ'zɪʃn/",
+      "meaning": "内科医生，执业医师",
+      "definitionStatus": "verified",
+      "example": "Consult your primary care physician before beginning an intense workout regimen.",
+      "exampleTranslation": "在开启高强度锻炼健身计划前，最好先咨询你的家庭首诊内科医师。",
+      "memoryAssets": {
+        "roots": "源自希腊语 physis（自然之道、身体自然生理调理法）。特指非手术主修内科医生。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "attending physician (主治医师)",
+          "primary care physician (首诊全科家庭医生)",
+          "consult a physician (遵医嘱)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:surgeon",
+      "senseId": "lemma:surgeon:core",
+      "lemma": "surgeon",
+      "partOfSpeech": "n.",
+      "phonetic": "/'sɜːrdʒən/",
+      "meaning": "外科医生",
+      "definitionStatus": "verified",
+      "example": "The orthopedic surgeon successfully repaired the torn knee meniscus.",
+      "exampleTranslation": "这位经验丰富的骨科外科医生成功修复了患者撕裂的膝半月板。",
+      "memoryAssets": {
+        "roots": "cheir（手）+ ergon（做工、劳作），依靠灵巧双手进行开刀手术的医者。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "orthopedic surgeon (骨科外科大夫)",
+          "lead surgeon (主刀医师)",
+          "plastic surgeon (整形外科医生)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:insomnia",
+      "senseId": "lemma:insomnia:core",
+      "lemma": "insomnia",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɪn'sɑːmniə/",
+      "meaning": "失眠症",
+      "definitionStatus": "verified",
+      "example": "Limiting blue light from mobile screens before bed helps alleviate chronic insomnia.",
+      "exampleTranslation": "睡前少刷手机屏幕减少蓝光照射有助于缓解长期慢性失眠困扰。",
+      "memoryAssets": {
+        "roots": "in-（无、否）+ somnus（睡眠之神索姆诺斯）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "suffer from insomnia (饱受失眠之苦)",
+          "chronic insomnia (慢性顽固失眠)",
+          "insomnia remedy (助眠对策)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:indigestion",
+      "senseId": "lemma:indigestion:core",
+      "lemma": "indigestion",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌɪndɪ'dʒestʃən/",
+      "meaning": "消化不良，积食",
+      "definitionStatus": "verified",
+      "example": "Eating greasy food too late at night often triggers acid reflux and indigestion.",
+      "exampleTranslation": "深夜吃太油腻的夜宵极易诱发胃食管反流和腹胀消化不良。",
+      "memoryAssets": {
+        "roots": "in-（不）+ digestion（消化）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "acid indigestion (胃酸过多消化不良)",
+          "relieve indigestion (消食解胀)",
+          "signs of indigestion (积食症状)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:inflammation",
+      "senseId": "lemma:inflammation:core",
+      "lemma": "inflammation",
+      "partOfSpeech": "n.",
+      "phonetic": "/ˌɪnflə'meɪʃn/",
+      "meaning": "发炎，炎症",
+      "definitionStatus": "verified",
+      "example": "Applying cold ice packs reduces acute swelling and tissue inflammation.",
+      "exampleTranslation": "敷用冰袋能迅速遏制急性红肿并减轻皮下软组织炎症反应。",
+      "memoryAssets": {
+        "roots": "in-（在内部）+ flame（火焰）+ -ation，机体受损时如火焰灼热充血的免疫反应。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "anti-inflammatory (消炎的/抗炎药)",
+          "joint inflammation (关节滑膜炎)",
+          "reduce inflammation (消除炎症)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:swelling",
+      "senseId": "lemma:swelling:core",
+      "lemma": "swelling",
+      "partOfSpeech": "n.",
+      "phonetic": "/'swelɪŋ/",
+      "meaning": "肿胀，水肿",
+      "definitionStatus": "verified",
+      "example": "Elevating your sprained foot above your heart helps bring the swelling down.",
+      "exampleTranslation": "将扭伤的脚踝垫高至高过心脏的位置有助于加速静脉回流并消除水肿。",
+      "memoryAssets": {
+        "roots": "古英语 swellan（膨胀隆起）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "reduce swelling (消肿)",
+          "visible swelling (肉眼可见的肿块)",
+          "swelling and tenderness (红肿并伴随触痛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:cramp",
+      "senseId": "lemma:cramp:core",
+      "lemma": "cramp",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/kræmp/",
+      "meaning": "痉挛，抽筋",
+      "definitionStatus": "verified",
+      "example": "Drinking electrolyte water helps prevent painful muscle cramps during endurance runs.",
+      "exampleTranslation": "补充含电解质的水分能有效预防长跑耐力训练中的肌肉抽筋与痉挛。",
+      "memoryAssets": {
+        "roots": "中古英语 crampe（弯曲钩紧、肌肉强直失控收缩）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "muscle cramp (肌肉抽筋)",
+          "stomach cramps (胃肠痉挛绞痛)",
+          "menstrual cramps (经期腹痛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:rash",
+      "senseId": "lemma:rash:core",
+      "lemma": "rash",
+      "partOfSpeech": "n.",
+      "phonetic": "/ræʃ/",
+      "meaning": "皮疹，疹子",
+      "definitionStatus": "verified",
+      "example": "He developed an itchy red rash on his arms after brushing against poison ivy.",
+      "exampleTranslation": "在手臂不慎蹭到毒藤植物后，他的皮肤上爆发出大片奇痒无比的红疹。",
+      "memoryAssets": {
+        "roots": "古法语 rasche（抓挠刮擦形成的红疹斑）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "heat rash (痱子/热疹)",
+          "allergic rash (过敏性皮疹)",
+          "rash outbreak (皮疹爆发)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:itchy",
+      "senseId": "lemma:itchy:core",
+      "lemma": "itchy",
+      "partOfSpeech": "adj.",
+      "phonetic": "/'ɪtʃi/",
+      "meaning": "发痒的",
+      "definitionStatus": "verified",
+      "example": "The mosquito bite on my ankle is extremely itchy and swollen.",
+      "exampleTranslation": "脚踝上被蚊子叮咬的包又红又肿，而且奇痒难耐。",
+      "memoryAssets": {
+        "roots": "古英语 giccan（刺激抓挠的感觉）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "itchy eyes (眼睛干痒)",
+          "itchy skin (皮肤瘙痒)",
+          "scratch an itchy spot (挠痒处)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:contagious",
+      "senseId": "lemma:contagious:core",
+      "lemma": "contagious",
+      "partOfSpeech": "adj.",
+      "phonetic": "/kən'teɪdʒəs/",
+      "meaning": "具有传染性的",
+      "definitionStatus": "verified",
+      "example": "The common cold is highly contagious through airborne droplets from sneezes.",
+      "exampleTranslation": "普通感冒通过打喷嚏产生的空气飞沫具有很高的传染性。",
+      "memoryAssets": {
+        "roots": "con-（共同）+ tag/touch（接触），通过接触或临近快速蔓延传播。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "highly contagious (极具传染性)",
+          "contagious disease (传染性疾病)",
+          "contagious laughter (富有感染力的欢笑)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:concussion",
+      "senseId": "lemma:concussion:core",
+      "lemma": "concussion",
+      "partOfSpeech": "n.",
+      "phonetic": "/kən'kʌʃn/",
+      "meaning": "脑震荡",
+      "definitionStatus": "verified",
+      "example": "The football player was evaluated for a concussion after a violent collision.",
+      "exampleTranslation": "在那次剧烈的身体冲撞后，这名橄榄球运动员立即接受了脑震荡医学评估。",
+      "memoryAssets": {
+        "roots": "con-（猛烈）+ quatere/cuss（摇撼、剧烈震荡），颅脑遭受猛击晃动。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "suffer a concussion (遭受脑震荡)",
+          "concussion protocol (脑震荡伤情应对流程)",
+          "mild concussion (轻微脑震荡)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:fracture",
+      "senseId": "lemma:fracture:core",
+      "lemma": "fracture",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/'fræktʃər/",
+      "meaning": "骨折，断裂",
+      "definitionStatus": "verified",
+      "example": "The ski accident resulted in a hairline fracture of her wrist bone.",
+      "exampleTranslation": "那次滑雪失控摔倒导致她的手腕骨头出现了轻微发丝样骨折。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 fractura（打碎、断裂开来，与 fraction 分数同源）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "hairline fracture (骨裂/发丝状骨折)",
+          "compound fracture (开放性骨折)",
+          "fracture a bone (骨折)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:bandage",
+      "senseId": "lemma:bandage:core",
+      "lemma": "bandage",
+      "partOfSpeech": "n./v.",
+      "phonetic": "/'bændɪdʒ/",
+      "meaning": "绷带；用绷带包扎",
+      "definitionStatus": "verified",
+      "example": "The paramedic cleanly bandaged the wound to stop further bleeding.",
+      "exampleTranslation": "急救人员干净利索地包扎好了伤口，成功防止了创口进一步失血。",
+      "memoryAssets": {
+        "roots": "band（扁条带）+ -age（集合物名词后缀）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "elastic bandage (高弹力自粘绷带)",
+          "apply a bandage (缠上绷带)",
+          "remove a bandage (拆除绷带)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:gauze",
+      "senseId": "lemma:gauze:core",
+      "lemma": "gauze",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɡɔːz/",
+      "meaning": "医用纱布",
+      "definitionStatus": "verified",
+      "example": "Pack sterile gauze pads over the cut to apply firm pressure on the bleeding area.",
+      "exampleTranslation": "用无菌纱布块紧紧覆盖在割伤伤口处进行压迫止血。",
+      "memoryAssets": {
+        "roots": "源自巴勒斯坦城市 Gaza（加沙），中世纪以织造轻柔通透薄纱织物闻名。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sterile gauze (无菌医用纱布)",
+          "gauze pad (纱布块/敷料片)",
+          "cotton gauze (脱脂棉纱)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:thermometer",
+      "senseId": "lemma:thermometer:core",
+      "lemma": "thermometer",
+      "partOfSpeech": "n.",
+      "phonetic": "/θər'mɑːmɪtər/",
+      "meaning": "体温计，温度计",
+      "definitionStatus": "verified",
+      "example": "The infrared ear thermometer displays your precise body temperature in two seconds.",
+      "exampleTranslation": "红外耳道体温计能在两秒钟内精准显示你的实时人体核心体温。",
+      "memoryAssets": {
+        "roots": "thermo-（热量、温度）+ meter（量度仪表）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "digital thermometer (电子体温计)",
+          "ear thermometer (红外耳温枪)",
+          "read the thermometer (读取温度计度数)"
+        ]
+      }
+    }
+  ]
+}

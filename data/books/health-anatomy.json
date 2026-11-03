@@ -1,0 +1,1016 @@
+{
+  "id": "health-anatomy",
+  "name": "人体器官与外观特征",
+  "description": "涵盖五官面貌、手足四肢、内脏器官与骨骼体征高频词汇，精准掌握身体各个部位的地道英语表达。",
+  "version": "1.0.4",
+  "sourceUrl": "https://github.com/mayuanfei/mword",
+  "license": "CC-BY-SA-4.0",
+  "wordCount": 50,
+  "attribution": [
+    "mword 极简背词空间 · 身体与健康场景化精品词库",
+    "词义、地道例句与记忆资产由日常生活、医疗问诊与运动健身解剖场景精校整理"
+  ],
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "words": [
+    {
+      "id": "lemma:knuckle",
+      "senseId": "lemma:knuckle:core",
+      "lemma": "knuckle",
+      "partOfSpeech": "n.",
+      "phonetic": "/'nʌkl/",
+      "meaning": "指关节",
+      "definitionStatus": "verified",
+      "example": "He cracked his knuckles nervously before beginning the presentation.",
+      "exampleTranslation": "在开始演讲前，他紧张地把指关节捏得啪啪响。",
+      "memoryAssets": {
+        "roots": "古英语 cnocel（小硬块、凸起）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "cracked knuckles (捏响指关节)",
+          "bare knuckles (赤手空拳)",
+          "knuckle joint (指骨间关节)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:nostril",
+      "senseId": "lemma:nostril:core",
+      "lemma": "nostril",
+      "partOfSpeech": "n.",
+      "phonetic": "/'nɑːstrəl/",
+      "meaning": "鼻孔",
+      "definitionStatus": "verified",
+      "example": "Take a deep breath through your left nostril during meditation.",
+      "exampleTranslation": "冥想时用你的左鼻孔深吸一口气。",
+      "memoryAssets": {
+        "roots": "古英语 nosu（鼻子）+ thyrel（孔穴，与 drill 同源）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "flare one's nostrils (鼻孔张大)",
+          "clogged nostril (堵塞的鼻孔)",
+          "left nostril (左侧鼻孔)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:torso",
+      "senseId": "lemma:torso:core",
+      "lemma": "torso",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tɔːrsoʊ/",
+      "meaning": "躯干，躯体",
+      "definitionStatus": "verified",
+      "example": "Keep your torso upright and engage your core throughout the movement.",
+      "exampleTranslation": "在整个动作中保持躯干正直并收紧核心。",
+      "memoryAssets": {
+        "roots": "源自意大利语 torso（粗茎、无四肢的雕像躯干）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "upper torso (上半身躯干)",
+          "rotate the torso (转动躯干)",
+          "torso stability (躯干稳定性)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:dimple",
+      "senseId": "lemma:dimple:core",
+      "lemma": "dimple",
+      "partOfSpeech": "n.",
+      "phonetic": "/'dɪmpl/",
+      "meaning": "酒窝，笑靥",
+      "definitionStatus": "verified",
+      "example": "A cute dimple appeared on her right cheek whenever she laughed.",
+      "exampleTranslation": "每当她微笑时，右脸颊上就会浮现出一个可爱的酒窝。",
+      "memoryAssets": {
+        "roots": "日耳曼语系拟声词，指皮肤上的凹坑、洼地。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "cheek dimple (脸颊酒窝)",
+          "chin dimple (美人沟/下巴凹陷)",
+          "flashing a dimple (露出笑靥)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:collarbone",
+      "senseId": "lemma:collarbone:core",
+      "lemma": "collarbone",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɑːlərbəʊn/",
+      "meaning": "锁骨",
+      "definitionStatus": "verified",
+      "example": "He fractured his collarbone when he fell off the bicycle.",
+      "exampleTranslation": "他从自行车上摔下来时摔断了锁骨。",
+      "memoryAssets": {
+        "roots": "collar（衣领）+ bone（骨头），医学正式名称为 clavicle。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "broken collarbone (锁骨骨折)",
+          "prominent collarbone (明显的锁骨)",
+          "touch the collarbone (触碰锁骨)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:freckle",
+      "senseId": "lemma:freckle:core",
+      "lemma": "freckle",
+      "partOfSpeech": "n.",
+      "phonetic": "/'frekl/",
+      "meaning": "雀斑，晒斑",
+      "definitionStatus": "verified",
+      "example": "Her face was dotted with light freckles after spending a week at the beach.",
+      "exampleTranslation": "在海滩度过一周后，她的脸上布满了淡淡的雀斑。",
+      "memoryAssets": {
+        "roots": "源自古斯堪的纳维亚语 freknur（斑点）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "cover freckles (遮盖雀斑)",
+          "sun freckles (日晒斑)",
+          "cute freckles (可爱的雀斑)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:wrinkle",
+      "senseId": "lemma:wrinkle:core",
+      "lemma": "wrinkle",
+      "partOfSpeech": "n.",
+      "phonetic": "/'rɪŋkl/",
+      "meaning": "皱纹",
+      "definitionStatus": "verified",
+      "example": "Smiling causes fine wrinkles around the corners of the eyes.",
+      "exampleTranslation": "微笑会在眼角周围形成细微的皱纹。",
+      "memoryAssets": {
+        "roots": "古英语 wrincle（波纹、褶皱）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "fine wrinkles (细纹)",
+          "anti-wrinkle cream (抗皱霜)",
+          "laugh wrinkles (笑纹)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:forehead",
+      "senseId": "lemma:forehead:core",
+      "lemma": "forehead",
+      "partOfSpeech": "n.",
+      "phonetic": "/'fɔːrhed/",
+      "meaning": "额头，前额",
+      "definitionStatus": "verified",
+      "example": "She pressed her palm to the boy's forehead to check for a fever.",
+      "exampleTranslation": "她把手掌贴在男孩的额头上测试是否发烧。",
+      "memoryAssets": {
+        "roots": "fore（前部）+ head（头部）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "broad forehead (宽广的额头)",
+          "wipe one's forehead (擦拭前额汗水)",
+          "wrinkle one's forehead (皱起眉头)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:eyebrow",
+      "senseId": "lemma:eyebrow:core",
+      "lemma": "eyebrow",
+      "partOfSpeech": "n.",
+      "phonetic": "/'aɪbraʊ/",
+      "meaning": "眉毛",
+      "definitionStatus": "verified",
+      "example": "He raised his eyebrows in surprise when he heard the unexpected news.",
+      "exampleTranslation": "听到这个意外的消息时，他惊讶地扬起了眉毛。",
+      "memoryAssets": {
+        "roots": "eye（眼睛）+ brow（眉骨、边沿）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "raise an eyebrow (挑眉/表示怀疑或惊讶)",
+          "thick eyebrows (浓密的眉毛)",
+          "pluck eyebrows (修拔眉毛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:eyelash",
+      "senseId": "lemma:eyelash:core",
+      "lemma": "eyelash",
+      "partOfSpeech": "n.",
+      "phonetic": "/'aɪlæʃ/",
+      "meaning": "睫毛",
+      "definitionStatus": "verified",
+      "example": "She blinked, and a stray eyelash fell onto her cheek.",
+      "exampleTranslation": "她眨了眨眼，一根脱落的睫毛掉在了她的脸颊上。",
+      "memoryAssets": {
+        "roots": "eye（眼睛）+ lash（鞭打、条带，借指眼睑边缘的细毛）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "long eyelashes (长长的睫毛)",
+          "false eyelashes (假睫毛)",
+          "mascara on eyelashes (涂在睫毛上的睫毛膏)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:temple",
+      "senseId": "lemma:temple:core",
+      "lemma": "temple",
+      "partOfSpeech": "n.",
+      "phonetic": "/'templ/",
+      "meaning": "太阳穴",
+      "definitionStatus": "verified",
+      "example": "He gently rubbed his temples to relieve the tension headache.",
+      "exampleTranslation": "他轻轻揉着太阳穴来缓解紧张性头痛。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 tempora（太阳穴，因此处毛发最先显现时光岁月变白）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "throbbing temple (跳痛的太阳穴)",
+          "massage temples (按摩太阳穴)",
+          "vein on the temple (太阳穴凸起的青筋)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:jaw",
+      "senseId": "lemma:jaw:core",
+      "lemma": "jaw",
+      "partOfSpeech": "n.",
+      "phonetic": "/dʒɔː/",
+      "meaning": "下颌，下巴骨",
+      "definitionStatus": "verified",
+      "example": "The dentist asked me to relax my jaw before taking the X-ray.",
+      "exampleTranslation": "牙医在拍X光片之前让我放松下颌。",
+      "memoryAssets": {
+        "roots": "古法语 joue（面颊、颌骨）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "clench one's jaw (咬紧牙关)",
+          "drop one's jaw (目瞪口呆/下巴垂下)",
+          "jaw muscle (咀嚼肌/咬肌)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:chin",
+      "senseId": "lemma:chin:core",
+      "lemma": "chin",
+      "partOfSpeech": "n.",
+      "phonetic": "/tʃɪn/",
+      "meaning": "下巴",
+      "definitionStatus": "verified",
+      "example": "He rested his chin in his hand while listening attentively.",
+      "exampleTranslation": "他专注倾听时用手托着下巴。",
+      "memoryAssets": {
+        "roots": "古英语 cin（下颏）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "double chin (双下巴)",
+          "rest one's chin (托着下巴)",
+          "pointy chin (尖下巴)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:palm",
+      "senseId": "lemma:palm:core",
+      "lemma": "palm",
+      "partOfSpeech": "n.",
+      "phonetic": "/pɑːm/",
+      "meaning": "手掌，手心",
+      "definitionStatus": "verified",
+      "example": "His palms were sweaty with nervousness before the job interview.",
+      "exampleTranslation": "面试前，他的手掌因为紧张而微微出汗。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 palma（平坦的手掌，也因棕榈树叶像张开的手掌而同名）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sweaty palms (出汗的手掌)",
+          "in the palm of one's hand (在某人的手掌心/完全掌控)",
+          "palm reading (看手相)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:wrist",
+      "senseId": "lemma:wrist:core",
+      "lemma": "wrist",
+      "partOfSpeech": "n.",
+      "phonetic": "/rɪst/",
+      "meaning": "手腕",
+      "definitionStatus": "verified",
+      "example": "She wore a smart fitness band on her left wrist to track her heart rate.",
+      "exampleTranslation": "她在左手腕上戴了一只智能手环来监测心率。",
+      "memoryAssets": {
+        "roots": "与 writhe（扭曲）、wrench 同源，指手部能够自由旋转转动的部位。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "wrist sprain (手腕扭伤)",
+          "wrist watch (手表)",
+          "flick of the wrist (手腕轻抖)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:elbow",
+      "senseId": "lemma:elbow:core",
+      "lemma": "elbow",
+      "partOfSpeech": "n.",
+      "phonetic": "/'elboʊ/",
+      "meaning": "肘，手肘",
+      "definitionStatus": "verified",
+      "example": "He rested his elbows on the dining table while waiting for the food.",
+      "exampleTranslation": "等餐时，他把手肘支在餐桌上。",
+      "memoryAssets": {
+        "roots": "ell（前臂长度单位）+ bow（弯曲部位）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "elbow room (活动空间/回旋余地)",
+          "tennis elbow (网球肘)",
+          "rub elbows with (与名流交往交往)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:armpit",
+      "senseId": "lemma:armpit:core",
+      "lemma": "armpit",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɑːrmpɪt/",
+      "meaning": "腋下，腋窝",
+      "definitionStatus": "verified",
+      "example": "Apply deodorant under each armpit after your morning shower.",
+      "exampleTranslation": "晨间洗澡后，在两边腋下涂抹止汗除臭喷雾。",
+      "memoryAssets": {
+        "roots": "arm（手臂）+ pit（凹陷处）。医学正式称为 axilla。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "under the armpit (在腋窝下)",
+          "armpit hair (腋毛)",
+          "armpit temperature (腋下体温)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:waist",
+      "senseId": "lemma:waist:core",
+      "lemma": "waist",
+      "partOfSpeech": "n.",
+      "phonetic": "/weɪst/",
+      "meaning": "腰，腰部",
+      "definitionStatus": "verified",
+      "example": "The dress fits snugly around her waist and flares out at the knees.",
+      "exampleTranslation": "这条裙子腰部剪裁合身，在膝盖处向外散开。",
+      "memoryAssets": {
+        "roots": "源自古英语 weaxan（生长、增粗之处）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "waist circumference (腰围)",
+          "high-waisted jeans (高腰牛仔裤)",
+          "narrow waist (细腰)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:hip",
+      "senseId": "lemma:hip:core",
+      "lemma": "hip",
+      "partOfSpeech": "n.",
+      "phonetic": "/hɪp/",
+      "meaning": "臀部，髋部",
+      "definitionStatus": "verified",
+      "example": "She placed her hands on her hips and smiled warmly at the children.",
+      "exampleTranslation": "她双手叉腰，对孩子们温暖地微笑。",
+      "memoryAssets": {
+        "roots": "日耳曼语系，特指骨盆与大腿连接的外侧髋关节区域。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "hands on hips (双手叉腰)",
+          "hip joint (髋关节)",
+          "hip fracture (髋骨骨折)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:thigh",
+      "senseId": "lemma:thigh:core",
+      "lemma": "thigh",
+      "partOfSpeech": "n.",
+      "phonetic": "/θaɪ/",
+      "meaning": "大腿",
+      "definitionStatus": "verified",
+      "example": "Cycling uphill really builds strong muscles in your thighs and calves.",
+      "exampleTranslation": "骑车爬坡能切实锻炼大腿和小腿强健的肌肉群。",
+      "memoryAssets": {
+        "roots": "古英语 theoh（粗壮肉厚部位）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "inner thigh (大腿内侧)",
+          "thigh muscle (股四头肌/大腿肌肉)",
+          "sore thighs (酸痛的大腿)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:calf",
+      "senseId": "lemma:calf:core",
+      "lemma": "calf",
+      "partOfSpeech": "n.",
+      "phonetic": "/kæf/",
+      "meaning": "小腿肚，小腿腓肠肌",
+      "definitionStatus": "verified",
+      "example": "He suffered a painful cramp in his left calf during the marathon.",
+      "exampleTranslation": "他在马拉松跑步过程中左小腿肚突发剧烈抽筋。",
+      "memoryAssets": {
+        "roots": "与小牛同形，但词源不同，源自古斯堪的纳维亚语 kalfi（腿肚子隆起肉）。复数为 calves。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "calf cramp (小腿抽筋)",
+          "calf muscle (小腿腓肠肌)",
+          "calf raise (提踵/踮脚锻炼小腿)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:ankle",
+      "senseId": "lemma:ankle:core",
+      "lemma": "ankle",
+      "partOfSpeech": "n.",
+      "phonetic": "/'æŋkl/",
+      "meaning": "脚踝，踝关节",
+      "definitionStatus": "verified",
+      "example": "She twisted her ankle while jogging on the uneven pavement.",
+      "exampleTranslation": "在凹凸不平的人行道上慢跑时，她不慎扭伤了脚踝。",
+      "memoryAssets": {
+        "roots": "源自原始印欧语 ang-（弯角），与 angle（角度）同源。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sprained ankle (扭伤的脚踝)",
+          "ankle socks (短袜/船袜)",
+          "swollen ankle (肿胀的脚踝)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:heel",
+      "senseId": "lemma:heel:core",
+      "lemma": "heel",
+      "partOfSpeech": "n.",
+      "phonetic": "/hiːl/",
+      "meaning": "脚后跟，踵",
+      "definitionStatus": "verified",
+      "example": "New leather shoes often rub against your heels causing painful blisters.",
+      "exampleTranslation": "新买的皮鞋经常会摩擦脚后跟并磨出痛感十足的水泡。",
+      "memoryAssets": {
+        "roots": "古英语 hela（足跟）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "Achilles' heel (阿喀琉斯之踵/唯一致命弱点)",
+          "high heels (高跟鞋)",
+          "heel pain (足跟疼痛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:sole",
+      "senseId": "lemma:sole:core",
+      "lemma": "sole",
+      "partOfSpeech": "n.",
+      "phonetic": "/soʊl/",
+      "meaning": "脚底，鞋底",
+      "definitionStatus": "verified",
+      "example": "Walking barefoot on smooth pebble paths massages the soles of your feet.",
+      "exampleTranslation": "在光滑的鹅卵石步道上赤脚行走能按摩脚底穴位。",
+      "memoryAssets": {
+        "roots": "拉丁语 solea（平垫、凉鞋底）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sole of the foot (脚底板)",
+          "rubber sole (橡胶鞋底)",
+          "sore soles (酸痛的足底)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:spine",
+      "senseId": "lemma:spine:core",
+      "lemma": "spine",
+      "partOfSpeech": "n.",
+      "phonetic": "/spaɪn/",
+      "meaning": "脊柱，脊椎",
+      "definitionStatus": "verified",
+      "example": "Maintain a neutral spine when lifting heavy weights off the ground.",
+      "exampleTranslation": "从地面搬起重物时，务必保持脊柱处于中立位。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 spina（荆棘、脊椎骨尖刺状突起）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "neutral spine (中立脊柱)",
+          "spine curvature (脊柱侧弯)",
+          "spine alignment (脊骨正位)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:rib",
+      "senseId": "lemma:rib:core",
+      "lemma": "rib",
+      "partOfSpeech": "n.",
+      "phonetic": "/rɪb/",
+      "meaning": "肋骨",
+      "definitionStatus": "verified",
+      "example": "The chest cage consists of twelve pairs of ribs protecting the heart and lungs.",
+      "exampleTranslation": "胸腔由十二对肋骨组成，用于保护心脏和肺部。",
+      "memoryAssets": {
+        "roots": "古英语 ribb（条带、胸骨旁肋条）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "rib cage (胸腔/肋骨架构)",
+          "broken rib (肋骨断裂)",
+          "rib pain (肋间神经痛)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:skull",
+      "senseId": "lemma:skull:core",
+      "lemma": "skull",
+      "partOfSpeech": "n.",
+      "phonetic": "/skʌl/",
+      "meaning": "头骨，颅骨",
+      "definitionStatus": "verified",
+      "example": "A bicycle helmet is designed to absorb impact and protect your skull.",
+      "exampleTranslation": "自行车头盔的设计初衷是在受到撞击时有效保护颅骨。",
+      "memoryAssets": {
+        "roots": "古斯堪的纳维亚语 skalli（光秃的头顶/碗状外壳）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "skull fracture (颅骨骨折)",
+          "thick skull (头盖骨厚实)",
+          "skull and crossbones (骷髅旗标志)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:skeleton",
+      "senseId": "lemma:skeleton:core",
+      "lemma": "skeleton",
+      "partOfSpeech": "n.",
+      "phonetic": "/'skelɪtn/",
+      "meaning": "骨骼，骨架",
+      "definitionStatus": "verified",
+      "example": "Adult humans have 206 bones in their complete skeleton.",
+      "exampleTranslation": "成年人体内的完整骨骼系统共由 206 块骨头组成。",
+      "memoryAssets": {
+        "roots": "源自希腊语 skeletos（风干的干尸、木乃伊残骨）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "human skeleton (人体骨骼)",
+          "skeleton key (万能钥匙)",
+          "skeleton in the closet (家丑/隐秘不可告人的秘密)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:joint",
+      "senseId": "lemma:joint:core",
+      "lemma": "joint",
+      "partOfSpeech": "n.",
+      "phonetic": "/dʒɔɪnt/",
+      "meaning": "关节",
+      "definitionStatus": "verified",
+      "example": "Glucosamine supplements are commonly taken to support joint mobility.",
+      "exampleTranslation": "氨糖营养补充剂常被用于提升关节灵活度与软骨润滑。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 jungere（结合、连接处），与 join 同源。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "joint pain (关节疼痛)",
+          "joint stiffness (关节僵硬)",
+          "ball-and-socket joint (球窝关节)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:ligament",
+      "senseId": "lemma:ligament:core",
+      "lemma": "ligament",
+      "partOfSpeech": "n.",
+      "phonetic": "/'lɪɡəmənt/",
+      "meaning": "韧带",
+      "definitionStatus": "verified",
+      "example": "The soccer player tore his anterior cruciate ligament during the match.",
+      "exampleTranslation": "这名足球运动员在比赛中不幸撕裂了前十字韧带。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 ligare（绑紧、捆绑），将骨与骨相连的坚韧组织。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "torn ligament (韧带撕裂)",
+          "cruciate ligament (十字韧带)",
+          "ligament sprain (韧带扭伤)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tendon",
+      "senseId": "lemma:tendon:core",
+      "lemma": "tendon",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tendən/",
+      "meaning": "肌腱",
+      "definitionStatus": "verified",
+      "example": "The Achilles tendon connects the calf muscle to the heel bone.",
+      "exampleTranslation": "跟腱负责将小腿腓肠肌紧密连接到足跟骨上。",
+      "memoryAssets": {
+        "roots": "源自希腊语 tenon（拉紧的绳索、肌腱），将肌肉固定在骨骼上。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "Achilles tendon (跟腱)",
+          "tendon inflammation (肌腱炎)",
+          "tendon sheath (腱鞘)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:organ",
+      "senseId": "lemma:organ:core",
+      "lemma": "organ",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɔːrɡən/",
+      "meaning": "器官",
+      "definitionStatus": "verified",
+      "example": "The skin is the largest external organ of the entire human body.",
+      "exampleTranslation": "皮肤是整个身体表面积最大的外在生理器官。",
+      "memoryAssets": {
+        "roots": "源自希腊语 organon（工具、功能性器具）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "vital organ (维持生命的重要器官)",
+          "internal organ (内脏器官)",
+          "organ transplant (器官移植)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:liver",
+      "senseId": "lemma:liver:core",
+      "lemma": "liver",
+      "partOfSpeech": "n.",
+      "phonetic": "/'lɪvər/",
+      "meaning": "肝脏",
+      "definitionStatus": "verified",
+      "example": "The liver processes nutrients and detoxifies harmful chemicals from the bloodstream.",
+      "exampleTranslation": "肝脏负责代谢营养物质并净化血液中的有害化学毒素。",
+      "memoryAssets": {
+        "roots": "古英语 lifer，与 life（生命）深层同源，古人视肝为生命源泉。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "fatty liver (脂肪肝)",
+          "liver function test (肝功能检查)",
+          "liver enzyme (转氨酶/肝酶)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:kidney",
+      "senseId": "lemma:kidney:core",
+      "lemma": "kidney",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kɪdni/",
+      "meaning": "肾脏",
+      "definitionStatus": "verified",
+      "example": "Drinking sufficient water helps kidneys flush out waste products effectively.",
+      "exampleTranslation": "饮用足量清水有助于双肾高效率排出代谢废物。",
+      "memoryAssets": {
+        "roots": "中古英语 kidenei，形象指腰部成对生长的卵状器官。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "kidney stone (肾结石)",
+          "kidney failure (肾衰竭)",
+          "kidney dialysis (肾透析)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:lung",
+      "senseId": "lemma:lung:core",
+      "lemma": "lung",
+      "partOfSpeech": "n.",
+      "phonetic": "/lʌŋ/",
+      "meaning": "肺",
+      "definitionStatus": "verified",
+      "example": "Deep abdominal breathing expands the lower lobes of both lungs.",
+      "exampleTranslation": "深腹式呼吸能使双肺下叶充分扩张换气。",
+      "memoryAssets": {
+        "roots": "古英语 lungen，源自印欧词根 legwh-（轻盈），因肺入水能浮起。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "lung capacity (肺活量)",
+          "lung health (肺部健康)",
+          "breathe into the lungs (吸入肺腑)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:stomach",
+      "senseId": "lemma:stomach:core",
+      "lemma": "stomach",
+      "partOfSpeech": "n.",
+      "phonetic": "/'stʌmək/",
+      "meaning": "胃，肚子",
+      "definitionStatus": "verified",
+      "example": "Never exercise intensely immediately after eating on a full stomach.",
+      "exampleTranslation": "刚吃饱饭肚腹充盈时，切忌立刻进行剧烈剧烈运动。",
+      "memoryAssets": {
+        "roots": "源自希腊语 stomachos（食道、胃囊口）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "empty stomach (空腹)",
+          "upset stomach (胃部不适/拉肚子)",
+          "stomach acid (胃酸)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:intestine",
+      "senseId": "lemma:intestine:core",
+      "lemma": "intestine",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɪn'testɪn/",
+      "meaning": "肠道，肠",
+      "definitionStatus": "verified",
+      "example": "Dietary fiber promotes healthy gut bacteria in the large intestine.",
+      "exampleTranslation": "膳食纤维能促进大肠内部益生菌群的健康繁衍。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 intestinus（内在的、内部深处的管道消化系统）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "small intestine (小肠)",
+          "large intestine (大肠)",
+          "intestinal flora (肠道菌群)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:vein",
+      "senseId": "lemma:vein:core",
+      "lemma": "vein",
+      "partOfSpeech": "n.",
+      "phonetic": "/veɪn/",
+      "meaning": "静脉，静脉血管",
+      "definitionStatus": "verified",
+      "example": "Blue veins were visible beneath the pale translucent skin of his wrist.",
+      "exampleTranslation": "在他手腕苍白略带透明的皮肤下，能清晰看到青蓝色的静脉血管。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 vena（血管、矿脉水脉）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "varicose veins (静脉曲张)",
+          "vein of blood (血管)",
+          "jugular vein (颈静脉)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:artery",
+      "senseId": "lemma:artery:core",
+      "lemma": "artery",
+      "partOfSpeech": "n.",
+      "phonetic": "/'ɑːrtəri/",
+      "meaning": "动脉",
+      "definitionStatus": "verified",
+      "example": "Healthy diet choices prevent plaque buildup within the coronary arteries.",
+      "exampleTranslation": "健康的饮食选择能有效预防冠状动脉内壁斑块的沉积硬化。",
+      "memoryAssets": {
+        "roots": "希腊语 arteria（运载脉冲血液的主干道）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "coronary artery (冠状动脉)",
+          "artery wall (动脉管壁)",
+          "clogged artery (动脉堵塞)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:navel",
+      "senseId": "lemma:navel:core",
+      "lemma": "navel",
+      "partOfSpeech": "n.",
+      "phonetic": "/'neɪvl/",
+      "meaning": "肚脐",
+      "definitionStatus": "verified",
+      "example": "The piercing was placed right above her navel.",
+      "exampleTranslation": "那个时尚的脐钉恰好穿戴在她的肚脐正上方。",
+      "memoryAssets": {
+        "roots": "与 hub（轴心）同源，指人体正中枢纽的脐孔痕迹。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "navel ring (肚脐环)",
+          "deep navel (凹陷较深的肚脐)",
+          "around the navel (肚脐周围)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:lobe",
+      "senseId": "lemma:lobe:core",
+      "lemma": "lobe",
+      "partOfSpeech": "n.",
+      "phonetic": "/loʊb/",
+      "meaning": "耳垂，脑/肺叶",
+      "definitionStatus": "verified",
+      "example": "She wore an elegant pearl earring on each earlobe.",
+      "exampleTranslation": "她的两边耳垂上各佩戴了一枚优雅别致的珍珠耳环。",
+      "memoryAssets": {
+        "roots": "源自希腊语 lobos（圆垂悬挂的肉质小块）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "earlobe (耳垂)",
+          "frontal lobe (大脑额叶)",
+          "lung lobe (肺叶)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:complexion",
+      "senseId": "lemma:complexion:core",
+      "lemma": "complexion",
+      "partOfSpeech": "n.",
+      "phonetic": "/kəm'plekʃn/",
+      "meaning": "肤色，面色，气色",
+      "definitionStatus": "verified",
+      "example": "Regular aerobic workouts give your skin a natural glowing complexion.",
+      "exampleTranslation": "规律的有氧运动会让你的肌肤透出自然红润的好气色。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 complexio（体液交织结合的状态，古医理视气色为体液平衡表征）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "pale complexion (苍白的面色)",
+          "clear complexion (净白透亮的皮肤)",
+          "glowing complexion (容光焕发)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:pore",
+      "senseId": "lemma:pore:core",
+      "lemma": "pore",
+      "partOfSpeech": "n.",
+      "phonetic": "/pɔːr/",
+      "meaning": "毛孔，气孔",
+      "definitionStatus": "verified",
+      "example": "Warm steam opens up the facial pores for deeper purifying cleansing.",
+      "exampleTranslation": "温热的蒸汽能舒张面部毛孔，以便进行深层净化清洁。",
+      "memoryAssets": {
+        "roots": "源自希腊语 poros（通道、小孔口）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "clogged pores (堵塞的毛孔)",
+          "tighten pores (收敛毛孔)",
+          "sweat pores (汗孔)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:scalp",
+      "senseId": "lemma:scalp:core",
+      "lemma": "scalp",
+      "partOfSpeech": "n.",
+      "phonetic": "/skælp/",
+      "meaning": "头皮",
+      "definitionStatus": "verified",
+      "example": "Gently massage your scalp with fingertips while shampooing.",
+      "exampleTranslation": "洗头时，用指腹轻柔地按摩头皮以促进微循环。",
+      "memoryAssets": {
+        "roots": "与 shell/skull 同源，指包覆头骨表层的毛皮组织。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "dry scalp (干燥的头皮)",
+          "scalp massage (头皮按摩)",
+          "itchy scalp (发痒的头皮)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:gum",
+      "senseId": "lemma:gum:core",
+      "lemma": "gum",
+      "partOfSpeech": "n.",
+      "phonetic": "/ɡʌm/",
+      "meaning": "牙龈，齿龈",
+      "definitionStatus": "verified",
+      "example": "Bleeding gums while flossing can be an early sign of gingivitis.",
+      "exampleTranslation": "使用牙线剔牙时牙龈出血可能是牙龈炎的初期征兆。",
+      "memoryAssets": {
+        "roots": "古英语 goma（上腭、齿床口部组织）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "swollen gums (牙龈红肿)",
+          "gum disease (牙龈牙周疾病)",
+          "bleeding gums (牙龈出血)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:throat",
+      "senseId": "lemma:throat:core",
+      "lemma": "throat",
+      "partOfSpeech": "n.",
+      "phonetic": "/θroʊt/",
+      "meaning": "喉咙，咽喉",
+      "definitionStatus": "verified",
+      "example": "Gargling with warm saltwater helps soothe a scratchy sore throat.",
+      "exampleTranslation": "用温盐水漱口有助于缓解干痒疼痛的咽喉不适。",
+      "memoryAssets": {
+        "roots": "古英语 throte（吞咽通道）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "sore throat (咽喉肿痛)",
+          "clear one's throat (清嗓子)",
+          "lump in one's throat (咽喉哽咽)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:tonsil",
+      "senseId": "lemma:tonsil:core",
+      "lemma": "tonsil",
+      "partOfSpeech": "n.",
+      "phonetic": "/'tɑːnsl/",
+      "meaning": "扁桃体",
+      "definitionStatus": "verified",
+      "example": "The doctor checked the inflamed red tonsils at the back of his mouth.",
+      "exampleTranslation": "医生仔细检查了他口腔深处发炎泛红的扁桃体。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 tonsillae（支桩形状的淋巴防护卫士）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "swollen tonsils (扁桃体肿大)",
+          "tonsil stones (扁桃体结石)",
+          "remove tonsils (切除扁桃体手术)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:abdomen",
+      "senseId": "lemma:abdomen:core",
+      "lemma": "abdomen",
+      "partOfSpeech": "n.",
+      "phonetic": "/'æbdəmən/",
+      "meaning": "腹部，下腹",
+      "definitionStatus": "verified",
+      "example": "Ultrasound imaging is commonly used to inspect internal organs in the abdomen.",
+      "exampleTranslation": "超声波影像常被用于检查腹部深处的各内脏器官。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 abdomen（盛装内脏的隐蔽腔室）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "lower abdomen (下腹部)",
+          "abdominal pain (腹痛)",
+          "tighten the abdomen (收紧腹肌腹部)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:pelvis",
+      "senseId": "lemma:pelvis:core",
+      "lemma": "pelvis",
+      "partOfSpeech": "n.",
+      "phonetic": "/'pelvɪs/",
+      "meaning": "骨盆",
+      "definitionStatus": "verified",
+      "example": "A neutral pelvic tilt is essential for avoiding lower back strain.",
+      "exampleTranslation": "保持骨盆处于中立倾角对于避免下背腰部劳损至关重要。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 pelvis（水盆、钵皿），形象比喻承托盆腔脏器的骨质盆形架构。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "pelvic floor muscles (盆底肌群)",
+          "neutral pelvis (中立位骨盆)",
+          "pelvic tilt (骨盆前倾/倾角)"
+        ]
+      }
+    },
+    {
+      "id": "lemma:capillary",
+      "senseId": "lemma:capillary:core",
+      "lemma": "capillary",
+      "partOfSpeech": "n.",
+      "phonetic": "/'kæpəleri/",
+      "meaning": "毛细血管",
+      "definitionStatus": "verified",
+      "example": "Oxygen exchange occurs across the microscopic thin walls of capillaries.",
+      "exampleTranslation": "氧气与养分的物质交换正是通过毛细血管微细单层管壁完成的。",
+      "memoryAssets": {
+        "roots": "源自拉丁语 capillus（如头发丝般纤细）。",
+        "mnemonics": "【健康场景速记】在人体外观特征、就诊沟通及运动解剖高频出现，结合自身感知与动作实物强化记忆。",
+        "collocations": [
+          "broken capillaries (毛细血管破裂/红血丝)",
+          "capillary bed (毛细血管网)",
+          "capillary blood flow (微循环血流)"
+        ]
+      }
+    }
+  ]
+}
